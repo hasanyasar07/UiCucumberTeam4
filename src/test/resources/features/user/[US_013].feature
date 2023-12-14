@@ -24,4 +24,9 @@ Feature: Kayıtlı bir kullanıcı(User) olarak kendime ait panele login olabilm
       And giris yapamadigini dogrular
       And sayfayi kapatir
 
-      Scenario:
+      Scenario:Kullanici login sayfasinda bulunan register now linkine gider ve linkin kendisini register now sayfasina yonlendirdigini dogrular
+        Given kullanici verilen "guestUrl" gider
+        Then kullanici verilen url e gittikten sonra login butonunun gorunur oldugunu test eder ve login butonuna tiklar
+        And login sayfasinda bulunan register now linkinin gorunur oldugunu dogrular ve linke tiklar
+        Then acilan sayfanin register now sayfasi oldugunu dogrular
+        And sayfayi kapatir
