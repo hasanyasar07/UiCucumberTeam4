@@ -64,6 +64,17 @@ public class User {
         ReusableMethods.wait(1);
     }
 
+    @And("login sayfasinda bulunan register now linkinin gorunur oldugunu dogrular ve linke tiklar")
+    public void login_sayfasinda_bulunan_register_now_linkinin_gorunur_oldugunu_dogrular_ve_linke_tiklar() {
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",userPages.WelcomeBackYaziElementi );
+        Assert.assertTrue(userPages.registerNow.isDisplayed());
+        ReusableMethods.wait(1);
+        userPages.registerNow.click();
+    }
+    @Then("acilan sayfanin register now sayfasi oldugunu dogrular")
+    public void acilan_sayfanin_register_now_sayfasi_oldugunu_dogrular() {
+        Assert.assertTrue(userPages.registerNowForm.isDisplayed());
+    }
 
     // ********** US_014  **********
 
