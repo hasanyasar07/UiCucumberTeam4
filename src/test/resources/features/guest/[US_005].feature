@@ -8,7 +8,8 @@ Feature: Bir ziyaretci olarak şirket hakkında daha çok bilgiye sahip olmak i�
     And sayfayi kapatir
 
     Scenario:kullanici gittigi url'in footer kisminda about linkinin gorunup aktif oldugunu dogrular ve about sayfasindaki dogrulamalari yapar
-      Given kullanici anasayfada footer kismindaki about linkinin oldugunu dogrular ve linke tiklar
+      Given kullanici anasayfada footer kismina iner
+      Then footer kismindaki about linkinin oldugunu dogrular ve linke tiklar
       Then gittigi sayfada Fulfilling Financial Dreams basliginin gorunur oldugunu dogrular
       Then ayni sayfadaki Home | About ikonlarinin gorunur oldugunu dogrular
       And aktif oldugunu dogrulamak icin About ikonuna tiklar
