@@ -21,8 +21,8 @@ public class GuestPages {
 
 
     // ********** Footer **********
-
-
+    @FindBy(xpath = "(//*[@class='t-link t-link--primary t-text-white text-capitalize'])[2]")
+    public WebElement footerAboutButon;
 
 
     // ********** Home Body **********
@@ -32,7 +32,17 @@ public class GuestPages {
 
     // **********  About Body **********
 
+    @FindBy(xpath = "//a[@class=' nav-link']")
+    public WebElement aboutButon;
 
+    @FindBy(xpath = "//h2[text()='Fulfilling Financial Dreams']")
+    public WebElement aboutBodyFulfillingFinancialBaslik;
+
+    @FindBy(xpath = "//*[@class='t-link breadcrumbs__link text-uppercase t-text-white t-link--primary']")
+    public WebElement aboutBodyHomeIknonu;
+
+    @FindBy(xpath = "//*[@class=' t-link breadcrumbs__link text-uppercase t-text-white t-link--primary ']")
+    public WebElement aboutBodyAboutIkonu;
 
 
     // ********** Plans Body **********
