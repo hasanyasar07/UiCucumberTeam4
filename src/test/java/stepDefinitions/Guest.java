@@ -1,5 +1,8 @@
 package stepDefinitions;
 
+
+import io.cucumber.java.en.Given;
+public class Guest {
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,6 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import pages.GuestPages;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
 
 public class Guest {
     GuestPages guestPages=new GuestPages();
@@ -152,4 +156,13 @@ public class Guest {
 
 
     // ********** US_012  **********
+    @Given("{string} butonunun gorunur ve aktif oldugu dogrulanir")
+    public void butonunun_gorunur_ve_aktif_oldugu_dogrulanir(String string) {
+
+    }
+    @Given("{string} butonuna tiklandiginda {string} e gittigi dogrulanir")
+    public void butonuna_tiklandiginda_e_gittigi_dogrulanir(String string, String string2) {
+
+    }
+
 }
