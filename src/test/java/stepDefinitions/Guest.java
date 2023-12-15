@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.Given;
+
 public class Guest {
 
 
@@ -37,4 +39,13 @@ public class Guest {
 
 
     // ********** US_012  **********
+    @Given("{string} butonunun gorunur ve aktif oldugu dogrulanir")
+    public void butonunun_gorunur_ve_aktif_oldugu_dogrulanir(String string) {
+
+    }
+    @Given("{string} butonuna tiklandiginda {string} e gittigi dogrulanir")
+    public void butonuna_tiklandiginda_e_gittigi_dogrulanir(String string, String string2) {
+
+    }
+
 }

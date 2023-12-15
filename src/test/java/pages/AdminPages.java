@@ -17,7 +17,7 @@ public class AdminPages {
         adminUsernameBox.sendKeys(ConfigReader.getProperty(username));
         adminPasswordBox.sendKeys(ConfigReader.getProperty(password));
         ReusableMethods.wait(1);
-        adminLoginButon.click();
+        adminLoginButon.submit();
     }
 
 
