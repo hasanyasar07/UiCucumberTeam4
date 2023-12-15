@@ -53,9 +53,14 @@ public class UserPages {
     public WebElement rememberMeButon;
     @FindBy(xpath = "//*[@class='forgot-pass text-decoration-none']")
     public WebElement forgotPassword;
+
+    @FindBy(xpath = "//*[@class='text-decoration-none']")
+    public WebElement registerNow;
     @FindBy(xpath = "//*[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text']")
     public WebElement loginButon;
 
+    @FindBy(xpath = "//*[@class='row g-4 verify-gcaptcha']")
+    public WebElement registerNowForm;
     @FindBy(xpath = "//*[@class='text-capitalize text-center mt-0 mb-4']")
     public WebElement WelcomeBackYaziElementi;
 
