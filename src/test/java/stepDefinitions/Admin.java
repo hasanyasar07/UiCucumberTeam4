@@ -10,6 +10,8 @@ import pages.AdminPages;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import utilities.ReusableMethods;
 
@@ -77,7 +79,7 @@ public class Admin {
         ReusableMethods.wait(1);
     }
     @And("aCılan sayfada name  email text boxları ve fotoğraf gUncellenip aktif oldugu dogrulanir")
-    public void acılanSayfadaNameEmailTextBoxlarıVeFotoğrafGUncellenipAktifOlduguDogrulanir() {
+    public void acılanSayfadaNameEmailTextBoxlarıVeFotoğrafGUncellenipAktifOlduguDogrulanir() throws AWTException {
 
         adminPages.ProfilNameBox.clear();
         ReusableMethods.wait(1);
@@ -89,6 +91,21 @@ public class Admin {
         adminPages.ProfilEmailBox.sendKeys("gul.ataalp@gmail.com");
         ReusableMethods.wait(2);
         adminPages.uploadImageButon.click();
+        ReusableMethods.wait(2);
+
+
+        StringSelection resim=new StringSelection("C:\\Users\\Gülizar\\IdeaProjects\\UiCucumberTeam4\\src\\test\\java\\picture\\profil.png");
+        //StringSelection resim=new StringSelection(System.getProperty("user.dir")+"SmartCardLink_Team3\\a.jpg");
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(resim,null);
+        Robot robot= new Robot();
+        ReusableMethods.wait(1);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        ReusableMethods.wait(1);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyPress(KeyEvent.VK_CONTROL)  ;
+        ReusableMethods.wait(5);
+        robot.keyPress(KeyEvent.VK_ENTER);
         ReusableMethods.wait(2);
     }
 
