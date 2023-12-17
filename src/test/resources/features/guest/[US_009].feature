@@ -22,4 +22,10 @@ Feature: Bir ziyaretci olarak  şirket ile iletişime geçebilmek için sitede, 
         Then Adres bilgilerinin, sirketin contact us sayfasindaki konumunu gosteren haritada gorundugunu dogrular
         And sayfayi kapatir
 
-        Scenario:
+        Scenario:Kullanıcı gittiği URL'de yer alan Ana menü başlığından bize ulasin tıklandığında contact us ve home linklerinin gorunur ve aktif oldugunu dogrular
+
+          Given Kullanici, contact sekmesinin ana sayfada gorundugunu dogrular ve contact sekmesine tiklar
+          Then home ve contact linkerinin goruntulendigini dogrular
+          And contact linkinin calistigini test etmek icin tiklar
+          And home linkinin calistigini test etmek icin tiklar
+          Then sayfayi kapatir
