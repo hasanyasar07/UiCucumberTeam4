@@ -38,6 +38,9 @@ public class AdminPages {
     @FindBy(xpath = "(//*[@class='menu-title'])[2]")
     public WebElement manageUsersButton;
 
+    @FindBy(xpath = "//span[@class='menu-title' and text()='Active Users']")
+    public WebElement activeUsersButton;
+
 
 
     // ********** Categories **********

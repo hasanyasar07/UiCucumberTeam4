@@ -2,10 +2,17 @@ package stepDefinitions;
 
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.AdminPages;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static utilities.Driver.getDriver;
 
 public class Admin {
     AdminPages adminPages=new AdminPages();
@@ -93,7 +100,39 @@ public class Admin {
 
 
 
-    // ********** US_038  **********
+    // ********** US_038 Hilal **********
+    @Given("Click Manage Users link on the DashboardPage")
+    public void click_link_on_the_dashboard_page() {
+        adminPages.manageUsersButton.click();
+
+    }
+    @Given("Verify Active Users link is appear on the DashboardPage")
+    public void verify_link_is_appear_on_the_dashboard_page() {
+        adminPages.activeUsersButton.click();
+
+
+    }
+
+    @Given("Verify {string} and list titles is displayed")
+    public void verify_and_list_titles_is_displayed(String string) {
+        List<WebElement> userElements = getDriver().findElements(By.xpath("//td[@data-label='User']"));
+
+        // List to hold user information
+        List<String> users = new ArrayList<>();
+
+        // Iterate over elements and extract user information
+        for (WebElement userElement : userElements) {
+            // Assuming the user's name or relevant text is directly inside the <td> tag
+            users.add(userElement.getText());
+        }
+
+        // Output the list of users
+        for (String user : users) {
+            System.out.println(user);
+        }
+
+    }
+
 
 
 
