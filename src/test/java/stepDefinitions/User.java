@@ -4,10 +4,12 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import pages.GuestPages;
 import pages.UserPages;
+
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -76,6 +78,12 @@ public class User {
         Assert.assertTrue(userPages.registerNowForm.isDisplayed());
     }
 
+
+
+
+
+
+
     // ********** US_014  **********
 
 
@@ -104,9 +112,103 @@ public class User {
 
 
     // ********** US_023  **********
+    @Then("LoanTechLogo tiklar")
+    public void loantechlogoTiklar() {
+        ReusableMethods.wait(1);
+        userPages.LoanTechLogo.click();
+
+    }
+    @Then("ansayfa ustbarından plans linkine tıklar")
+    public void ansayfaustbarindanPlansLinkineTiklar() {
+        ReusableMethods.wait(1);
+        userPages.plansButton.click();
+
+    }
+    @And("plans linki altında loan cardların gorunur oldugunu test eder ve basic loan butonuna tiklar")
+    public void plansLinkiAltindaLoanCardlarinGorunurOldugunuTestEderVeBasicLoanButonunaTiklar() {
 
 
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.basicLoanButton.isDisplayed());
+        ReusableMethods.wait(1);
+        userPages.basicLoanButton.click();
+    }
+    @Then("basic loan buton tıklandığında acılan cardların başlıkları gorunur oldugunu test eder")
+    public void basicLoanButonTiklandigindaAcilanCardlarinBasliklariGorunurOldugunuTestEder() {
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",userPages.loanPlansYaziElementi);
+        ReusableMethods.wait(1);
+
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.basicLoan1Button.isDisplayed());
+        ReusableMethods.wait(1);
+
+    }
+    @And("Applyfor Selected card name sayfasinin gorunur oldugunu test eder")
+    public void applyforSelectedCardNameSayfasininGorunurOldugunuTestEder() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.amountBox.isDisplayed());
+    }
+    @And("Apply Now Butonu gorunur oldugunu test eder ve tiklandiginda Selected card name sayfası acildigini test eder")
+    public void applyNowButonuGorunurOldugunuTestEderVeTiklandigindaSelectedCardNameSayfasiAcildiginiTestEder() {
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",userPages.basicLoan1Button);
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.applyNowButton.isDisplayed());
+        ReusableMethods.wait(1);
+        userPages.applyNowButton.click();
+    }
+    @And("cookie kabul edilir")
+    public void cookieKabulEdilir() {
+        ReusableMethods.wait(1);
+        userPages.cookieButonu.click();
+
+    }
+    @When("Amount textbox'a digit minimum ve maximum deger aralıgında deger girilmelidir")
+    public void amountTextboxADigitMinimumVeMaximumDegerAraligindaDegerGirilmelidir() {
+        userPages.amountBox.sendKeys("1000");
+        ReusableMethods.wait(1);
+
+    }
+    @And("sayfadaki ok tuşları tiknanir")
+    public void sayfadakiOkTuslariTiknanir() {
+
+        ReusableMethods.wait(1);
+        userPages.amountBoxConfirmButton.click();
+    }
+    @When("Confirm  butona tiklandiginda Application Form sayfasına gecis yapildigini test eder")
+    public void confirmButonaTiklandigindaApplicationFormSayfasinaGecisYapildiginiTestEder() {
+
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.applicationFormYazisi.isDisplayed());
+    }
+    @And("Apply buton aktif oldugunu test eder  ve tiklandiginda Loan application submitted successfully mesajinin gorunur oldugunu test eder")
+    public void applyButonAktifOldugunuTestEderVeTiklandigindaLoanApplicationSubmittedSuccessfullyMesajininGorunurOldugunuTestEder() {
+        ReusableMethods.wait(1);
+        userPages.applyButton.click();
+        ReusableMethods.wait(3);
+    }
     // ********** US_024  **********
+    @Then("dashboard sayfasinda successful deposits successful withdrawals total Loan baslıkları gorunur oldugunu test eder")
+    public void dashboardSayfasindaSuccessfulDepositsSuccessfulWithdrawalsTotalLoanBasliklariGorunurOldugunuTestEder() {
 
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.successfulDepositYaziElementi.isDisplayed());
 
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.successfulWithdrawalsYaziElementi.isDisplayed());
+
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.totalLoanYaziElementi.isDisplayed());
+    }
+    @Then("dashboard sayfasinda toplam tutar submitted pending rejected edilen tutarlar ve kredi adetlerinin gorunur oldugunu test eder")
+    public void dashboardSayfasindaToplamTutarSubmittedPendingRejectedEdilenTutarlarVeKrediAdetlerininGorunurOldugunuTestEder() {
+
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.myLoanSubmittedYaziElementi.isDisplayed());
+
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.myLoanRejectedYaziElementi.isDisplayed());
+
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.myLoanPendingYaziElementi.isDisplayed());
+    }
 }
