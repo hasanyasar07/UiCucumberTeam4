@@ -1,7 +1,11 @@
 package stepDefinitions;
 
 import io.cucumber.java.en.Given;
+import org.junit.Assert;
 import pages.AdminPages;
+import utilities.ConfigReader;
+import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class Admin {
     AdminPages adminPages=new AdminPages();
@@ -39,7 +43,33 @@ public class Admin {
 
 
 
-    // ********** US_032  **********
+    // ********** US_032 HILAL **********
+
+    @Given("Launch browser")
+    public void launch_browser() {
+
+    }
+    @Given("Navigate to {string}")
+    public void navigateTo(String arg0) {
+        Driver.getDriver().get(ConfigReader.getProperty("adminUrl"));
+
+    }
+    @Given("the user logs in to the admin page with the given {string} and {string} information")
+    public void theUserLogsInToTheAdminPageWithTheGivenAndInformation(String username, String password)  {
+        adminPages.adminLoginMethod(username,password);
+    }
+    @Given("Verify that Admin homepage is visible successfully")
+    public void verify_that_admin_homepage_is_visible_successfully() {
+        adminPages.manageUsersButton.click();
+        Assert.assertTrue(adminPages.manageUsersButton.isDisplayed());
+
+    }
+    @Given("Close the page")
+    public void close_the_page() {
+        Driver.closeDriver();
+
+    }
+
 
 
 
