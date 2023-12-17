@@ -31,7 +31,7 @@ Feature: Kayıtlı bir kullanıcı(User) olarak kendime ait panele login olabilm
         Then acilan sayfanin register now sayfasi oldugunu dogrular
         And sayfayi kapatir
 
-        Scenario:
+        Scenario:Kullanici login sayfasinda bulunan forgot password linkine tiklar verify email sayfasina gectigini dogrular textBox'a Username email adresi girer ve gonderme islemi yaptiktan sonra Password reset email sent successfully yazisini gordugunu dogrular
 
           Given kullanici verilen url e gittikten sonra login butonunun gorunur oldugunu test eder ve login butonuna tiklar
           Then forgot password linkinin gorunur oldugunu dogrular ve linke tiklar
@@ -40,7 +40,8 @@ Feature: Kayıtlı bir kullanıcı(User) olarak kendime ait panele login olabilm
           Then Submit butonu tiklandiginda Password reset email sent successfully yazisini gordugunu test eder
           And sayfayi kapatir
 
-          Scenario:
+          Scenario:Kullanici login sayfasinda bulunan forgot password linkine tiklar textBox'a Username email adresi girer ve gonderme islemi yaptiktan sonra Try to send again linkine tiklayarak tekrar mail gonderildigini dogrular
+
             Given kullanici verilen url e gittikten sonra login butonunun gorunur oldugunu test eder ve login butonuna tiklar
             Then forgot password linkinin gorunur oldugunu dogrular ve linke tiklar
             And textBox'a Username email adresi girer ve submit butonuna tiklar
