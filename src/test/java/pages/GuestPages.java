@@ -1,8 +1,6 @@
 package pages;
 
-import io.cucumber.java.zh_cn.假如;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -95,21 +93,45 @@ public class GuestPages {
     public WebElement aboutBodyAboutIkonu;
 
 
+
+
     // ********** Plans Body **********
 
+    @FindBy(xpath = "//a[@class='nav-link active']")
+    public WebElement plansButton;
 
+    @FindBy(xpath = "//*[@id='pills-standart-loan-tab']")
+    public WebElement standartLoanButton;
 
+    @FindBy(xpath = "//*[@id='pills-car-loan-tab']")
+    public WebElement carLoanButton;
 
+    @FindBy(xpath = "//*[@id='pills-basic-loan-tab']")
+    public WebElement basicLoanButton;
 
-    // **********  Blogs Body **********
+    @FindBy(xpath = "//h4[text()='Basic Loan 1']")
+    public WebElement basicLoan1Button;
 
+    @FindBy(xpath = "//h4[text()='Car Loan 9']")
+    public WebElement carLoan9Button;
+    @FindBy(xpath = "//h4[text()='Test Loan']")
+    public WebElement testLoanButton;
 
+    @FindBy(xpath = "//*[@data-planname='Basic Loan 1']")
+    public WebElement basicLoan1ApplyNowButton;
 
+    @FindBy(xpath = "//*[@id='exampleModalLabel']")
+    public WebElement applyForBasicLoan1Sayfasi;
 
+    @FindBy(xpath = "//*[@name='amount']")
+    public WebElement amountBox;
 
-    // ********** Contact Body  **********
+    @FindBy(xpath = "//*[@class='btn btn--base w-100']")
+    public WebElement amountBoxConfirmButton;
 
-    @FindBy(xpath = "(//*[@class='nav-link '])[3]")
+    @FindBy(xpath = "//h5[text()='Application Form']")
+    public WebElement applicationFormYazisi;
+
     public WebElement anasayfaContactButon;
 
     @FindBy(xpath = "//*[@class='hero__content-title text-capitalize t-text-white']")
