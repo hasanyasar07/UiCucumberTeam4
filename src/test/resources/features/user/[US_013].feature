@@ -17,16 +17,32 @@ Feature: Kayıtlı bir kullanıcı(User) olarak kendime ait panele login olabilm
 
       Given kullanici verilen url e gittikten sonra login butonunun gorunur oldugunu test eder ve login butonuna tiklar
       Then kullanici verilen "yanlisUsername" ve "yanlisSifre" bilgileri ile userpage de login olur
-      And giris yapamadigini dogrular
+      And These credentials do not match our records yazisini gorup giris yapamadigini dogrular
       Then kullanici verilen "yanlisUsername" ve "userPassword" bilgileri ile userpage de login olur
-      And giris yapamadigini dogrular
+      And These credentials do not match our records yazisini gorup giris yapamadigini dogrular
       Then kullanici verilen "erengokUsername" ve "yanlisSifre" bilgileri ile userpage de login olur
-      And giris yapamadigini dogrular
+      And These credentials do not match our records yazisini gorup giris yapamadigini dogrular
       And sayfayi kapatir
 
       Scenario:Kullanici login sayfasinda bulunan register now linkine gider ve linkin kendisini register now sayfasina yonlendirdigini dogrular
-        Given kullanici verilen "guestUrl" gider
+
         Then kullanici verilen url e gittikten sonra login butonunun gorunur oldugunu test eder ve login butonuna tiklar
         And login sayfasinda bulunan register now linkinin gorunur oldugunu dogrular ve linke tiklar
         Then acilan sayfanin register now sayfasi oldugunu dogrular
         And sayfayi kapatir
+
+        Scenario:
+
+          Given kullanici verilen url e gittikten sonra login butonunun gorunur oldugunu test eder ve login butonuna tiklar
+          Then forgot password linkinin gorunur oldugunu dogrular ve linke tiklar
+          And verify email sayfasina gectigini dogrular
+          Then textBox'a Username email adresi girer ve submit butonuna tiklar
+          Then Submit butonu tiklandiginda Password reset email sent successfully yazisini gordugunu test eder
+          And sayfayi kapatir
+
+          Scenario:
+            Given kullanici verilen url e gittikten sonra login butonunun gorunur oldugunu test eder ve login butonuna tiklar
+            Then forgot password linkinin gorunur oldugunu dogrular ve linke tiklar
+            And textBox'a Username email adresi girer ve submit butonuna tiklar
+            Then Try to send again link elementi tiklandiginda  user password reset sayfasina yonlendirildigini dogrular
+            And sayfayi kapatir
