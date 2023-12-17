@@ -88,6 +88,8 @@ public class AdminPages {
 
 
     // ********** Manage Users **********
+    @FindBy(xpath = "(//*[@class='menu-title'])[2]")
+    public WebElement manageUsersButton;
 
     @FindBy(xpath = "//*[text()='Manage Users']")
     public WebElement manageUsersButton;
