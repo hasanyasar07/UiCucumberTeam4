@@ -67,6 +67,25 @@ public class UserPages {
     @FindBy(xpath = "//*[@id='VGhlc2UlMjBjcmVkZW50aWFscyUyMGRvJTIwbm90JTIwbWF0Y2glMjBvdXIlMjByZWNvcmRzLnJlZA']")
     public WebElement yanlisGirisUyariElementi;
 
+    @FindBy(xpath = "//*[text()='These credentials do not match our records']")
+    public WebElement notMatchOurRecords;
+
+    @FindBy(xpath = "//*[text()='Verify Email']")
+    public WebElement verifyEmail;
+
+    @FindBy(xpath = "//*[@class='auth-form__input']")
+    public WebElement forgotPasswordUsernameBox;
+
+    @FindBy(xpath = "//*[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text mt-3']")
+    public WebElement forgotPasswordSubmitBox;
+
+    @FindBy(xpath = "//*[text()='Password reset email sent successfully']")
+    public WebElement passwordResetSucces;
+
+    @FindBy(xpath = "//*[text()='Try to send again']")
+    public WebElement forgotPasswordTryToSendAgain;
+
+
     // ********** Dashboard **********
     @FindBy(xpath = "//*[@class='btn btn--success btn--smd']")
     public WebElement yesilDepositButon;
