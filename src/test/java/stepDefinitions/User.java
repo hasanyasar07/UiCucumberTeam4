@@ -1,12 +1,20 @@
 
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
+import pages.GuestPages;
 import pages.UserPages;
+import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class User {
 
     // ********** Login  **********
+    GuestPages guestPages=new GuestPages();
     UserPages userPages=new UserPages();
     @Given("kullanici verilen {string} gider")
     public void kullanici_verilen_gider(String url) {
@@ -19,7 +27,54 @@ public class User {
     }
 
     // ********** US_013  **********
+    @Given("kullanici verilen url e gittikten sonra login butonunun gorunur oldugunu test eder ve login butonuna tiklar")
+    public void kullanici_verilen_url_e_gittikten_sonra_login_butonunun_gorunur_oldugunu_test_eder_ve_login_butonuna_tiklar() {
+        Assert.assertTrue(guestPages.guestPageLoginButton.isDisplayed());
+        ReusableMethods.wait(1);
+        guestPages.guestPageLoginButton.click();
+    }
+    @Then("acilan login sayfasinda login formunun gorunur oldugunu test eder")
+    public void acilan_login_sayfasinda_login_formunun_gorunur_oldugunu_test_eder() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.loginForm.isDisplayed());
+    }
+    @And("login formunun icerisindeki Username textbox,Password textbox,Remember Me checkbox,Forgot password? link elementi,Login Butonlarinin gorunur oldugunu test eder")
+    public void loginFormununIcerisindekiUsernameTextboxPasswordTextboxRememberMeCheckboxForgotPasswordLinkElementiLoginButonlarininGorunurOldugunuTestEder() {
+        userPages.loginFormDogrulama();
+    }
+    @Then("Remember Me checkbox a tiklar")
+    public void remember_me_checkbox_a_tiklar() {
+        ReusableMethods.wait(1);
+        userPages.rememberMeButon.click();
+    }
+    @And("basarili bir sekilde user olarak login oldugunu dogrular")//user olarak basarili login test etme step
+    public void basariliBirSekildeUserOlarakLoginOldugunuDogrular() {
+        Assert.assertTrue(userPages.yesilDepositButon.isDisplayed());
+    }
+    @And("sayfayi kapatir")
+    public void sayfayiKapatir() {
+        Driver.closeDriver();
+    }
 
+    @And("giris yapamadigini dogrular")
+    public void girisYapamadiginiDogrular() {
+        userPages.loginBoxTemizleme();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.yanlisGirisUyariElementi.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+
+    @And("login sayfasinda bulunan register now linkinin gorunur oldugunu dogrular ve linke tiklar")
+    public void login_sayfasinda_bulunan_register_now_linkinin_gorunur_oldugunu_dogrular_ve_linke_tiklar() {
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",userPages.WelcomeBackYaziElementi );
+        Assert.assertTrue(userPages.registerNow.isDisplayed());
+        ReusableMethods.wait(1);
+        userPages.registerNow.click();
+    }
+    @Then("acilan sayfanin register now sayfasi oldugunu dogrular")
+    public void acilan_sayfanin_register_now_sayfasi_oldugunu_dogrular() {
+        Assert.assertTrue(userPages.registerNowForm.isDisplayed());
+    }
 
     // ********** US_014  **********
 
