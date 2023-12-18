@@ -16,9 +16,6 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 
-    GuestPages guestPages=new GuestPages();
-
-
 public class Guest {
     GuestPages guestPages=new GuestPages();
     // ********** US_001  **********
