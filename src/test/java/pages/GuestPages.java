@@ -6,8 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.util.Set;
 
 public class GuestPages {
     public GuestPages(){
@@ -53,6 +56,16 @@ public class GuestPages {
         }
     }
 
+    public void socialMedyaIkonlariDogrulama(WebElement gidilecekSayfa,WebElement dogrularama){
+        ReusableMethods.wait(1);
+        String Loantech= Driver.getDriver().getWindowHandle();
+        gidilecekSayfa.click();
+        Driver.getDriver().switchTo().window(ReusableMethods.getNewWindowHandle());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(dogrularama.isDisplayed());
+        Driver.getDriver().switchTo().window(Loantech);
+    }
+
     @FindBy(xpath = "//a[text()='Allow']")
     public WebElement cookieKabul;
 
@@ -71,6 +84,35 @@ public class GuestPages {
 
     @FindBy(xpath = "(//*[@class='t-link t-link--primary t-text-white text-capitalize'])[3]")
     public WebElement footerContactUs;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[1]")
+    public WebElement facebookIkon;
+    @FindBy(xpath = "//*[@id='email']")
+    public WebElement facebookDogrulama;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[2]")
+    public WebElement xIkon;
+
+    @FindBy(xpath = "(//*[@class='css-1qaijid r-bcqeeo r-qvutc0 r-poiln3'])[2]")
+    public WebElement xDogrulama;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[3]")
+    public WebElement instagramIkon;
+
+    @FindBy(xpath = "//*[@class='_ab1y']")
+    public WebElement instagramDogrulama;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[4]")
+    public WebElement youtubeIkon;
+
+    @FindBy(id = "search-input")
+    public WebElement youtubeDogrulama;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[5]")
+    public WebElement linkedinIkon;
+
+    @FindBy(xpath = "(//input[@class='text-color-text font-sans text-md outline-0 bg-color-transparent grow'])[1]")
+    public WebElement linkedinDogrulama;
 
 
     // ********** Home Body **********

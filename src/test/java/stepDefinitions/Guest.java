@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -9,15 +10,16 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.GuestPages;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 
 public class Guest {
     GuestPages guestPages=new GuestPages();
-
     // ********** US_001  **********
 
 
@@ -77,6 +79,56 @@ public class Guest {
 
 
     // ********** US_006  **********
+
+    @Then("youtube facebook ve x ikonlarinin gorunurlugunu dogrular")
+    public void youtubeFacebookVeXIkonlarininGorunurlugunuDogrular() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.youtubeIkon.isDisplayed());
+        Assert.assertTrue(guestPages.facebookIkon.isDisplayed());
+        Assert.assertTrue(guestPages.xIkon.isDisplayed());
+        ReusableMethods.wait(1);
+        guestPages.cookieKabul.click();
+    }
+
+
+    @And("youtube ikonuna tiklar ve acilan sayfada youtube a yonlendirildigini dogrular")
+    public void youtubeIkonunaTiklarVeAcilanSayfadaYoutubeAYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.youtubeIkon,guestPages.youtubeDogrulama);
+    }
+
+    @And("facebook ikonuna tiklar ve acilan sayfada facebook a yonlendirildigini dogrular")
+    public void facebookIkonunaTiklarVeAcilanSayfadaFacebookAYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.facebookIkon,guestPages.facebookDogrulama);
+    }
+
+    @And("x ikonuna tiklar ve acilan sayfada x e yonlendirildigini dogrular")
+    public void xIkonunaTiklarVeAcilanSayfadaXEYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.xIkon,guestPages.xDogrulama);
+    }
+
+    @Then("linkedin ve instagram ikonlarinin gorunurlugunu dogrular")
+    public void linkedinVeInstagramIkonlarininGorunurlugunuDogrular() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.linkedinIkon.isDisplayed());
+        Assert.assertTrue(guestPages.instagramIkon.isDisplayed());
+        ReusableMethods.wait(1);
+        guestPages.cookieKabul.click();
+    }
+
+    @And("linkedin ikonuna tiklar ve acilan sayfada linkedin e yonlendirildigini dogrular")
+    public void linkedinIkonunaTiklarVeAcilanSayfadaLinkedinEYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.linkedinIkon,guestPages.linkedinDogrulama);
+    }
+
+    @And("instagram ikonuna tiklar ve acilan sayfada instagram a yonlendirildigini dogrular")
+    public void instagramIkonunaTiklarVeAcilanSayfadaInstagramAYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.instagramIkon,guestPages.instagramDogrulama);
+    }
+
+    @Then("sayfalari kapatir")
+    public void sayfalariKapatir() {
+        Driver.getDriver().quit();
+    }
 
 
     // ********** US_007  **********

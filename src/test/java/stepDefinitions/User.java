@@ -27,6 +27,8 @@ public class User {
     @Given("kullanici verilen {string} gider")
     public void kullanici_verilen_gider(String url) {
        userPages.istenilenUrlGitme(url);
+
+       ReusableMethods.wait(2);
     }
 
     @Given("kullanici verilen {string} ve {string} bilgileri ile userpage de login olur")
@@ -144,6 +146,60 @@ public class User {
 
 
     // ********** US_022  **********
+
+
+    @Given("kullaniciya verilen {string} ve {string} bilgileri ile user sayfasinda login olur")
+    public void kullaniciya_verilen_ve_bilgileri_ile_user_sayfasinda_login_olur(String username, String password) {
+      //  userPages.userLoginMethod(username,password);
+
+        userPages.userLoginMethod(username,password);
+    }
+    @Given("User Dashboard ekraninda {string} yazisinin gorunurlugu kontrol edilir.")
+    public void user_dashboard_ekraninda_yazisinin_gorunurlugu_kontrol_edilir(String string) {
+        Assert.assertTrue(userPages.logoutButton.isDisplayed());
+    }
+    @Then("{string} alanina tiklanir.")
+    public void alanina_tiklanir(String string) {
+
+        userPages.logoutButton.click();
+    }
+    @Then("{string} yazisinin ciktigi kontrol edilir.")
+    public void yazisinin_ciktigi_kontrol_edilir(String alert) {
+
+/*
+        ReusableMethods.wait(3);
+        String expectedAlertYazisi="You have been Logged out.";
+
+        //String actualAlertYazisi=Driver.getDriver().switchTo().alert().getText();
+
+        String actualAlertYazisi=Driver.getDriver().switchTo().alert().getText();
+
+        System.out.println("actual alert yazisi :"+actualAlertYazisi);
+
+        Assert.assertEquals(expectedAlertYazisi,actualAlertYazisi);
+
+ */
+        ReusableMethods.wait(2);
+        String expectedIcerik=alert;
+        String actualAramaSonucu=userPages.alertYazisi.getText();
+
+
+        System.out.println(expectedIcerik);
+        System.out.println(actualAramaSonucu);
+
+
+        //Assert.assertTrue(actualAramaSonucu.contains(expectedIcerik));
+        //Assert.assertEquals(actualAramaSonucu,expectedIcerik);
+
+        Assert.assertTrue(actualAramaSonucu.contains(expectedIcerik));
+
+    }
+    @Then("Anasayfada {string} yazisi gorunur olmasi halinde anasayfada oldugunun kontrolu yapilir")
+    public void anasayfada_yazisi_gorunur_olmasi_halinde_anasayfada_oldugunun_kontrolu_yapilir(String string) {
+
+        Assert.assertTrue(userPages.loginButtonGorme.isDisplayed());
+    }
+
 
 
     // ********** US_023  **********
