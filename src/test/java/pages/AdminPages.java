@@ -200,11 +200,20 @@ public class AdminPages {
     @FindBy(xpath = "(//*[@class='menu-title'])[26]")
     public WebElement approvedDepositsLink;
     @FindBy(xpath = "//table[@class='table table--light style--two']")
-    public WebElement approvedDepositsTable;
+    public WebElement depositsTable;
     @FindBy(xpath = "//thead")
-    public WebElement approvedDepositsLinkHeaders;
-    @FindBy(xpath = "//tr")
-    public WebElement approvedDepositsLinkInfos;
+    public WebElement depositsLinkHeaders;
+    @FindBy(xpath = "(//a[@class='btn btn-sm btn-outline--primary ms-1'])[1]")
+    public WebElement detailsButton;
+    @FindBy(xpath = "//*[@class='card-body']")
+    public WebElement DetailspageAllInfos;
+    @FindBy(xpath = "(//span[@class='menu-title'])[27]")
+    public WebElement succesfullDepositsLink;
+    @FindBy(xpath = "(//span[@class='menu-title'])[28]")
+    public WebElement RejectedDepositsLink;
+    @FindBy(xpath = "(//span[@class='menu-title'])[29]")
+    public WebElement InitiatedDepositsLink;
+
 
 
 
