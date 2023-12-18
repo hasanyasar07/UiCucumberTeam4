@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.WebElement;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -116,9 +117,11 @@ public class GuestPages {
 
 
     // ********** Home Body **********
+@FindBy(xpath = "//div[@class='section--sm']")
+    public WebElement companyLogosSlider;
 
-
-
+@FindBy(xpath = "//img[@class='img-fluid mx-auto']")
+    public  WebElement companyLogosName;
 
     // **********  About Body **********
 
