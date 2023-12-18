@@ -6,11 +6,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"html:target/cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",
-                "junit:target/xml-report/cucumber.xml"},
-        features = {"C:\\Users\\Dell\\IdeaProject\\UiCucumberTeam4\\src\\test\\resources\\features"},
-        glue = "stepdefinitions",
-        tags ="@tst",
-        dryRun = true
+                "junit:target/xml-report/cucumber.xml"},       
         features = {"src/test/resources/features/admin","src/test/resources/features/guest","src/test/resources/features/user"},
         glue ="stepDefinitions",
         tags ="@us32",
