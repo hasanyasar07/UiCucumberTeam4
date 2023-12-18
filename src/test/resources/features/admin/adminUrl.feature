@@ -1,4 +1,5 @@
 Feature: admin url e gider
+
   Scenario:  admin page de verilen bilgiler ile login olunur
     * kullanici verilen "adminUrl" gider
 
