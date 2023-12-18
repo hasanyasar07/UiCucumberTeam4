@@ -43,7 +43,9 @@ public class Driver {
                     break;
                  */
                 default:
-                    WebDriverManager.chromedriver().setup();
+
+                    // Arkadaşlar burasını yoruma aldım. Bende çalışmadığı için bilginiz olsun.
+                   // WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
             }
         }

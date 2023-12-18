@@ -17,7 +17,7 @@ public class AdminPages {
         adminUsernameBox.sendKeys(ConfigReader.getProperty(username));
         adminPasswordBox.sendKeys(ConfigReader.getProperty(password));
         ReusableMethods.wait(1);
-        adminLoginButon.click();
+        adminLoginButon.submit();
     }
 
 
@@ -34,6 +34,7 @@ public class AdminPages {
 
 
 
+
     // ********** Manage Users **********
 
 
@@ -47,6 +48,30 @@ public class AdminPages {
 
 
     // ********** Loans **********
+
+    // loans yazısının görünürlügü ve butonun locati
+    @FindBy(xpath = "//span[text()='Loans']")
+    public WebElement LoansButton;
+
+    //Pending Loans butonun görünürlügü
+    @FindBy(xpath = "//span[text()='Pending Loans']")
+    public WebElement PendingLoansButton;
+
+    // Paid Loans butonu
+    @FindBy(xpath = "//span[text()='Paid Loans']")
+    public WebElement paidLoansButton;
+
+    // Rejected Loans butonu
+    @FindBy(xpath = "//span[text()='Rejected Loans']")
+    public WebElement rejectedLoansButton;
+
+    //Running loans butonu
+    @FindBy(xpath = "//span[text()='Running Loans']")
+    public WebElement runningLoansButton;
+
+    //Due Loans butonu
+    @FindBy(xpath = "//span[text()='Due Loans']")
+    public WebElement dueLoansButton;
 
 
 
