@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 import pages.GuestPages;
 import pages.UserPages;
 
@@ -62,11 +64,11 @@ public class User {
         Driver.closeDriver();
     }
 
-    @And("giris yapamadigini dogrular")
-    public void girisYapamadiginiDogrular() {
+    @And("These credentials do not match our records yazisini gorup giris yapamadigini dogrular")
+    public void These_credentials_do_not_match_our_records_yazisini_gorup_giris_yapamadigini_dogrular() {
         userPages.loginBoxTemizleme();
         ReusableMethods.wait(1);
-        Assert.assertTrue(userPages.yanlisGirisUyariElementi.isDisplayed());
+        Assert.assertTrue(userPages.notMatchOurRecords.isDisplayed());
         ReusableMethods.wait(1);
     }
 
@@ -83,9 +85,38 @@ public class User {
     }
 
 
+    @Then("forgot password linkinin gorunur oldugunu dogrular ve linke tiklar")
+    public void forgot_password_linkinin_gorunur_oldugunu_dogrular_ve_linke_tiklar() {
+        ReusableMethods.wait(1);
+        Actions actions=new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Assert.assertTrue(userPages.forgotPassword.isDisplayed());
+        ReusableMethods.wait(1);
+        userPages.forgotPassword.click();
 
+    }
+    @Then("verify email sayfasina gectigini dogrular")
+    public void verify_email_sayfasina_gectigini_dogrular() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.verifyEmail.isDisplayed());
+    }
+    @Then("textBox'a Username email adresi girer ve submit butonuna tiklar")
+    public void text_box_a_username_email_adresi_girer_ve_submit_butonuna_tiklar() {
+        ReusableMethods.wait(1);
+        userPages.forgotPasswordUsernameBox.sendKeys("pekah72328@getmola.com");
+        ReusableMethods.wait(1);
+        userPages.forgotPasswordSubmitBox.click();
+    }
+    @Then("Submit butonu tiklandiginda Password reset email sent successfully yazisini gordugunu test eder")
+    public void submit_butonu_tiklandiginda_Password_reset_email_sent_successfullyyazisini_gordugunu_test_eder() {
+        Assert.assertTrue(userPages.passwordResetSucces.isDisplayed());
+    }
 
-
+    @Then("Try to send again link elementi tiklandiginda  user password reset sayfasina yonlendirildigini dogrular")
+    public void tryToSendAgainLinkElementiTiklandigindaUserPasswordResetSayfasinaYonlendirildiginiDogrular() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(userPages.forgotPasswordTryToSendAgain.isDisplayed());
+    }
 
 
     // ********** US_014  **********
