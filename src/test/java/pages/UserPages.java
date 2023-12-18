@@ -10,6 +10,8 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.util.List;
+
 public class UserPages {
     public UserPages(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -41,6 +43,9 @@ public class UserPages {
     public void istenilenUrlGitme(String url){
         Driver.getDriver().get(ConfigReader.getProperty(url));
     }
+
+
+
 
     // ********** Login  **********
     @FindBy(xpath = "//*[@class='auth-form__content section']")
@@ -96,6 +101,80 @@ public class UserPages {
 
 
     // ********** My Loans **********
+
+    @FindBy(xpath = "//*[text()='Plans']")
+    public WebElement plansButton;
+
+    @FindBy(xpath = "//*[@id='pills-standart-loan-tab']")
+    public WebElement standartYaziElementi;
+
+    @FindBy(xpath = "//*[@id='pills-car-loan-tab']")
+    public WebElement carLoanButton;
+
+    @FindBy(xpath = "//*[@id='pills-basic-loan-tab']")
+    public WebElement basicLoanButton;
+
+    @FindBy(xpath = "//h4[text()='Basic Loan 1']")
+    public WebElement basicLoan1Button;
+
+    @FindBy(xpath = "//h4[text()='Car Loan 9']")
+    public WebElement carLoan9Button;
+    @FindBy(xpath = "//h4[text()='Test Loan']")
+    public WebElement testLoanButton;
+
+    @FindBy(xpath = "(//*[@class='btn btn-md btn--xl xl-text w-100 btn--base loanBtn'])[5]")
+    public WebElement applyNowButton;
+
+    @FindBy(xpath = "//div[@class='cookies-card__btn mt-4']")
+    public WebElement cookieButonu;
+
+    @FindBy(xpath = "//*[@id='exampleModalLabel']")
+    public WebElement applyForBasicLoan1Sayfasi;
+
+    @FindBy(xpath = "//*[@name='amount']")
+    public WebElement amountBox;
+
+    @FindBy(xpath = "//*[@class='btn btn--base w-100']")
+    public WebElement amountBoxConfirmButton;
+
+    @FindBy(xpath = "//h5[text()='Application Form']")
+    public WebElement applicationFormYazisi;
+
+    @FindBy(xpath = "//*[@class='btn btn--base w-100']")
+    public WebElement applyButton;
+
+    @FindBy(xpath = "//div[@class='d-flex justify-content-between']")
+    public WebElement myLoansSayfasi;
+
+    @FindBy(xpath = "//*[@class='logo']")
+    public WebElement LoanTechLogo;
+
+    @FindBy(xpath = "//*[text()='Loan Plans']")
+    public WebElement loanPlansYaziElementi;
+
+    @FindBy(xpath = "//*[text()='Deposit Pending']")
+    public WebElement depositPendingYaziElementi;
+    @FindBy(xpath = "//*[text()='Successful Deposits']")
+    public WebElement successfulDepositYaziElementi;
+
+    @FindBy(xpath = "//*[text()='Successful Withdrawals']")
+    public WebElement successfulWithdrawalsYaziElementi;
+
+    @FindBy(xpath = "//*[text()='Total Loan']")
+    public WebElement totalLoanYaziElementi;
+
+    @FindBy(xpath = "(//*[text()='Submitted'])[1]")
+    public WebElement myLoanSubmittedYaziElementi;
+
+    @FindBy(xpath = "(//*[text()='Pending'])[1]")
+    public WebElement myLoanPendingYaziElementi;
+
+    @FindBy(xpath = "//tr/th")
+    public List<WebElement> loanNumber;
+
+    @FindBy(xpath = "(//*[text()='Rejected'])[1]")
+    public WebElement myLoanRejectedYaziElementi;
+
 
 
 

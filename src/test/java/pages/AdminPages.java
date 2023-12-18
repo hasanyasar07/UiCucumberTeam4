@@ -64,8 +64,9 @@ public class AdminPages {
     @FindBy(xpath = "//*[@class='bg--success']")
     public WebElement uploadImageButon;
 
-    @FindBy(xpath = "//*[@class='btn btn--primary h-45 w-100']")
+    @FindBy(xpath = "//*[@type='submit']")
     public WebElement profilSubmitButon;
+
 
     @FindBy(xpath = "//*[text()='Change Password']")
     public WebElement changePasswordYaziElementi;
@@ -91,8 +92,7 @@ public class AdminPages {
     @FindBy(xpath = "(//*[@class='menu-title'])[2]")
     public WebElement manageUsersButton;
 
-    @FindBy(xpath = "//*[text()='Manage Users']")
-    public WebElement manageUsersButton;
+
 
     @FindBy(xpath = "//*[text()='Active Users']")
     public WebElement activeUsersButton;
