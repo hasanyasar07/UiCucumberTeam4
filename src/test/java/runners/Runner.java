@@ -11,6 +11,11 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
         tags ="@tst",
         dryRun = true
+        features = {"src/test/resources/features/admin","src/test/resources/features/guest","src/test/resources/features/user"},
+        glue ="stepDefinitions",
+        tags ="@us32",
+        dryRun = false
+
 )
 public class Runner {
     /*
