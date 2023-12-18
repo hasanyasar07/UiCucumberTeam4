@@ -148,6 +148,27 @@ public class Guest {
 
     }
 
+    @Then("home ve contact linkerinin goruntulendigini dogrular")
+    public void homeVeContactLinkerininGoruntulendiginiDogrular() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.contactUsContactUsLink.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.contactUsHomeLink.isDisplayed());
+    }
+
+    @And("contact linkinin calistigini test etmek icin tiklar")
+    public void contactLinkininCalistiginiTestEtmekIcinTiklar() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue((guestPages.contactUsContactUsLink.getDomAttribute("href")).contains("https://qa.loantechexper.com/contact_us"));
+
+    }
+
+    @And("home linkinin calistigini test etmek icin tiklar")
+    public void homeLinkininCalistiginiTestEtmekIcinTiklar() {
+        ReusableMethods.wait(1);
+        guestPages.contactUsHomeLink.click();
+    }
+
     // ********** US_010  **********
 
 
@@ -163,5 +184,4 @@ public class Guest {
     public void butonuna_tiklandiginda_e_gittigi_dogrulanir(String string, String string2) {
 
     }
-
 }

@@ -170,4 +170,10 @@ public class GuestPages {
     @FindBy(xpath = "//*[@class='container-fluid p-0']")
     public WebElement ContactUsHarita;
 
+    @FindBy(xpath = "//*[@class=' t-link breadcrumbs__link text-uppercase t-text-white t-link--primary ']")
+    public WebElement contactUsContactUsLink;
+
+    @FindBy(xpath = "//*[@class='t-link breadcrumbs__link text-uppercase t-text-white t-link--primary']")
+    public WebElement contactUsHomeLink;
+
 }
