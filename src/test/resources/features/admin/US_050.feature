@@ -6,25 +6,25 @@ Feature:Bir yonetici (admin)  tum kullanıcılara bildirim gonderebilmeli
 
   Scenario: TC_01 Kayitli admin olarak basarili bir sekilde giris yapar
     And admin basarili bir sekilde giris yaptigini "tugbaasci" dogrular
-    Then sayfayi kapatir
+    Then admin sayfayi kapatir
 
   Scenario: TC_02 Yonetici dashboardda  Notification to All Linki goruntuler
     When admin manage users linkine tiklar
     And admin notification to all linkine tiklar
     Then notification to all linkinin goruntulendigi dogrulanir
-    Then sayfayi kapatir
+    Then admin sayfayi kapatir
 
   Scenario: TC_03 Yonetici dashboardda  Notification to All Linki aktif oldugu dogrulanir
     When admin manage users linkine tiklar
     Then admin notification to all linkine tiklar
     And notification to all linkinin aktif oldugu dogrulanir
-    Then sayfayi kapatir
+    Then admin sayfayi kapatir
 
   Scenario: TC_04 admin/users/send-notification sayfasinda 'Being Sent' basligi altinda filtreleme ikonu bulunur
     Given admin manage users linkine tiklar
     Then admin notification to all linkine tiklar
     When admin "admin/users/send-notification" sayfasinda "Being Sent" basligi oldugunu dogrular
-    Then sayfayi kapatir
+    Then admin sayfayi kapatir
 
   Scenario: TC_05 Yonetici tum kullanicilara konu basligi mesaj iceren belirli baslama tarihi ve period belirleyip mesaj gonderir
     Given admin manage users linkine tiklar
@@ -36,9 +36,9 @@ Feature:Bir yonetici (admin)  tum kullanıcılara bildirim gonderebilmeli
     Given per batch alanina 20 degeri girer
     And cooling period alanina 2 degeri girer
     Then notification sayfasinda submit butonuna basar
-    Then sayfayi kapatir
+    Then admin sayfayi kapatir
 
-  Scenario: TC_06 Yonetici secebileceği kullanicilara konu basligi mesaj iceren belirli baslama tarihi ve period belirleyip mesaj gonderir
+  Scenario: TC_06 Yonetici secebileceği kullanicilara konu basligi mesaj iceren belirli baslama tarihi period belirleyip mesaj gonderir
     Given admin manage users linkine tiklar
     Then admin notification to all linkine tiklar
     When Notification sayfasinda "Selected Users" secer
@@ -48,7 +48,7 @@ Feature:Bir yonetici (admin)  tum kullanıcılara bildirim gonderebilmeli
     Given per batch alanina 3 degeri girer
     Then cooling period alanina 2 degeri girer
     Then notification sayfasinda submit butonuna basar
-    Then sayfayi kapatir
+    Then admin sayfayi kapatir
 
   Scenario: TC_07 Admin basarili bir gonderme isleminden sonra uyari mesaji alir
     When admin manage users linkine tiklar
@@ -61,7 +61,7 @@ Feature:Bir yonetici (admin)  tum kullanıcılara bildirim gonderebilmeli
     Then cooling period alanina 2 degeri girer
     Then notification sayfasinda submit butonuna basar
     When basarili bir sekilde mesajini gonderdigini dogrular ve kutuyu kapatir
-    And sayfayi kapatir
+    And admin sayfayi kapatir
 
   Scenario: TC_08 Admin sayfada doldurulmasi gereken alanlari bos biraktiginda hata mesaji alir
     When admin manage users linkine tiklar
