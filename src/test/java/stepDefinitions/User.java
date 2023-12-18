@@ -70,7 +70,7 @@ public class User {
     public void These_credentials_do_not_match_our_records_yazisini_gorup_giris_yapamadigini_dogrular() {
         userPages.loginBoxTemizleme();
         ReusableMethods.wait(1);
-        Assert.assertTrue(userPages.notMatchOurRecords.isDisplayed());
+        Assert.assertTrue(userPages.yanlisGirisUyariElementi.isDisplayed());
         ReusableMethods.wait(1);
     }
 
