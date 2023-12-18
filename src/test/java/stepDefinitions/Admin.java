@@ -112,17 +112,6 @@ import java.awt.*;
       
       // ********** US_028  **********
 
-
-        // ********** US_029  **********
-
-
-        // ********** US_030  **********
-
-
-        // ********** US_031  **********
-
-
-        // ********** US_032 HILAL **********
       
     @Then("Loans menu basligi altindaki {string} sayfa linkine tiklandiginda {string} sayfasina gectiginin kontrolu yapilir.")
     public void loans_menu_basligi_altindaki_sayfa_linkine_tiklandiginda_sayfasina_gectiginin_kontrolu_yapilir(String string, String string2) {
@@ -204,8 +193,16 @@ import java.awt.*;
         throw new io.cucumber.java.PendingException();
     }
 
+         // ********** US_029  **********
 
- // ********** US_032  **********
+
+        // ********** US_030  **********
+
+
+        // ********** US_031  **********
+
+
+        // ********** US_032 HILAL **********
       
         @Given("Launch browser")
         public void launch_browser() {
