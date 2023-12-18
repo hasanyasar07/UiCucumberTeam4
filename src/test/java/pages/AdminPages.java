@@ -88,6 +88,7 @@ public class AdminPages {
 
 
 
+
     // ********** Manage Users **********
     @FindBy(xpath = "(//*[@class='menu-title'])[2]")
     public WebElement manageUsersButton;
@@ -187,6 +188,30 @@ public class AdminPages {
 
 
     // ********** Loans **********
+
+    // loans yazısının görünürlügü ve butonun locati
+    @FindBy(xpath = "//span[text()='Loans']")
+    public WebElement LoansButton;
+
+    //Pending Loans butonun görünürlügü
+    @FindBy(xpath = "//span[text()='Pending Loans']")
+    public WebElement PendingLoansButton;
+
+    // Paid Loans butonu
+    @FindBy(xpath = "//span[text()='Paid Loans']")
+    public WebElement paidLoansButton;
+
+    // Rejected Loans butonu
+    @FindBy(xpath = "//span[text()='Rejected Loans']")
+    public WebElement rejectedLoansButton;
+
+    //Running loans butonu
+    @FindBy(xpath = "//span[text()='Running Loans']")
+    public WebElement runningLoansButton;
+
+    //Due Loans butonu
+    @FindBy(xpath = "//span[text()='Due Loans']")
+    public WebElement dueLoansButton;
 
 
 

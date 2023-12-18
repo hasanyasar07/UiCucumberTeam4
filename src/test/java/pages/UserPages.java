@@ -72,6 +72,10 @@ public class UserPages {
     @FindBy(xpath = "//*[@id='VGhlc2UlMjBjcmVkZW50aWFscyUyMGRvJTIwbm90JTIwbWF0Y2glMjBvdXIlMjByZWNvcmRzLnJlZA']")
     public WebElement yanlisGirisUyariElementi;
 
+
+    @FindBy(xpath = "//*[text()='Login']")
+    public WebElement loginButtonGorme;
+  
     @FindBy(xpath = "//*[text()='These credentials do not match our records']")
     public WebElement notMatchOurRecords;
 
@@ -94,6 +98,8 @@ public class UserPages {
     // ********** Dashboard **********
     @FindBy(xpath = "//*[@class='btn btn--success btn--smd']")
     public WebElement yesilDepositButon;
+
+
 
 
     // ********** Take Loan **********
@@ -207,11 +213,10 @@ public class UserPages {
 
 
     // ********** Logout **********
+    @FindBy(xpath = "//*[text()='Logout']")
+    public WebElement logoutButton;
 
-
-
-
-
-
+    @FindBy(xpath = "//div[@class='iziToast-body']")
+    public WebElement alertYazisi;
 
 }
