@@ -10,6 +10,8 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.util.List;
+
 public class UserPages {
     public UserPages(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -101,7 +103,7 @@ public class UserPages {
     @FindBy(xpath = "//h4[text()='Test Loan']")
     public WebElement testLoanButton;
 
-    @FindBy(xpath = "(//*[@class='btn btn-md btn--xl xl-text w-100 btn--base loanBtn'])[4]")
+    @FindBy(xpath = "(//*[@class='btn btn-md btn--xl xl-text w-100 btn--base loanBtn'])[5]")
     public WebElement applyNowButton;
 
     @FindBy(xpath = "//div[@class='cookies-card__btn mt-4']")
@@ -147,6 +149,9 @@ public class UserPages {
 
     @FindBy(xpath = "(//*[text()='Pending'])[1]")
     public WebElement myLoanPendingYaziElementi;
+
+    @FindBy(xpath = "//tr/th")
+    public List<WebElement> loanNumber;
 
     @FindBy(xpath = "(//*[text()='Rejected'])[1]")
     public WebElement myLoanRejectedYaziElementi;

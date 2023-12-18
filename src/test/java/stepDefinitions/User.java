@@ -6,12 +6,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import pages.GuestPages;
 import pages.UserPages;
 
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.util.List;
 
 public class User {
 
@@ -210,5 +214,24 @@ public class User {
 
         ReusableMethods.wait(1);
         Assert.assertTrue(userPages.myLoanPendingYaziElementi.isDisplayed());
+    }
+
+    @Then("dashboard sayfasinda {string} sutunundaki toplam tutar submitted pending rejected edilen tutarlar ve kredi adetlerinin gorunur oldugunu test eder")
+    public void dashboardSayfasindaSutunundakiToplamTutarSubmittedPendingRejectedEdilenTutarlarVeKrediAdetlerininGorunurOldugunuTestEder(String istenenBaslik) {
+        int istenenSutunIndexi = 0;
+        List<WebElement> headerElementListesi = userPages.loanNumber;
+        for (int i = 0; i < headerElementListesi.size(); i++) {
+
+            if (headerElementListesi.get(i).getText().equals(istenenBaslik)) {
+                istenenSutunIndexi = i + 1;
+            }
+        }
+        String dinamikSutunXpath = "//tr/td[" + istenenSutunIndexi + "]";
+        List<WebElement> istenenSutunElementleriListesi = Driver.getDriver().findElements(By.xpath(dinamikSutunXpath));
+        for (int i = 0; i < istenenSutunElementleriListesi.size(); i++) {
+            System.out.println(istenenSutunElementleriListesi.get(i).getText());
+
+        }
+
     }
 }
