@@ -176,7 +176,8 @@ public class AdminPages {
     @FindBy(xpath = "//button[@class='btn btn--danger']")
     public WebElement succesfullyDoneCloseButton;
 
-
+    @FindBy(xpath = "//*[text()='Please fill out this field.']")
+    public WebElement warningText;
 
     // ********** Categories **********
 
