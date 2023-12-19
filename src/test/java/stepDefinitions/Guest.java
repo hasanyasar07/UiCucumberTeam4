@@ -1,33 +1,54 @@
 package stepDefinitions;
 
-
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.GuestPages;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 
 public class Guest {
     GuestPages guestPages=new GuestPages();
-
     // ********** US_001  **********
 
 
     // ********** US_002  **********
 
 
-    // ********** US_003  **********
+    // ********** US_003  ********** // Erdal
+
+    @Given("Visitor goes to “guestUrl” homepage")
+    public void visitor_goes_to_guest_url_homepage() {
+
+    }
+    @Then("It tests whether a slider consisting of partner company logos is visible on the home page.")
+    public void ıt_tests_whether_a_slider_consisting_of_partner_company_logos_is_visible_on_the_home_page() {
+         }
+    @Then("Closes the page")
+    public void closes_the_page() {
+
+    }
 
 
-    // ********** US_004  **********
+    @Then("It tests whether the logos flowing on the slider consisting of partner company logos on the home page \\(Sun Basket, Peloton, BerkShire Hathaway, Emergent biosolutions*, Solar Edge architects of energy, Covenant Transport services, Exxon Mobile, P&G, CVS Health, EverNote) are visible.")
+    public void ıt_tests_whether_the_logos_flowing_on_the_slider_consisting_of_partner_company_logos_on_the_home_page_sun_basket_peloton_berk_shire_hathaway_emergent_biosolutions_solar_edge_architects_of_energy_covenant_transport_services_exxon_mobile_p_g_cvs_health_ever_note_are_visible() {
+
+    }
+    @Then("Closes the pag")
+    public void closes_the_pag() {
+
+    }
+
+    // ********** US_004.feature  **********
 
 
     // ********** US_005  **********
@@ -77,6 +98,56 @@ public class Guest {
 
 
     // ********** US_006  **********
+
+    @Then("youtube facebook ve x ikonlarinin gorunurlugunu dogrular")
+    public void youtubeFacebookVeXIkonlarininGorunurlugunuDogrular() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.youtubeIkon.isDisplayed());
+        Assert.assertTrue(guestPages.facebookIkon.isDisplayed());
+        Assert.assertTrue(guestPages.xIkon.isDisplayed());
+        ReusableMethods.wait(1);
+        guestPages.cookieKabul.click();
+    }
+
+
+    @And("youtube ikonuna tiklar ve acilan sayfada youtube a yonlendirildigini dogrular")
+    public void youtubeIkonunaTiklarVeAcilanSayfadaYoutubeAYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.youtubeIkon,guestPages.youtubeDogrulama);
+    }
+
+    @And("facebook ikonuna tiklar ve acilan sayfada facebook a yonlendirildigini dogrular")
+    public void facebookIkonunaTiklarVeAcilanSayfadaFacebookAYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.facebookIkon,guestPages.facebookDogrulama);
+    }
+
+    @And("x ikonuna tiklar ve acilan sayfada x e yonlendirildigini dogrular")
+    public void xIkonunaTiklarVeAcilanSayfadaXEYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.xIkon,guestPages.xDogrulama);
+    }
+
+    @Then("linkedin ve instagram ikonlarinin gorunurlugunu dogrular")
+    public void linkedinVeInstagramIkonlarininGorunurlugunuDogrular() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.linkedinIkon.isDisplayed());
+        Assert.assertTrue(guestPages.instagramIkon.isDisplayed());
+        ReusableMethods.wait(1);
+        guestPages.cookieKabul.click();
+    }
+
+    @And("linkedin ikonuna tiklar ve acilan sayfada linkedin e yonlendirildigini dogrular")
+    public void linkedinIkonunaTiklarVeAcilanSayfadaLinkedinEYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.linkedinIkon,guestPages.linkedinDogrulama);
+    }
+
+    @And("instagram ikonuna tiklar ve acilan sayfada instagram a yonlendirildigini dogrular")
+    public void instagramIkonunaTiklarVeAcilanSayfadaInstagramAYonlendirildiginiDogrular() {
+        guestPages.socialMedyaIkonlariDogrulama(guestPages.instagramIkon,guestPages.instagramDogrulama);
+    }
+
+    @Then("sayfalari kapatir")
+    public void sayfalariKapatir() {
+        Driver.getDriver().quit();
+    }
 
 
     // ********** US_007  **********
