@@ -1,32 +1,16 @@
 package stepDefinitions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import org.junit.Assert;
-import pages.GuestPages;
-import utilities.ConfigReader;
-import utilities.Driver;
-
-public class Guest {
-
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.GuestPages;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-
-
-    GuestPages guestPages=new GuestPages();
 
 
 public class Guest {
@@ -41,27 +25,71 @@ public class Guest {
 
     @Given("Visitor goes to “guestUrl” homepage")
     public void visitor_goes_to_guest_url_homepage() {
-
+        Driver.getDriver().get(ConfigReader.getProperty("guestUrl"));
     }
+
     @Then("It tests whether a slider consisting of partner company logos is visible on the home page.")
     public void ıt_tests_whether_a_slider_consisting_of_partner_company_logos_is_visible_on_the_home_page() {
-         }
+      Assert.assertTrue(guestPages.companyLogosSlider.isDisplayed());
+}
     @Then("Closes the page")
     public void closes_the_page() {
-
+    Driver.closeDriver();
     }
-
-
     @Then("It tests whether the logos flowing on the slider consisting of partner company logos on the home page \\(Sun Basket, Peloton, BerkShire Hathaway, Emergent biosolutions*, Solar Edge architects of energy, Covenant Transport services, Exxon Mobile, P&G, CVS Health, EverNote) are visible.")
-    public void ıt_tests_whether_the_logos_flowing_on_the_slider_consisting_of_partner_company_logos_on_the_home_page_sun_basket_peloton_berk_shire_hathaway_emergent_biosolutions_solar_edge_architects_of_energy_covenant_transport_services_exxon_mobile_p_g_cvs_health_ever_note_are_visible() {
+    public void ıt_tests_whether_the_logos_flowing_on_the_slider_consisting_of_partner_company_logos_on_the_home_page_sun_basket_peloton_berk_shire_hathaway_emergent_biosolutions_solar_edge_architects_of_energy_covenant_transport_services_exxon_mobile_p_g_cvs_health_ever_note_are_visible(){
 
     }
-    @Then("Closes the pag")
-    public void closes_the_pag() {
 
-    }
 
     // ********** US_004.feature  **********
+
+    @Given("Click on Home Page in the menu title on the home page.")
+    public void click_on_home_page_in_the_menu_title_on_the_home_page() {
+     guestPages.homeHeaderButon.click();
+    }
+    @Then("Verifies that the opened page is {string}")
+    public void verifies_that_the_opened_page_is(String string) {
+     String expectedUrl="https://qa.loantechexper.com/";
+     String actualUrl=Driver.getDriver().getCurrentUrl();
+     Assert.assertEquals(expectedUrl,actualUrl);
+    }
+    @Given("Click About from the body section of the home page.")
+    public void click_about_from_the_body_section_of_the_home_page() {
+    guestPages.aboutHeaderButon.click();
+    }
+    @Then("Tests whether the about page has been reached")
+    public void tests_whether_the_about_page_has_been_reached() {
+    String expectedReachPage="https://qa.loantechexper.com/about";
+    String actualReachPage=Driver.getDriver().getCurrentUrl();
+    Assert.assertEquals(expectedReachPage,actualReachPage);
+    }
+    @Given("It tests that the Feature section and {string}, {string}, {string}, {string}, {string} headings are visible in the body section of the home page.")
+    public void ıt_tests_that_the_feature_section_and_headings_are_visible_in_the_body_section_of_the_home_page(String string, String string2, String string3, String string4, String string5) {
+       Assert.assertTrue(guestPages.featureBodyHomePage.isDisplayed());
+        Assert.assertTrue(guestPages.quickApprovalProcessesTitle.isDisplayed());
+        Assert.assertTrue(guestPages.variousLoanTypesTitle.isDisplayed());
+        Assert.assertTrue(guestPages.flexibleRepaymentTermsTitle.isDisplayed());
+        Assert.assertTrue(guestPages.competitiveInterestRatesTitle.isDisplayed());
+        Assert.assertTrue(guestPages.digitalApplicationProcessingTitle.isDisplayed());
+
+    }
+
+    @Given("Tests that {string} and {string} titles and icons are visible in the body section of the home page.")
+    public void tests_that_and_titles_and_icons_are_visible_in_the_body_section_of_the_home_page(String string, String string2) {
+   Assert.assertTrue(guestPages.supportTitle.isDisplayed());
+   Assert.assertTrue(guestPages.lowCostTitle.isDisplayed());
+   Assert.assertTrue(guestPages.supportIkon.isDisplayed());
+   Assert.assertTrue(guestPages.lowCostIkon.isDisplayed());
+    }
+
+    @Given("It tests that there is a {string} section in the body of the homepage.")
+    public void ıt_tests_that_there_is_a_section_in_the_body_of_the_homepage(String string) {
+        guestPages.featuredPlansTitle.isDisplayed();
+
+    }
+
+
 
 
     // ********** US_005  **********
@@ -85,6 +113,7 @@ public class Guest {
     @Then("gittigi sayfada Fulfilling Financial Dreams basliginin gorunur oldugunu dogrular")
     public void gittigi_sayfada_fulfilling_financial_dreams_basliginin_gorunur_oldugunu_dogrular() {
         Assert.assertTrue(guestPages.aboutBodyFulfillingFinancialBaslik.isDisplayed());
+
     }
     @Then("ayni sayfadaki Home | About ikonlarinin gorunur oldugunu dogrular")
     public void ayni_sayfadaki_home_about_ikonlarinin_gorunur_oldugunu_dogrular() {

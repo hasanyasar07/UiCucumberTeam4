@@ -10,11 +10,7 @@ import org.junit.runner.RunWith;
         features = {"C:\\Users\\Dell\\IdeaProject\\UiCucumberTeam4\\src\\test\\resources\\features"},
         glue = "stepdefinitions",
         tags ="@tst",
-        dryRun = true
-        features = {"src/test/resources/features/admin","src/test/resources/features/guest","src/test/resources/features/user"},
-        glue ="stepDefinitions",
-        tags ="@us32",
-        dryRun = false
+        dryRun =true
 
 )
 public class Runner {

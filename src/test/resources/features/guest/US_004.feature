@@ -4,12 +4,13 @@ Feature: US_004 As a visitor, I want to have a home page where I can access gene
               *   Visitor goes to “guestUrl” homepage
 
   Scenario: TC_01 Testing that when you click on Home Page in the menu title on the home page, you are directed to the 'Home Page' page.
-
-    And   Verifies that when clicking Home on the menu header on the home page, it is redirected to the 'Home' page
+    And   Click on Home Page in the menu title on the home page.
+    Then Verifies that the opened page is 'Home'
     Then  Closes the page
 
   Scenario: TC_02 You can access the About page from the body of the home page.
-      And It tests whether the About page can be accessed from the body section of the Home page.
+      And Click About from the body section of the home page.
+      Then Tests whether the about page has been reached
       Then  Closes the page
 
   Scenario: TC_03 The Feature section and its subheadings should appear in the body section of the home page.
@@ -20,10 +21,10 @@ Feature: US_004 As a visitor, I want to have a home page where I can access gene
       And Tests that '24/7 Support' and 'Low Cost' titles and icons are visible in the body section of the home page.
       Then  Closes the page
 
-  Scenario: TC_05 There MUST be a 'Featured Plans' section in the body of the home page
+  Scenario: TC_05 There must be a 'Featured Plans' section in the body of the home page
       And  It tests that there is a 'Featured Plans' section in the body of the homepage.
       Then  Closes the page
-
+  @tst
   Scenario: TC_06 'Basic Credit' button should be visible and active under Featured plans
       And Tests that the 'Basic Loan' button is visible and active under Featured plans
       Then Closes the page

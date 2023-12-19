@@ -74,6 +74,11 @@ public class GuestPages {
     @FindBy(xpath = "(//*[@class='btn btn--md btn--base fw-bold w-100'])[2]")
     public WebElement guestPageLoginButton;
 
+    @FindBy(xpath = "//a[@class='nav-link active']")
+    public  WebElement homeHeaderButon;
+    @FindBy(xpath = "(//li[@class='nav-item'])[2]")
+    public WebElement aboutHeaderButon;
+
 
 
     // ********** Footer **********
@@ -122,6 +127,41 @@ public class GuestPages {
 
 @FindBy(xpath = "//img[@class='img-fluid mx-auto']")
     public  WebElement companyLogosName;
+
+@FindBy(xpath = "//div[@class='section--sm']")
+public  WebElement companyLogosslider;
+
+@FindBy(xpath = "(//h5[@class='text-capitalize mt-0 t-body-font fw-md text-start'])[1]")
+public  WebElement supportTitle;
+@FindBy(xpath = "(//h5[@class='text-capitalize mt-0 t-body-font fw-md text-start'])[2]")
+public  WebElement lowCostTitle;
+
+@FindBy (xpath = "(//div[@class='flex-shrink-0 icon'])[1]")
+public  WebElement supportIkon;
+@FindBy (xpath = "(//div[@class='flex-shrink-0 icon'])[2]")
+public  WebElement lowCostIkon;
+@FindBy(xpath ="//div[@class='text-center text-lg-start']")
+    public  WebElement featureBodyHomePage;
+
+    @FindBy(xpath = "(//i[@style='color:rgb(0,0,0);font-size:0.875rem;'])[1]")
+    public WebElement quickApprovalProcessesTitle;
+    @FindBy(xpath = "(//i[@style='color:rgb(0,0,0);font-size:0.875rem;'])[2]")
+    public WebElement variousLoanTypesTitle;
+
+    @FindBy(xpath = "(//i[@style='color:rgb(0,0,0);font-size:0.875rem;'])[3]")
+    public WebElement flexibleRepaymentTermsTitle;
+    @FindBy(xpath = "(//i[@style='color:rgb(0,0,0);font-size:0.875rem;'])[4]")
+    public WebElement competitiveInterestRatesTitle;
+    @FindBy(xpath = "(//i[@style='color:rgb(0,0,0);font-size:0.875rem;'])[5]")
+    public WebElement digitalApplicationProcessingTitle;
+
+@FindBy(xpath = "//p[@class='mb-0 text-capitalize text--primary xxl-text'])[3]")
+public  WebElement featuredPlansTitle;
+@FindBy(xpath = "//div[@class='cookies-card__btn mt-4']")
+public  WebElement allowButon;
+
+
+
 
     // **********  About Body **********
 
