@@ -13,6 +13,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.security.PublicKey;
 import java.util.Set;
 
 public class GuestPages {
@@ -171,6 +172,36 @@ public  WebElement YouAreNotLoginText;
 @FindBy(xpath = "//a[@class='btn btn-sm btn--base']")
 public  WebElement LoginButtonOnAlert;
 
+@FindBy (xpath = "//a[@class='btn btn--xl xl-text btn--base mt-5']")
+public  WebElement seeAllButtonHomePage;
+
+@FindBy(xpath = "(//p[@class='mb-0 t-text-white text-capitalize xxl-text text-center'])[1]")
+public  WebElement CountryWideHomeBody;
+    @FindBy(xpath = "(//p[@class='mb-0 t-text-white text-capitalize xxl-text text-center'])[2]")
+    public  WebElement HappyClientHomeBody;
+    @FindBy(xpath = "(//p[@class='mb-0 t-text-white text-capitalize xxl-text text-center'])[3]")
+    public  WebElement WinningAwardsHomeBody;
+    @FindBy(xpath = "(//p[@class='mb-0 t-text-white text-capitalize xxl-text text-center'])[4]")
+    public  WebElement TotalLoanHomeBody;
+    @FindBy(xpath = "(//section[@class='section--sm section--bottom'])[3]")
+    public  WebElement FAQsectionHomeBody;
+    @FindBy(xpath = "//div[@class='row justify-content-center g-4']")
+    public WebElement FrequentlyAskedHomePageBody;
+
+    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[1]")
+    public  WebElement AccordionButton1FqaHomePageBody;
+    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[2]")
+    public  WebElement AccordionButton2FqaHomePageBody;
+    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[3]")
+    public  WebElement AccordionButton3FqaHomePageBody;
+    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[4]")
+    public  WebElement AccordionButton4FqaHomePageBody;
+    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[]")
+    public  WebElement AccordionButton5FqaHomePageBody;
+    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[6]")
+    public  WebElement AccordionButton6FqaHomePageBody;
+    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[7]")
+    public  WebElement AccordionButton7FqaHomePageBody;
 
     // **********  About Body **********
 

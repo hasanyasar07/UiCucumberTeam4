@@ -136,8 +136,83 @@ public class Guest {
         guestPages.cookieKabul.click();
         ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.TakeMinimumHomePage);
         ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.seeAllButtonHomePage.isDisplayed());
+    }
+    @Given("Clicks the {string} button under Featured plans")
+    public void clicks_the_button_under_featured_plans(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.TakeMinimumHomePage);
+        ReusableMethods.wait(2);
+        guestPages.seeAllButtonHomePage.click();
+    }
+    @Then("Verifies that the opened page is the page where the plans are displayed")
+    public void verifies_that_the_opened_page_is_the_page_where_the_plans_are_displayed() {
+       String expectedOpenPageUrl="https://qa.loantechexper.com/loan";
+       String actualOpenPageUrl=Driver.getDriver().getCurrentUrl();
+       Assert.assertEquals(expectedOpenPageUrl,actualOpenPageUrl);
+    }
+    @Given("It tests whether information about the Site \\(Countrywide, Happy Customers, Rewards Won, Total Credits) is visible in the Body Section of the Home Page.")
+    public void ıt_tests_whether_information_about_the_site_countrywide_happy_customers_rewards_won_total_credits_is_visible_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.seeAllButtonHomePage);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.CountryWideHomeBody.isDisplayed());
+        Assert.assertTrue(guestPages.HappyClientHomeBody.isDisplayed());
+        Assert.assertTrue(guestPages.WinningAwardsHomeBody.isDisplayed());
+        Assert.assertTrue(guestPages.TotalLoanHomeBody.isDisplayed());
+    }
+    @Given("It tests that there is a Frequently Asked Questions section in the Body Section of the Home Page.")
+    public void ıt_tests_that_there_is_a_frequently_asked_questions_section_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.CountryWideHomeBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.FAQsectionHomeBody.isDisplayed());
+    }
+    @Given("Tests that frequently asked questions in the Frequently Asked Questions section appear in the Body Section of the Home Page.")
+    public void tests_that_frequently_asked_questions_in_the_frequently_asked_questions_section_appear_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.FAQsectionHomeBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.FrequentlyAskedHomePageBody.isDisplayed());
 
     }
+    @Given("It tests whether the accordion buttons in the Frequently Asked Questions section in the Body Section of the Home Page are visible and active.")
+    public void ıt_tests_whether_the_accordion_buttons_in_the_frequently_asked_questions_section_in_the_body_section_of_the_home_page_are_visible_and_active() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.AccordionButton1FqaHomePageBody);
+        Assert.assertTrue(guestPages.AccordionButton1FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton1FqaHomePageBody.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.AccordionButton2FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton2FqaHomePageBody.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.AccordionButton3FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton3FqaHomePageBody.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.AccordionButton4FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton4FqaHomePageBody.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.AccordionButton5FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton5FqaHomePageBody.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.AccordionButton6FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton6FqaHomePageBody.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.AccordionButton7FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton7FqaHomePageBody.click();
+        ReusableMethods.wait(2);
+    }
+
+
+
+
+
+
 
     // ********** US_005  **********
 
