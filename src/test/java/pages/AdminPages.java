@@ -213,7 +213,39 @@ public class AdminPages {
     @FindBy(xpath = "//span[text()='Due Loans']")
     public WebElement dueLoansButton;
 
+    // Due Installment Loans ekranında S.N. alanini goruntuleme
+    @FindBy(xpath = "//*[text()='S.N.']")
+    public WebElement loansSn;
 
+    //Due Installment Loans ekranında Loan No. | Plan alanini goruntuleme
+    @FindBy(xpath = "//*[text()='Loan No. | Plan']")
+    public WebElement loansNoPlan;
+
+    //Due Installment Loans ekranında User alanini goruntuleme
+    @FindBy(xpath = "//*[text()='User']")
+    public WebElement loansUser;
+
+    //Due Installment Loans ekranında Amount alanini goruntuleme
+
+    @FindBy(xpath = "//*[text()='Amount']")
+    public WebElement loansAmount;
+
+    //Due Installment Loans ekranında Installment Amount alanini goruntuleme
+    @FindBy(xpath = "//*[text()='Installment Amount']")
+    public WebElement loansInstallmentAmount;
+
+    //Due Installment Loans ekranında Installment alanini goruntuleme
+    @FindBy(xpath = "//*[text()='Installment']")
+    public WebElement loansInstallment;
+
+    //Due Installment Loans ekranında Created Next Installment alanini goruntuleme
+
+    @FindBy(xpath = "//th[contains(text(),'Created |')]")
+    public WebElement loansCreatedNextInstallment;
+
+    //Due Installment Loans ekranında Status alanini goruntuleme
+    @FindBy(xpath = "//*[text()='Status']")
+    public WebElement loansStatus;
 
     // ********** Payment Gateways **********
 

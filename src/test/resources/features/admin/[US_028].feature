@@ -1,8 +1,9 @@
-Feature:
+Feature:Bir yonetici (admin) olarak vadeli kredileri goruntulemek ve islem yapabilmek icin Due Loans sayfasinin olmasini istiyorum.
   Background:
     *  kullanici verilen "adminUrl" gider
     Scenario:
       Given kullaniciya verilen "yusufkuzkayaUsername" ve "adminPassword" bilgileri ile admin sayfasina login olur.
+      Given "Loans" menusune tiklanir.
       Then Loans menu basligi altindaki "Due Loans" sayfa linkine tiklandiginda "Due Loans" sayfasina gectiginin kontrolu yapilir.
       And Due Loans sayfasinda Due İnstallment Loans Tablosunda S.N. gorunurlugu kontrol edilir.
       And Due Loans sayfasinda Due İnstallment Loans Tablosunda Loan No. | Plan gorunurlugu kontrol edilir.

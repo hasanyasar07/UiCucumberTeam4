@@ -115,88 +115,181 @@ import java.awt.*;
       
     @Then("Loans menu basligi altindaki {string} sayfa linkine tiklandiginda {string} sayfasina gectiginin kontrolu yapilir.")
     public void loans_menu_basligi_altindaki_sayfa_linkine_tiklandiginda_sayfasina_gectiginin_kontrolu_yapilir(String string, String string2) {
-
+            adminPages.dueLoansButton.click();
+            Assert.assertTrue(adminPages.dueLoansButton.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda S.N. gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_s_n_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+            Assert.assertTrue(adminPages.loansSn.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda Loan No. | Plan gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_loan_no_plan_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+            Assert.assertTrue(adminPages.loansNoPlan.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda User gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_user_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+            Assert.assertTrue(adminPages.loansUser.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda Amount gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_amount_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+            Assert.assertTrue(adminPages.loansAmount.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda İnstallment Amount gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_installment_amount_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+            Assert.assertTrue(adminPages.loansInstallmentAmount.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda İnstallment gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_installment_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+            Assert.assertTrue(adminPages.loansInstallment.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda Created | Next Installment gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_created_next_ınstallment_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+            Assert.assertTrue(adminPages.loansCreatedNextInstallment.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda Status gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_status_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+            Assert.assertTrue(adminPages.loansStatus.isDisplayed());
     }
     @Given("Due Loans sayfasindaki Due Installment Loans tablosu uzerinde {string} bilgileri ile alanında numara ve tarih girilerek arama yapilir.")
-    public void due_loans_sayfasindaki_due_ınstallment_loans_tablosu_uzerinde_bilgileri_ile_alanında_numara_ve_tarih_girilerek_arama_yapilir(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void due_loans_sayfasindaki_due_installment_loans_tablosu_uzerinde_bilgileri_ile_alanında_numara_ve_tarih_girilerek_arama_yapilir(String string) {
+
     }
     @Given("Due Installment Loans tablosunda bulunan Action basligi altinda secilen kredinin Details ve Installment bilgilerine erisilebilirligi kontrol edilir.")
-    public void due_ınstallment_loans_tablosunda_bulunan_action_basligi_altinda_secilen_kredinin_details_ve_ınstallment_bilgilerine_erisilebilirligi_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void due_installment_loans_tablosunda_bulunan_action_basligi_altinda_secilen_kredinin_details_ve_ınstallment_bilgilerine_erisilebilirligi_kontrol_edilir() {
+
     }
     @Given("Details sayfasinda kredi detaylarina \\(Plan, Date of Application, Loan Number,Amount,  Per Installment, Total Installment, Given Installment,  Total Payable, Profit, Status bilgilerine ) erisilebilmelidir.")
     public void details_sayfasinda_kredi_detaylarina_plan_date_of_application_loan_number_amount_per_ınstallment_total_ınstallment_given_ınstallment_total_payable_profit_status_bilgilerine_erisilebilmelidir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("Installments sayfasinda Loan summary bilgileri \\(Loan Number, Plan, Loan Amount,  Per Installment, Total Installment, Given Installment,  Receivable, Delay Charge) goruntulenmelidir.")
-    public void ınstallments_sayfasinda_loan_summary_bilgileri_loan_number_plan_loan_amount_per_ınstallment_total_ınstallment_given_ınstallment_receivable_delay_charge_goruntulenmelidir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void installments_sayfasinda_loan_summary_bilgileri_loan_number_plan_loan_amount_per_ınstallment_total_ınstallment_given_ınstallment_receivable_delay_charge_goruntulenmelidir() {
+
     }
     @Then("Installments sayfasinda taksitler S.N., Installment Date, Given On, Delay, Charge bilgileri ile goruntulenmelidir.")
-    public void ınstallments_sayfasinda_taksitler_s_n_ınstallment_date_given_on_delay_charge_bilgileri_ile_goruntulenmelidir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void installments_sayfasinda_taksitler_s_n_installment_date_given_on_delay_charge_bilgileri_ile_goruntulenmelidir() {
+
     }
     @Then("Installments sayfasindan Due Loans sayfasina donus yapilabilmelidir.")
-    public void ınstallments_sayfasindan_due_loans_sayfasina_donus_yapilabilmelidir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void installments_sayfasindan_due_loans_sayfasina_donus_yapilabilmelidir() {
+
     }
     @Then("Installments sayfasinda taksitler {int}'den fazlaysa bir sonraki sayfada listelenmeye devam etmelidir.")
-    public void ınstallments_sayfasinda_taksitler_den_fazlaysa_bir_sonraki_sayfada_listelenmeye_devam_etmelidir(Integer int1) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void installments_sayfasinda_taksitler_den_fazlaysa_bir_sonraki_sayfada_listelenmeye_devam_etmelidir(Integer int1) {
+
     }
 
          // ********** US_029  **********
 
 
         // ********** US_030  **********
+
+        @Then("{string} ogesine tiklanir.")
+        public void ogesine_tiklanir(String string) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} yazisinin gorunur oldugunu dogrulayin.")
+        public void all_loans_yazisinin_gorunur_oldugunu_dogrulayin() {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} sayfasinda {string} adinin gorundugunu dogrulayin.")
+        public void sayfasinda_adinin_gorundugunu_dogrulayin(String string, String string2) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Given("{string} alanina kredi numarasini girin.")
+        public void alanina_kredi_numarasini_girin(String string) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("Kredi numarasinin arama kutusu simgesine tiklayin.")
+        public void kredi_numarasinin_arama_kutusu_simgesine_tiklayin() {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("Kredi numarasi ile sorgulama islemi yaptiktan sonra ilk gelen krediyi dogrulayin.")
+        public void kredi_numarasi_ile_sorgulama_islemi_yaptiktan_sonra_ilk_gelen_krediyi_dogrulayin() {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Given("Kredilerin Baslangıc Tarihi - Bitis Tarihi metin kutusuna tıklayin.")
+        public void kredilerin_baslangic_tarihi_bitis_tarihi_metin_kutusuna_tiklayin() {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} – {string} metin kutusuna “{double}.{int}-{int}.{int}.{int}” tarihleri yazilir.")
+        public void metin_kutusuna_tarihleri_yazilir(String string, String string2, Double double1, Integer int1, Integer int2, Integer int3, Integer int4) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Given("{string} – {string} secme islemi yaptiktan sonra arama kutusu simgesine tiklanir.")
+        public void secme_islemi_yaptiktan_sonra_arama_kutusu_simgesine_tiklanir(String string, String string2) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} sayfasındaki {string} – {string} bilgileri ile arama yapildigi dogrulanir.")
+        public void sayfasindaki_bilgileri_ile_arama_yapildigi_dogrulanir(String string, String string2, String string3) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Given("{string} sayfasinda ilk satirda yer alan {string} butonuna tiklanir.")
+        public void sayfasinda_ilk_satirda_yer_alan_butonuna_tiklanir(String string, String string2) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} sayfasinda {string} yazisinin gorundugunu dogrulayin.")
+        public void sayfasinda_yazisinin_gorundugunu_dogrulayin(String string, String string2) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string}\" alanina tiklayin. Geri donus yapin.")
+        public void alanina_tiklayin_geri_donus_yapin(String string) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string}\" sayfasındaki ilk satirda yer alan \"Installments\" butonuna tıklayin.")
+        public void sayfasindaki_ilk_satirda_yer_alan_ınstallments_butonuna_tıklayin(String string) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} sayfasında {string} gorundugunu dogrulayin.")
+        public void sayfasinda_gorundugunu_dogrulayin(String string, String string2) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} sayfasında {string}\" gorundugunu dogrulayin.")
+        public void sayfasinda_gorundugunu_dogrulayin(String string, String string2) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} sayfasina donmek icin  {string} butonuna tiklayin.")
+        public void sayfasina_donmek_icin_butonuna_tiklayin(String string, String string2) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} sayfasına donuldugunu dogrulayin.")
+        public void sayfasina_donuldugunu_dogrulayin(String string) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("{string} sayfasinin sag alt köşesindeki {string} butonuna tiklayarak bir sonraki sayfaya gecin.")
+        public void sayfasinin_sag_alt_kosesindeki_butonuna_tiklayarak_bir_sonraki_sayfaya_gecin(String string, String string2) {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("Sonraki sayfada oldugunuzu dogrulayin.")
+        public void sonraki_sayfada_oldugunuzu_dogrulayin() {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+        @Then("Sayfayi kapatin.")
+        public void sayfayi_kapatin() {
+            // Write code here that turns the phrase above into concrete actions
+            throw new io.cucumber.java.PendingException();
+        }
+
 
 
         // ********** US_031  **********
