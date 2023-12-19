@@ -1,5 +1,7 @@
 package pages;
 
+import io.cucumber.java.zh_cn.假如;
+import org.apache.commons.compress.archivers.zip.X000A_NTFS;
 import org.openqa.selenium.WebElement;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
@@ -155,12 +157,19 @@ public  WebElement lowCostIkon;
     @FindBy(xpath = "(//i[@style='color:rgb(0,0,0);font-size:0.875rem;'])[5]")
     public WebElement digitalApplicationProcessingTitle;
 
-@FindBy(xpath = "//p[@class='mb-0 text-capitalize text--primary xxl-text'])[3]")
+@FindBy(xpath = "(//p[@class='mb-0 text-capitalize text--primary xxl-text'])[3]")
 public  WebElement featuredPlansTitle;
-@FindBy(xpath = "//div[@class='cookies-card__btn mt-4']")
-public  WebElement allowButon;
 
+@FindBy(xpath = "(//*[@class='btn btn-md btn--xl xl-text w-100 btn--base loanBtn'])[1]")
+public  WebElement applyButtonHomePage;
+@FindBy(xpath = "(//span[@class='plan-feature-list-title'])[1]")
+public  WebElement TakeMinimumHomePage;
 
+@FindBy(xpath = "//h3[@class='text-center mt-3']")
+public  WebElement YouAreNotLoginText;
+
+@FindBy(xpath = "//a[@class='btn btn-sm btn--base']")
+public  WebElement LoginButtonOnAlert;
 
 
     // **********  About Body **********
@@ -176,6 +185,10 @@ public  WebElement allowButon;
 
     @FindBy(xpath = "//*[@class=' t-link breadcrumbs__link text-uppercase t-text-white t-link--primary ']")
     public WebElement aboutBodyAboutIkonu;
+    @FindBy (xpath = "(//*[@class='nav-link '])[5]")
+    public  WebElement basicLoanButtonHomeBody;
+    @FindBy(xpath ="(//div[@class='row g-4'])[1]")
+    public  WebElement featurePlansSectionHomePage;
 
 
 

@@ -3,6 +3,7 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.checkerframework.checker.units.qual.C;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -42,7 +43,7 @@ public class Guest {
     }
 
 
-    // ********** US_004.feature  **********
+    // ********** US_004.feature  ********** //Erdal
 
     @Given("Click on Home Page in the menu title on the home page.")
     public void click_on_home_page_in_the_menu_title_on_the_home_page() {
@@ -89,8 +90,54 @@ public class Guest {
 
     }
 
+    @Given("Tests that the {string} button is visible and active under Featured plans")
+    public void tests_that_the_button_is_visible_and_active_under_featured_plans(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.featuredPlansTitle );
+        Assert.assertTrue(guestPages.basicLoanButtonHomeBody.isDisplayed());
+        ReusableMethods.wait(2);
+        guestPages.basicLoanButtonHomeBody.click();
+    }
+    @Given("Tests that {string} is visible under Featured plans")
+    public void tests_that_is_visible_under_featured_plans(String string) {
+    String expextedContainsTitleFeaturedPlans="Test Loan Card";
+    String actualContainsTitleFeaturedPlans=Driver.getDriver().getTitle();
+    Assert.assertEquals(expextedContainsTitleFeaturedPlans,actualContainsTitleFeaturedPlans);
+
+    }
 
 
+    @Given("Tests that the Apply Now button is present and active under Featured plans")
+    public void tests_that_the_apply_now_button_is_present_and_active_under_featured_plans() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.TakeMinimumHomePage);
+        Assert.assertTrue(guestPages.applyButtonHomePage.isDisplayed());
+        ReusableMethods.wait(2);
+        guestPages.applyButtonHomePage.click();
+    }
+    @Given("Clicks the Apply Now button under Featured plans")
+    public void clicks_the_apply_now_button_under_featured_plans() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.TakeMinimumHomePage);
+        ReusableMethods.wait(2);
+        guestPages.applyButtonHomePage.click();
+    }
+    @Then("It tests that when the Apply Now button is clicked, the {string} message appears in the window that opens and there is a link button that directs you to the login page.")
+    public void ıt_tests_that_when_the_apply_now_button_is_clicked_the_message_appears_in_the_window_that_opens_and_there_is_a_link_button_that_directs_you_to_the_login_page(String string) {
+     guestPages.YouAreNotLoginText.isDisplayed();
+     guestPages.LoginButtonOnAlert.isDisplayed();
+    }
+    @Given("Tests that the {string} button is visible under Featured plans")
+    public void tests_that_the_button_is_visible_under_featured_plans(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.TakeMinimumHomePage);
+        ReusableMethods.wait(2);
+
+    }
 
     // ********** US_005  **********
 

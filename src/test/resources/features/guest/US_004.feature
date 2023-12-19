@@ -24,12 +24,12 @@ Feature: US_004 As a visitor, I want to have a home page where I can access gene
   Scenario: TC_05 There must be a 'Featured Plans' section in the body of the home page
       And  It tests that there is a 'Featured Plans' section in the body of the homepage.
       Then  Closes the page
-  @tst
+
   Scenario: TC_06 'Basic Credit' button should be visible and active under Featured plans
       And Tests that the 'Basic Loan' button is visible and active under Featured plans
       Then Closes the page
 
-  Scenario: TC_07 'Credit Card Testing' should appear under Featured plans
+  Scenario: TC_07 'Test Loan Card' should appear under Featured plans
     And   Tests that 'Test Loan Card' is visible under Featured plans
     Then  Closes the page
 
@@ -41,7 +41,7 @@ Feature: US_004 As a visitor, I want to have a home page where I can access gene
     And Clicks the Apply Now button under Featured plans
     Then It tests that when the Apply Now button is clicked, the 'You are not logged in!' message appears in the window that opens and there is a link button that directs you to the login page.
     Then Closes the page
-
+  @tst
   Scenario: TC_10 A 'See All' button should appear under Featured plans
     And Tests that the 'See All' button is visible under Featured plans
     Then  Closes the page
