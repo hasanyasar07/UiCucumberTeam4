@@ -10,7 +10,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import pages.GuestPages;
 import pages.UserPages;
 
@@ -137,6 +139,46 @@ public class User {
 
 
     // ********** US_019  **********
+    @Given("kullanici acilan dashboard sayfasinda Transactions linkinin gorundugunu test eder")
+    public void kullanici_acilan_dashboard_sayfasinda_transactions_linkinin_gorundugunu_test_eder() {
+        Assert.assertTrue(userPages.userDahboardTransactionsButon.isDisplayed());
+    }
+    @Then("Transactions linkine tiklar")
+    public void transactions_linkine_tiklar() {
+        ReusableMethods.wait(3);
+        userPages.dashboardCookieKabul.click();
+        userPages.userDahboardTransactionsButon.click();
+        ReusableMethods.wait(1);
+    }
+    @Then("My Transactions History sayfasina yonlendirildigini dogrular")
+    public void my_transactions_history_sayfasina_yonlendirildigini_dogrular() {
+        Assert.assertTrue(userPages.myTransactionsHistoryYazisi.isDisplayed());
+    }
+    @Then("Sayfada Transactions Number Search Box un gorunur ve aktif oldugunu dogrular")
+    public void sayfada_transactions_number_search_box_un_gorunur_ve_aktif_oldugunu_dogrular() {
+        Assert.assertTrue(userPages.transactionNumberSearchBox.isDisplayed());
+        ReusableMethods.wait(3);
+        userPages.dashboardCookieKabul.click();
+        userPages.transactionSearchBoxAktiflikTesti();
+    }
+    @Then("Type dropdown menudeki \\(All,Plus,Minus) degerlerinin goruntulendigini ve aktif oldugunu dogrular")
+    public void type_dropdown_menudeki_all_plus_minus_degerlerinin_goruntulendigini_ve_aktif_oldugunu_dogrular() {
+        userPages.typeDropDownAktiflik();
+        ReusableMethods.wait(1);
+    }
+    @Then("Remark dropdown menudeki \\(Any, Application fee, Balance add,Deposit, Loan taken, Withdraw, Withdraw reject) gorunur ve aktif oldugunu dogrular")
+    public void remark_dropdown_menudeki_any_application_fee_balance_add_deposit_loan_taken_withdraw_withdraw_reject_gorunur_ve_aktif_oldugunu_dogrular() {
+        userPages.remarkDropDownAktiflik();
+        ReusableMethods.wait(1);
+    }
+    @Then("Listede filtre sectikten sonra  Title,Amount,charge,Post Balance,Details Bilgileri gorunur oldugunu dogrular")
+    public void listede_filtre_sectikten_sonra_title_amount_charge_post_balance_details_bilgileri_gorunur_oldugunu_dogrular() {
+        userPages.yapilanTransactions.click();
+        ReusableMethods.wait(1);
+        userPages.transactionsIcerikGoruntuleme();
+    }
+
+
 
 
     // ********** US_020  **********
