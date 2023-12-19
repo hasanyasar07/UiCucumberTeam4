@@ -10,7 +10,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import pages.GuestPages;
 import pages.UserPages;
 
@@ -27,6 +29,8 @@ public class User {
     @Given("kullanici verilen {string} gider")
     public void kullanici_verilen_gider(String url) {
        userPages.istenilenUrlGitme(url);
+
+       ReusableMethods.wait(2);
     }
 
     @Given("kullanici verilen {string} ve {string} bilgileri ile userpage de login olur")
@@ -68,7 +72,7 @@ public class User {
     public void These_credentials_do_not_match_our_records_yazisini_gorup_giris_yapamadigini_dogrular() {
         userPages.loginBoxTemizleme();
         ReusableMethods.wait(1);
-        Assert.assertTrue(userPages.notMatchOurRecords.isDisplayed());
+        Assert.assertTrue(userPages.yanlisGirisUyariElementi.isDisplayed());
         ReusableMethods.wait(1);
     }
 
@@ -135,6 +139,46 @@ public class User {
 
 
     // ********** US_019  **********
+    @Given("kullanici acilan dashboard sayfasinda Transactions linkinin gorundugunu test eder")
+    public void kullanici_acilan_dashboard_sayfasinda_transactions_linkinin_gorundugunu_test_eder() {
+        Assert.assertTrue(userPages.userDahboardTransactionsButon.isDisplayed());
+    }
+    @Then("Transactions linkine tiklar")
+    public void transactions_linkine_tiklar() {
+        ReusableMethods.wait(3);
+        userPages.dashboardCookieKabul.click();
+        userPages.userDahboardTransactionsButon.click();
+        ReusableMethods.wait(1);
+    }
+    @Then("My Transactions History sayfasina yonlendirildigini dogrular")
+    public void my_transactions_history_sayfasina_yonlendirildigini_dogrular() {
+        Assert.assertTrue(userPages.myTransactionsHistoryYazisi.isDisplayed());
+    }
+    @Then("Sayfada Transactions Number Search Box un gorunur ve aktif oldugunu dogrular")
+    public void sayfada_transactions_number_search_box_un_gorunur_ve_aktif_oldugunu_dogrular() {
+        Assert.assertTrue(userPages.transactionNumberSearchBox.isDisplayed());
+        ReusableMethods.wait(3);
+        userPages.dashboardCookieKabul.click();
+        userPages.transactionSearchBoxAktiflikTesti();
+    }
+    @Then("Type dropdown menudeki \\(All,Plus,Minus) degerlerinin goruntulendigini ve aktif oldugunu dogrular")
+    public void type_dropdown_menudeki_all_plus_minus_degerlerinin_goruntulendigini_ve_aktif_oldugunu_dogrular() {
+        userPages.typeDropDownAktiflik();
+        ReusableMethods.wait(1);
+    }
+    @Then("Remark dropdown menudeki \\(Any, Application fee, Balance add,Deposit, Loan taken, Withdraw, Withdraw reject) gorunur ve aktif oldugunu dogrular")
+    public void remark_dropdown_menudeki_any_application_fee_balance_add_deposit_loan_taken_withdraw_withdraw_reject_gorunur_ve_aktif_oldugunu_dogrular() {
+        userPages.remarkDropDownAktiflik();
+        ReusableMethods.wait(1);
+    }
+    @Then("Listede filtre sectikten sonra  Title,Amount,charge,Post Balance,Details Bilgileri gorunur oldugunu dogrular")
+    public void listede_filtre_sectikten_sonra_title_amount_charge_post_balance_details_bilgileri_gorunur_oldugunu_dogrular() {
+        userPages.yapilanTransactions.click();
+        ReusableMethods.wait(1);
+        userPages.transactionsIcerikGoruntuleme();
+    }
+
+
 
 
     // ********** US_020  **********
@@ -144,6 +188,60 @@ public class User {
 
 
     // ********** US_022  **********
+
+
+    @Given("kullaniciya verilen {string} ve {string} bilgileri ile user sayfasinda login olur")
+    public void kullaniciya_verilen_ve_bilgileri_ile_user_sayfasinda_login_olur(String username, String password) {
+      //  userPages.userLoginMethod(username,password);
+
+        userPages.userLoginMethod(username,password);
+    }
+    @Given("User Dashboard ekraninda {string} yazisinin gorunurlugu kontrol edilir.")
+    public void user_dashboard_ekraninda_yazisinin_gorunurlugu_kontrol_edilir(String string) {
+        Assert.assertTrue(userPages.logoutButton.isDisplayed());
+    }
+    @Then("{string} alanina tiklanir.")
+    public void alanina_tiklanir(String string) {
+
+        userPages.logoutButton.click();
+    }
+    @Then("{string} yazisinin ciktigi kontrol edilir.")
+    public void yazisinin_ciktigi_kontrol_edilir(String alert) {
+
+/*
+        ReusableMethods.wait(3);
+        String expectedAlertYazisi="You have been Logged out.";
+
+        //String actualAlertYazisi=Driver.getDriver().switchTo().alert().getText();
+
+        String actualAlertYazisi=Driver.getDriver().switchTo().alert().getText();
+
+        System.out.println("actual alert yazisi :"+actualAlertYazisi);
+
+        Assert.assertEquals(expectedAlertYazisi,actualAlertYazisi);
+
+ */
+        ReusableMethods.wait(2);
+        String expectedIcerik=alert;
+        String actualAramaSonucu=userPages.alertYazisi.getText();
+
+
+        System.out.println(expectedIcerik);
+        System.out.println(actualAramaSonucu);
+
+
+        //Assert.assertTrue(actualAramaSonucu.contains(expectedIcerik));
+        //Assert.assertEquals(actualAramaSonucu,expectedIcerik);
+
+        Assert.assertTrue(actualAramaSonucu.contains(expectedIcerik));
+
+    }
+    @Then("Anasayfada {string} yazisi gorunur olmasi halinde anasayfada oldugunun kontrolu yapilir")
+    public void anasayfada_yazisi_gorunur_olmasi_halinde_anasayfada_oldugunun_kontrolu_yapilir(String string) {
+
+        Assert.assertTrue(userPages.loginButtonGorme.isDisplayed());
+    }
+
 
 
     // ********** US_023  **********
@@ -220,6 +318,8 @@ public class User {
         ReusableMethods.wait(1);
         userPages.applyButton.click();
         ReusableMethods.wait(3);
+        Assert.assertTrue(userPages.loansubmittedSuccessfullyMesaji.isDisplayed());
+
     }
     // ********** US_024  **********
     @Then("dashboard sayfasinda successful deposits successful withdrawals total Loan baslıkları gorunur oldugunu test eder")
