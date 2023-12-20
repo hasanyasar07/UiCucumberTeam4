@@ -62,7 +62,7 @@ Feature: US_004 As a visitor, I want to have a home page where I can access gene
   Scenario: TC_14  Frequently asked questions in the Frequently Asked Questions section should appear in the Body of the Home Page
     And Tests that frequently asked questions in the Frequently Asked Questions section appear in the Body Section of the Home Page.
     Then Closes the page
-  @tst
+
   Scenario: TC_15 Accordion buttons in the Frequently Asked Questions section in the Body Section of the Home Page must be visible and active.
     And It tests whether the accordion buttons in the Frequently Asked Questions section in the Body Section of the Home Page are visible and active.
     Then Closes the page
@@ -79,7 +79,7 @@ Feature: US_004 As a visitor, I want to have a home page where I can access gene
     And It tests that there is a Blog Post section in the Body Section of the home page.
     Then It tests whether the blogs written in the Blog Post section are visible with date and time information.
     Then  Closes the page
-
+  @tst
   Scenario: TC_19 The title 'I Love Being a Hero' and the 'Get Credit' button should appear in the Body Section of the home page and the 'Get Credit' button should be active.
     And Tests that the 'Like To Become A Hero' title is visible in the Body Section of the Home page
     Then Tests that the 'Take Loan' button is visible and active in the Body Section of the Home page.

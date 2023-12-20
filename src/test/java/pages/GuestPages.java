@@ -202,6 +202,30 @@ public  WebElement CountryWideHomeBody;
     public  WebElement AccordionButton6FqaHomePageBody;
     @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[7]")
     public  WebElement AccordionButton7FqaHomePageBody;
+    @FindBy(xpath = "//section[@class='feedback-section section']")
+    public WebElement CompanyEmployeesSliderHomeBody;
+
+    @FindBy(xpath = "//i[@class='bx bx-left-arrow-alt']")
+    public  WebElement leftButtonCompanyEmployeesSlider;
+    @FindBy(xpath = "//i[@class='bx bx-right-arrow-alt']")
+    public  WebElement rightButtonCompanyEmployeesSlider;
+    @FindBy(xpath = "//*[@class='section']")
+    public WebElement BlogPostHomePageBody;
+
+    @FindBy(xpath = "(//*[@class='col-md-6 col-lg-4'])[1]")
+    public  WebElement Blog1HomePageBody;
+    @FindBy(xpath = "(//*[@class='col-md-6 col-lg-4'])[2]")
+    public  WebElement Blog2HomePageBody;
+
+    @FindBy(xpath = "(//*[@class='col-md-6 col-lg-4'])[3]")
+    public  WebElement Blog3HomePageBody;
+    @FindBy(xpath="(//div[@class='blog-post__date'])[1]")
+    public  WebElement dateBlog1HomePageBody;
+
+    @FindBy(xpath = " //h3[@class=' text-capitalize mt-0 text-center text-md-start ps-xl-3']")
+    public WebElement LikeToBecomeHeroHomePage;
+    @FindBy(xpath = "//a[@class='btn btn--base text-capitalize']")
+    public  WebElement TakeLoanButtonHomePage;
 
     // **********  About Body **********
 

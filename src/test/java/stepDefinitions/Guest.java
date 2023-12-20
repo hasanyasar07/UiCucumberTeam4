@@ -207,9 +207,65 @@ public class Guest {
         guestPages.AccordionButton7FqaHomePageBody.click();
         ReusableMethods.wait(2);
     }
+    @Given("Tests that a slider introducing Company Employees is visible in the Body Section of the Home Page.")
+    public void tests_that_a_slider_introducing_company_employees_is_visible_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.CompanyEmployeesSliderHomeBody);
+        ReusableMethods.wait(3);
+        Assert.assertTrue(guestPages.CompanyEmployeesSliderHomeBody.isDisplayed());
+    }
 
+    @Given("It tests whether the left\\/right buttons on the Slider introducing Company Employees in the Body Section of the home page are active and visible.")
+    public void ıt_tests_whether_the_left_right_buttons_on_the_slider_introducing_company_employees_in_the_body_section_of_the_home_page_are_active_and_visible() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.CompanyEmployeesSliderHomeBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.leftButtonCompanyEmployeesSlider.isDisplayed());
+        Assert.assertTrue(guestPages.rightButtonCompanyEmployeesSlider.isDisplayed());
+        guestPages.leftButtonCompanyEmployeesSlider.click();
+        guestPages.rightButtonCompanyEmployeesSlider.click();
+    }
 
+    @Given("It tests that there is a Blog Post section in the Body Section of the home page.")
+    public void ıt_tests_that_there_is_a_blog_post_section_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.dateBlog1HomePageBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.BlogPostHomePageBody.isDisplayed());
+        Assert.assertTrue(guestPages.Blog1HomePageBody.isDisplayed());
+        Assert.assertTrue(guestPages.Blog2HomePageBody.isDisplayed());
+        Assert.assertTrue(guestPages.Blog3HomePageBody.isDisplayed());
 
+    }
+    @Then("It tests whether the blogs written in the Blog Post section are visible with date and time information.")
+    public void ıt_tests_whether_the_blogs_written_in_the_blog_post_section_are_visible_with_date_and_time_information() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.dateBlog1HomePageBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.Blog1HomePageBody.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.Blog2HomePageBody.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.Blog3HomePageBody.isDisplayed());
+    }
+    @Given("Tests that the {string} title is visible in the Body Section of the Home page")
+    public void tests_that_the_title_is_visible_in_the_body_section_of_the_home_page(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.dateBlog1HomePageBody);
+         Assert.assertTrue(guestPages.LikeToBecomeHeroHomePage.isDisplayed());
+    }
+    @Then("Tests that the {string} button is visible and active in the Body Section of the Home page.")
+    public void tests_that_the_button_is_visible_and_active_in_the_body_section_of_the_home_page(String string) {
+        ReusableMethods.wait(5);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.TakeLoanButtonHomePage);
+        Assert.assertTrue(guestPages.TakeLoanButtonHomePage.isDisplayed());
+    }
 
 
 
