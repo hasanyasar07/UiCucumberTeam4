@@ -148,10 +148,10 @@ public class UserPages {
     @FindBy(xpath = "//*[@id='VGhlc2UlMjBjcmVkZW50aWFscyUyMGRvJTIwbm90JTIwbWF0Y2glMjBvdXIlMjByZWNvcmRzLnJlZA']")
     public WebElement yanlisGirisUyariElementi;
 
-<<<<<<< HEAD
+
     @FindBy(xpath = "//a[@class='btn btn--base btn--xl w-100 policy']")
     public WebElement alow;
-=======
+
 
     @FindBy(xpath = "//*[text()='Login']")
     public WebElement loginButtonGorme;
@@ -176,23 +176,23 @@ public class UserPages {
 
     @FindBy(xpath = "//a[text()='Allow']")
     public WebElement allowCokies;
->>>>>>> main
+
 
 
     // ********** Dashboard **********
     @FindBy(xpath = "//*[@class='btn btn--success btn--smd']")
     public WebElement yesilDepositButon;
 
-<<<<<<< HEAD
+
     @FindBy(xpath = "//a[@class='active']")
     public WebElement dashboardButton;
 
     @FindBy(xpath = "//button[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text']")
     public WebElement loginButton2;
-=======
+
     @FindBy(xpath = "//*[@class='btn btn--base btn--xl w-100 policy']")
     public WebElement dashboardCookieKabul;
->>>>>>> main
+
 
 
 
