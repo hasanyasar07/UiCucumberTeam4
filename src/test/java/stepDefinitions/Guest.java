@@ -313,12 +313,12 @@ public class Guest {
 
     }
 
-<<<<<<< HEAD
+
     @Given("{string} butonuna tiklandiginda {string} e gittigi dogrulanir")
     public void butonuna_tiklandiginda_e_gittigi_dogrulanir(String string, String string2) {
 
     }
-=======
+
     @Given("The Visitor opens Browser and go to {string}")
     public void the_visitor_opens_browser_and_go_to(String registerUrl) {
         ReusableMethods.navigateToTheRequestedUrl(registerUrl);
@@ -430,7 +430,7 @@ public class Guest {
     }
 
 
->>>>>>> main
+
 }
 
 
