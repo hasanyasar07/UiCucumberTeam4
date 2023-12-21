@@ -16,7 +16,7 @@ import utilities.ReusableMethods;
 
 
 public class Guest {
-    GuestPages guestPages=new GuestPages();
+    GuestPages guestPages = new GuestPages();
 
     // ********** US_001  **********
 
@@ -38,42 +38,46 @@ public class Guest {
         ReusableMethods.wait(1);
         guestPages.aboutButon.click();
     }
+
     @Then("about sekmesine tikladiktan sonra kendinin about sayfasina yonlendirildigini dogrular")
     public void about_sekmesine_tikladiktan_sonra_kendinin_about_sayfasina_yonlendirildigini_dogrular() {
         Assert.assertTrue(guestPages.aboutBodyFulfillingFinancialBaslik.isDisplayed());
     }
+
     @Then("footer kismindaki about linkinin oldugunu dogrular ve linke tiklar")
     public void footerKismindakiAboutLinkininOldugunuDogrularVeLinkeTiklar() {
         Assert.assertTrue(guestPages.footerAboutButon.isDisplayed());
         ReusableMethods.wait(1);
         guestPages.footerAboutButon.click();
     }
+
     @Then("gittigi sayfada Fulfilling Financial Dreams basliginin gorunur oldugunu dogrular")
     public void gittigi_sayfada_fulfilling_financial_dreams_basliginin_gorunur_oldugunu_dogrular() {
         Assert.assertTrue(guestPages.aboutBodyFulfillingFinancialBaslik.isDisplayed());
     }
+
     @Then("ayni sayfadaki Home | About ikonlarinin gorunur oldugunu dogrular")
     public void ayni_sayfadaki_home_about_ikonlarinin_gorunur_oldugunu_dogrular() {
         Assert.assertTrue(guestPages.aboutBodyHomeIknonu.isDisplayed());
         Assert.assertTrue(guestPages.aboutBodyAboutIkonu.isDisplayed());
         ReusableMethods.wait(1);
     }
+
     @Then("aktif oldugunu dogrulamak icin About ikonuna tiklar")
     public void aktif_oldugunu_dogrulamak_icin_about_ikonuna_tiklar() {
         guestPages.aboutBodyAboutIkonu.click();
         Assert.assertTrue((guestPages.aboutBodyAboutIkonu.getDomAttribute("href")).contains("https://qa.loantechexper.com/about"));
     }
+
     @Then("aktif oldugunu dogrulamak icin Home ikonuna tiklar")
     public void aktif_oldugunu_dogrulamak_icin_home_ikonuna_tiklar() {
         guestPages.aboutBodyHomeIknonu.click();
     }
+
     @Then("anasayfaya dondugunu dogrular")
     public void anasayfaya_dondugunu_dogrular() {
         Assert.assertTrue(guestPages.aboutButon.isDisplayed());
     }
-
-
-
 
 
     // ********** US_006  **********
@@ -93,13 +97,15 @@ public class Guest {
         Assert.assertTrue(guestPages.anasayfaContactButon.isDisplayed());
         guestPages.anasayfaContactButon.click();
     }
+
     @Then("contact sayfasina basariyla gecis yaptigini dogrular")
     public void contact_sayfasina_basariyla_gecis_yaptigini_dogrular() {
         Assert.assertTrue(guestPages.contactUsYaziElementi.isDisplayed());
     }
+
     @Then("Sirkete mesaj gonderme formunun iletisim sayfasinda goruntulendigini dogrular")
     public void sirkete_mesaj_gonderme_formunun_iletisim_sayfasinda_goruntulendigini_dogrular() {
-        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.contactUsYaziElementi );
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", guestPages.contactUsYaziElementi);
         Assert.assertTrue(guestPages.ContactUsMesajFormu.isDisplayed());
     }
 
@@ -132,15 +138,17 @@ public class Guest {
         ReusableMethods.wait(1);
         guestPages.footerContactUs.click();
     }
+
     @Then("Sirketin e-posta, telefon ve adres iletisim bilgilerinin contact us sayfasinda gorunur oldugunu dogrular")
     public void sirketin_e_posta_telefon_ve_adres_iletisim_bilgilerinin_contact_us_sayfasinda_gorunur_oldugunu_dogrular() {
-        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.contactUsYaziElementi );
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", guestPages.contactUsYaziElementi);
         ReusableMethods.wait(1);
         guestPages.contactUsIletisimBilgileriDogrulama();
     }
+
     @Then("Adres bilgilerinin, sirketin contact us sayfasindaki konumunu gosteren haritada gorundugunu dogrular")
     public void adres_bilgilerinin_sirketin_contact_us_sayfasindaki_konumunu_gosteren_haritada_gorundugunu_dogrular() {
-        Actions actions=new Actions(Driver.getDriver());
+        Actions actions = new Actions(Driver.getDriver());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.wait(1);
 
@@ -153,15 +161,49 @@ public class Guest {
 
     // ********** US_011  **********
 
+    @Given("Accessing the homepage as a visitor and the presence of the Newsletter title in the footer section going down on the homepage are tested.")
+    public void accessing_the_homepage_as_a_visitor_and_the_presence_of_the_newsletter_title_in_the_footer_section_going_down_on_the_homepage_are_tested() {
+        guestPages.footerKisminaInme();
+        Assert.assertTrue(guestPages.footerNewLetter.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+
+
+    @Then("The visibility of the email text box under the visitor Newsletter heading is tested.")
+    public void the_visibility_of_the_email_text_box_under_the_visitor_newsletter_heading_is_tested() {
+        Assert.assertTrue(guestPages.newLetterMailTextBox.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+
+    @Then("Enters e-mail address in the e-mail text box.")
+    public void enters_e_mail_address_in_the_e_mail_text_box() {
+        guestPages.newLetterMailTextBox.sendKeys("beyzakorumaz32@hotmail.com");
+        ReusableMethods.wait(1);
+    }
+
+    @Then("Click on the button next to the email text box.")
+    public void click_on_the_button_next_to_the_email_text_box() {
+        guestPages.footerNewLetterMailButton.click();
+        ReusableMethods.wait(1);
+    }
+
+    @Then("Tests whether it was sent to the e-mail.")
+    public void tests_whether_it_was_sent_to_the_e_mail() {
+        Assert.assertTrue(guestPages.nemLetterMailNotification.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+
 
     // ********** US_012  **********
     @Given("{string} butonunun gorunur ve aktif oldugu dogrulanir")
     public void butonunun_gorunur_ve_aktif_oldugu_dogrulanir(String string) {
 
     }
+
     @Given("{string} butonuna tiklandiginda {string} e gittigi dogrulanir")
     public void butonuna_tiklandiginda_e_gittigi_dogrulanir(String string, String string2) {
 
     }
-
 }
+
+
