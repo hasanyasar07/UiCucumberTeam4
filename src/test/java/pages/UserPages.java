@@ -148,6 +148,10 @@ public class UserPages {
     @FindBy(xpath = "//*[@id='VGhlc2UlMjBjcmVkZW50aWFscyUyMGRvJTIwbm90JTIwbWF0Y2glMjBvdXIlMjByZWNvcmRzLnJlZA']")
     public WebElement yanlisGirisUyariElementi;
 
+<<<<<<< HEAD
+    @FindBy(xpath = "//a[@class='btn btn--base btn--xl w-100 policy']")
+    public WebElement alow;
+=======
 
     @FindBy(xpath = "//*[text()='Login']")
     public WebElement loginButtonGorme;
@@ -155,7 +159,7 @@ public class UserPages {
     @FindBy(xpath = "//*[text()='These credentials do not match our records']")
     public WebElement notMatchOurRecords;
 
-    @FindBy(xpath = "//*[text()='Verify Email']")
+    @FindBy(xpath = "//*[@class='hero__content-title text-capitalize t-text-white']")
     public WebElement verifyEmail;
 
     @FindBy(xpath = "//*[@class='auth-form__input']")
@@ -170,22 +174,173 @@ public class UserPages {
     @FindBy(xpath = "//*[text()='Try to send again']")
     public WebElement forgotPasswordTryToSendAgain;
 
+    @FindBy(xpath = "//a[text()='Allow']")
+    public WebElement allowCokies;
+>>>>>>> main
+
 
     // ********** Dashboard **********
     @FindBy(xpath = "//*[@class='btn btn--success btn--smd']")
     public WebElement yesilDepositButon;
 
+<<<<<<< HEAD
+    @FindBy(xpath = "//a[@class='active']")
+    public WebElement dashboardButton;
+
+    @FindBy(xpath = "//button[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text']")
+    public WebElement loginButton2;
+=======
     @FindBy(xpath = "//*[@class='btn btn--base btn--xl w-100 policy']")
     public WebElement dashboardCookieKabul;
+>>>>>>> main
 
 
 
 
     // ********** Take Loan **********
+    @FindBy(xpath = "//a[text()='Take Loan            ']")
+    public WebElement takeLoanSidebarLink;
+
+    @FindBy(xpath = "//h3[text()='Loan Plans']")
+    public WebElement loanPlansTitle;
+
+    @FindBy(xpath = "//button[@id='pills-car-loan-2-tab']")
+    public WebElement carLoan2Button;
+
+    @FindBy(xpath = "//*[text()='Personal Finance Loan']")
+    public WebElement personelFinanceLoanTitle;
+
+    @FindBy(xpath ="//*[text()='$2,000.00']" )
+    public  WebElement takeMinumumAmount;
+
+    @FindBy(xpath ="//*[text()='$5,000.00']" )
+    public  WebElement  takeMaximumAmount;
+
+    @FindBy(xpath ="//*[text()='4%']" )
+    public  WebElement perInstallmentAmount;
+
+    @FindBy(xpath ="(//span[@class='plan-feature-list-amount'])[2]" )
+    public  WebElement installmentIntervalAmount;
+
+    @FindBy(xpath ="(//span[@class='plan-feature-list-amount'])[3]" )
+    public  WebElement totalInstallmentAmount;
+
+    @FindBy(xpath ="//button[@data-id='52']" )
+    public  WebElement applyButtonCarLoan2;
+
+    @FindBy(xpath = "//h5//span[text()='Personal Finance Loan']")
+    public WebElement applyForPersonelLoanTitle;
+
+    @FindBy(xpath = "//input[@type='number']")
+    public WebElement enterAnAmounTextBox;
+
+    @FindBy(xpath = "//*[text()='Confirm']")
+    public WebElement confirmApplyForPersonalFinanceLoan;
+
+    @FindBy(xpath = " //button[@type='submit']")
+    public WebElement applicationFormApplyButton;
+
+    @FindBy(xpath = "//div[@class='iziToast-body']")
+    public WebElement applyForPersonelFinanceLoanAlertText;
+
+    @FindBy(xpath = "//button[@id='pills-basic-loan-tab']")
+    public WebElement basicLoanLinkElement;
+
+    @FindBy(xpath = "//h4[text()='Basic Loan 1']")
+    public WebElement basicLoan1LinkElement;
+
+    @FindBy(xpath = "//button[@data-planname='Basic Loan 1']")
+    public WebElement basicLoan1ApplyNowButton;
+
+    @FindBy(xpath = "(//span[@class='value'])[1]")
+    public WebElement planNameText;
+
+    @FindBy(xpath = "(//span[@class='value'])[2]")
+    public WebElement loanAmountText;
+
+    @FindBy(xpath = "(//span[@class='value'])[3]")
+    public WebElement totalInstallmentText;
+
+    @FindBy(xpath = "(//span[@class='value'])[4]")
+    public WebElement perInstallmenText;
+
+    @FindBy(xpath = "(//span[@class='value'])[5]")
+    public WebElement youWillNeedToPayText;
+
+    @FindBy(xpath = "//h4[text()='Car Loan 9']")
+    public WebElement carLoan9Title;
+
+    @FindBy(xpath = "//button[@data-planname='Car Loan 9']")
+    public WebElement carLoan9ApplyNowButton;
+
+    @FindBy(xpath = "//h4[text()='Test Loan']")
+    public WebElement testLoanTitle;
+
+    @FindBy(xpath = "//button[@data-planname='Test Loan']")
+    public WebElement testLoanApplyNowButton;
 
 
 
     // ********** My Loans **********
+    @FindBy(xpath = "(//h6[@title='Loan Plan'])[1]")
+    public WebElement myloansList1;
+
+    @FindBy(xpath = "//input[@id='search']")
+    public WebElement searchByLoanNumberTextBox;
+
+    @FindBy(xpath = "//select[@name='status']")
+    public WebElement loanStatusDropDownmenu;
+
+    @FindBy(xpath = "(//*[text()='Running'])[1]")
+    public WebElement runningListLabel;
+
+    @FindBy(xpath = "(//a[@class='btn btn--outline-primary btn--sm '])[1]")
+    public WebElement installmentButton;
+
+    @FindBy(xpath = "//h3[text()='Loan Installments']")
+    public WebElement loanInstallmentsTitle;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[1]")
+    public WebElement loanNumbervalue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[2]")
+    public WebElement planValue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[3]")
+    public WebElement loanAmountValue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[4]")
+    public WebElement perInstantValue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[5]")
+    public WebElement needsToPayValue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[7]")
+    public WebElement delayChargeValue;
+
+    @FindBy(xpath = "(//th)[1]")
+    public WebElement snListHeader;
+
+    @FindBy(xpath = "(//th)[2]")
+    public WebElement installmentDateListHeader;
+
+    @FindBy(xpath = "(//th)[3]")
+    public WebElement givenOnListHeader;
+
+    @FindBy(xpath = "(//th)[4]")
+    public WebElement delayListHeader;
+
+    @FindBy(xpath = "(//td)[1]")
+    public WebElement snListValue;
+
+    @FindBy(xpath = "(//td)[2]")
+    public WebElement installmentDateListValue;
+
+    @FindBy(xpath = "(//td)[3]")
+    public WebElement givenOnListValue;
+
+    @FindBy(xpath = "(//td)[4]")
+    public WebElement delayListValue;
 
     @FindBy(xpath = "//*[text()='Plans']")
     public WebElement plansButton;
@@ -275,8 +430,46 @@ public WebElement appButon;
 
 
     // ********** Withdraw **********
+    @FindBy (xpath = "/html/body/div[3]/div/div[1]/ul/li[5]/a")
+    public WebElement withdrawButton;
 
+    @FindBy (xpath = "//div[@class='row justify-content-center']")
+    public WebElement  withdrawMoneyPages;
 
+    @FindBy (xpath = "//select[@class='form-select form--control']")
+    public WebElement withdrawMethodBox;
+
+    @FindBy (xpath = "//input[@type='number']")
+    public WebElement withdrawAmountBox;
+
+    @FindBy (xpath = "//button[@class='btn btn--base w-100 mt-3']")
+    public WebElement withdrawSubmit;
+
+    @FindBy (xpath = "//a[@class='btn btn--base btn--smd']")
+    public WebElement withdrawLogButton;
+
+    @FindBy (xpath = "//div[@class='dashboard-inner']")
+    public WebElement withdrawHistoryPage;
+
+    @FindBy (xpath = "//button[@class='accordion-button collapsed']")
+    public WebElement withdrawParaCekme;
+
+    @FindBy (xpath = "//div[@class='accordion-body']")
+    public WebElement  withdrawParaCekmeIslem;
+
+    @FindBy (xpath = "//a[@class='btn btn--base btn--smd']")
+    public WebElement  withdrawMoney;
+    @FindBy(xpath = "//div[@class='row justify-content-center']")
+    public WebElement withdrawMoneyPage;
+
+    @FindBy (xpath = "//input[@type='text']")
+    public WebElement withdrawVia;
+
+    @FindBy (xpath = "//div[@class='form-group']")
+    public WebElement withdrawSubmitButton2;
+
+    @FindBy(xpath = "//p[@class='iziToast-message slideIn']")
+    public WebElement withdrawSuccesfully;
 
     // ********** Transactions **********
 
@@ -324,7 +517,53 @@ public WebElement appButon;
 
 
     // ********** Profile **********
+    @FindBy (xpath = "//a[@href='https://qa.loantechexper.com/user/profile-setting']")
+    public WebElement profileButton;
 
+    @FindBy (xpath = "//div[@class='row gy-4 justify-content-center']")
+    public WebElement profileInformation;
+
+    @FindBy (xpath = "//ul[@class='list-group list-group-flush mt-3']")
+    public WebElement profileCard;
+
+    @FindBy (xpath = "//input[@id='imageUpload']")
+    public WebElement profileSettingImage;
+
+    @FindBy (xpath = "//button[@type='submit']")
+    public WebElement profileSubmitButton;
+
+    @FindBy (xpath = "//p[@class='iziToast-message slideIn']")
+    public WebElement profileUpdatedSuccsessfulyText;
+
+    @FindBy(xpath = "//input[@id='state']")
+    public WebElement profileSettingStateBox;
+
+    @FindBy(xpath = "//input[@id='firstname']")
+    public WebElement profileSettingFirstNameBox;
+
+    @FindBy(xpath = "//input[@id='lastname']")
+    public WebElement profileSettingLastNameBox;
+
+    @FindBy(xpath = "//input[@id='city']")
+    public WebElement profileSettingCityBox;
+
+    @FindBy(xpath = "//input[@id='address']")
+    public WebElement profileSettingAdressBox;
+
+    @FindBy(xpath = "//input[@id='zip']")
+    public WebElement profileSettingZipCodeBox;
+
+    @FindBy(xpath = "//button[@class='btn btn--base mt-3 w-100']")
+    public WebElement profileSettingSubmit;
+
+    @FindBy(xpath = "//div[@class='iziToast-texts']")
+    public WebElement profileUpdatedSuccsessfulyText02;
+
+    @FindBy(xpath = "//input[@accept='.png, .jpg, .jpeg']")
+    public WebElement imageChooseFileButton;
+
+    @FindBy(xpath = "//div[@class='card-body p-3']")
+    public WebElement profileSettingCard;
 
 
     // ********** Change Password **********
