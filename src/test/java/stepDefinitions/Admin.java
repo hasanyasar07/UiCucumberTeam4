@@ -641,7 +641,7 @@ import java.awt.*;
 
         @And("baslik kisminda doldurulmasi gereken bosluklar doldurulmadiginda uyari yazisi cikar")
         public void baslikKismindaDoldurulmasiGerekenBosluklarDoldurulmadigindaUyariYazisiCikar() {
-            System.out.println(Driver.getDriver().switchTo().alert().toString());
+            Assert.assertTrue(adminPages.warningText.isDisplayed());
         }
 
         // ********** US_051  **********
