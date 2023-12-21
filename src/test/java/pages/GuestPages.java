@@ -81,6 +81,8 @@ public class GuestPages {
     public  WebElement homeHeaderButon;
     @FindBy(xpath = "(//li[@class='nav-item'])[2]")
     public WebElement aboutHeaderButon;
+    @FindBy(xpath = "(//a[@class='nav-link '])[1]")
+    public WebElement plansHeaderButon;
 
 
 
@@ -122,6 +124,8 @@ public class GuestPages {
 
     @FindBy(xpath = "(//input[@class='text-color-text font-sans text-md outline-0 bg-color-transparent grow'])[1]")
     public WebElement linkedinDogrulama;
+    @FindBy(xpath = "(//a[@class='t-link t-link--primary t-text-white text-capitalize'])[1]")
+    public  WebElement FooterLoanPlansHomePage;
 
 
     // ********** Home Body **********
@@ -174,7 +178,8 @@ public  WebElement LoginButtonOnAlert;
 
 @FindBy (xpath = "//a[@class='btn btn--xl xl-text btn--base mt-5']")
 public  WebElement seeAllButtonHomePage;
-
+@FindBy (xpath = "//h2[@class='hero__content-title text-capitalize t-text-white']")
+public  WebElement LoanPlans;
 @FindBy(xpath = "(//p[@class='mb-0 t-text-white text-capitalize xxl-text text-center'])[1]")
 public  WebElement CountryWideHomeBody;
     @FindBy(xpath = "(//p[@class='mb-0 t-text-white text-capitalize xxl-text text-center'])[2]")
@@ -219,13 +224,17 @@ public  WebElement CountryWideHomeBody;
 
     @FindBy(xpath = "(//*[@class='col-md-6 col-lg-4'])[3]")
     public  WebElement Blog3HomePageBody;
-    @FindBy(xpath="(//div[@class='blog-post__date'])[1]")
+    @FindBy(xpath="(//*[@class='t-link t-link--primary t-text'])[1]")
     public  WebElement dateBlog1HomePageBody;
 
     @FindBy(xpath = " //h3[@class=' text-capitalize mt-0 text-center text-md-start ps-xl-3']")
     public WebElement LikeToBecomeHeroHomePage;
     @FindBy(xpath = "//a[@class='btn btn--base text-capitalize']")
     public  WebElement TakeLoanButtonHomePage;
+    @FindBy(xpath = "(//img[@class='blog-post__img-is'])[1]")
+    public  WebElement Picter1BlogHomePageBody;
+    @FindBy(xpath = "(//a[@class='nav-link '])[1]")
+    public WebElement PlansButtonHomePage;
 
     // **********  About Body **********
 
@@ -328,5 +337,9 @@ public  WebElement CountryWideHomeBody;
 
     @FindBy(xpath = "//*[@class='t-link breadcrumbs__link text-uppercase t-text-white t-link--primary']")
     public WebElement contactUsHomeLink;
+    @FindBy(xpath = "//h2[@class='hero__content-title text-capitalize t-text-white']")
+    public  WebElement LoanPlansPage;
 
 }
+
+

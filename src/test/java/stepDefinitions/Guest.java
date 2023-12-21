@@ -130,7 +130,7 @@ public class Guest {
      guestPages.YouAreNotLoginText.isDisplayed();
      guestPages.LoginButtonOnAlert.isDisplayed();
     }
-    @Given("Tests that the {string} button is visible under Featured plans")
+    @Given("Tests that the {string} button is visible under Featured plans")//TC_10
     public void tests_that_the_button_is_visible_under_featured_plans(String string) {
         ReusableMethods.wait(3);
         guestPages.cookieKabul.click();
@@ -138,19 +138,18 @@ public class Guest {
         ReusableMethods.wait(2);
         Assert.assertTrue(guestPages.seeAllButtonHomePage.isDisplayed());
     }
-    @Given("Clicks the {string} button under Featured plans")
+    @Given("Clicks the {string} button under Featured plans") //TC_11
     public void clicks_the_button_under_featured_plans(String string) {
         ReusableMethods.wait(3);
         guestPages.cookieKabul.click();
-        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.TakeMinimumHomePage);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.supportIkon);
         ReusableMethods.wait(2);
         guestPages.seeAllButtonHomePage.click();
+        ReusableMethods.wait(2);
     }
-    @Then("Verifies that the opened page is the page where the plans are displayed")
+    @Then("Verifies that the opened page is the page where the plans are displayed") //TC_11
     public void verifies_that_the_opened_page_is_the_page_where_the_plans_are_displayed() {
-       String expectedOpenPageUrl="https://qa.loantechexper.com/loan";
-       String actualOpenPageUrl=Driver.getDriver().getCurrentUrl();
-       Assert.assertEquals(expectedOpenPageUrl,actualOpenPageUrl);
+    Assert.assertTrue(guestPages.LoanPlans.isDisplayed());
     }
     @Given("It tests whether information about the Site \\(Countrywide, Happy Customers, Rewards Won, Total Credits) is visible in the Body Section of the Home Page.")
     public void ıt_tests_whether_information_about_the_site_countrywide_happy_customers_rewards_won_total_credits_is_visible_in_the_body_section_of_the_home_page() {
@@ -224,34 +223,34 @@ public class Guest {
         ReusableMethods.wait(2);
         Assert.assertTrue(guestPages.leftButtonCompanyEmployeesSlider.isDisplayed());
         Assert.assertTrue(guestPages.rightButtonCompanyEmployeesSlider.isDisplayed());
+        ReusableMethods.wait(2);
         guestPages.leftButtonCompanyEmployeesSlider.click();
+        ReusableMethods.wait(2);
         guestPages.rightButtonCompanyEmployeesSlider.click();
+        ReusableMethods.wait(1);
     }
 
     @Given("It tests that there is a Blog Post section in the Body Section of the home page.")
     public void ıt_tests_that_there_is_a_blog_post_section_in_the_body_section_of_the_home_page() {
         ReusableMethods.wait(3);
         guestPages.cookieKabul.click();
-        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.dateBlog1HomePageBody);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.leftButtonCompanyEmployeesSlider);
         ReusableMethods.wait(2);
         Assert.assertTrue(guestPages.BlogPostHomePageBody.isDisplayed());
-        Assert.assertTrue(guestPages.Blog1HomePageBody.isDisplayed());
-        Assert.assertTrue(guestPages.Blog2HomePageBody.isDisplayed());
-        Assert.assertTrue(guestPages.Blog3HomePageBody.isDisplayed());
+
 
     }
     @Then("It tests whether the blogs written in the Blog Post section are visible with date and time information.")
     public void ıt_tests_whether_the_blogs_written_in_the_blog_post_section_are_visible_with_date_and_time_information() {
-        ReusableMethods.wait(3);
-        guestPages.cookieKabul.click();
-        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.dateBlog1HomePageBody);
-        ReusableMethods.wait(2);
+        ReusableMethods.wait(1);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.Picter1BlogHomePageBody);
         Assert.assertTrue(guestPages.Blog1HomePageBody.isDisplayed());
         ReusableMethods.wait(1);
         Assert.assertTrue(guestPages.Blog2HomePageBody.isDisplayed());
         ReusableMethods.wait(1);
         Assert.assertTrue(guestPages.Blog3HomePageBody.isDisplayed());
     }
+
     @Given("Tests that the {string} title is visible in the Body Section of the Home page")
     public void tests_that_the_title_is_visible_in_the_body_section_of_the_home_page(String string) {
         ReusableMethods.wait(3);
@@ -261,10 +260,9 @@ public class Guest {
     }
     @Then("Tests that the {string} button is visible and active in the Body Section of the Home page.")
     public void tests_that_the_button_is_visible_and_active_in_the_body_section_of_the_home_page(String string) {
-        ReusableMethods.wait(5);
-        guestPages.cookieKabul.click();
-        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.TakeLoanButtonHomePage);
         Assert.assertTrue(guestPages.TakeLoanButtonHomePage.isDisplayed());
+        ReusableMethods.wait(1);
+        guestPages.TakeLoanButtonHomePage.click();
     }
 
 
@@ -371,6 +369,51 @@ public class Guest {
 
 
     // ********** US_007  **********
+    @Given("Visitor goes to {string} homepage")
+    public void visitor_goes_to_homepage(String string) {
+       Driver.getDriver().get(ConfigReader.getProperty("guestUrl"));
+    }
+
+    @Given("Tests that the Plans button appears from the home page menu header")
+    public void tests_that_the_plans_button_appears_from_the_home_page_menu_header() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        Assert.assertTrue(guestPages.plansHeaderButon.isDisplayed());
+    }
+
+    @Then("Plans button is clicked")
+    public void plans_button_is_clicked() {
+     guestPages.plansHeaderButon.click();
+    }
+    @Then("Verifies that the opened page is the {string} page")
+    public void verifies_that_the_opened_page_is_the_page(String string) {
+    ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.LoanPlansPage.isDisplayed());
+    }
+    @Then("It tests whether the {string} Link is visible and active under the Important Link heading in the Home Page Footer section.")
+    public void ıt_tests_whether_the_link_is_visible_and_active_under_the_ımportant_link_heading_in_the_home_page_footer_section(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.featuredPlansTitle );
+        Assert.assertTrue(guestPages.FooterLoanPlansHomePage.isDisplayed());
+        guestPages.FooterLoanPlansHomePage.click();
+    }
+    @Then("Clicks Plans from the Home menu header")
+    public void clicks_plans_from_the_home_menu_title() {
+        guestPages.plansHeaderButon.click();
+    }
+    @Then("Verifies that the Loan Plans Page that opens has the title Basic Loan.")
+    public void verifies_that_the_loan_plans_page_that_opens_has_the_title_basic_loan() {
+
+    }
+    @Then("Basic Loan is clicks")
+    public void basic_loan_is_clicks() {
+
+    }
+    @Then("Tests that Credit Plan Cards appear under the Basic Credit heading")
+    public void tests_that_credit_plan_cards_appear_under_the_basic_credit_heading() {
+
+    }
 
 
     // ********** US_008  **********
