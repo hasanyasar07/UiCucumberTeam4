@@ -675,7 +675,7 @@ public class User {
     }
     @Then("basic loan buton tıklandığında acılan cardların başlıkları gorunur oldugunu test eder")
     public void basicLoanButonTiklandigindaAcilanCardlarinBasliklariGorunurOldugunuTestEder() {
-        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",userPages.loanPlansYaziElementi);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",userPages.appYaziElement);
         ReusableMethods.wait(1);
 
         ReusableMethods.wait(1);
@@ -723,7 +723,7 @@ public class User {
     @And("Apply buton aktif oldugunu test eder  ve tiklandiginda Loan application submitted successfully mesajinin gorunur oldugunu test eder")
     public void applyButonAktifOldugunuTestEderVeTiklandigindaLoanApplicationSubmittedSuccessfullyMesajininGorunurOldugunuTestEder() {
         ReusableMethods.wait(1);
-        userPages.applyButton.click();
+        userPages.appButon.click();
         ReusableMethods.wait(3);
         Assert.assertTrue(userPages.loansubmittedSuccessfullyMesaji.isDisplayed());
 

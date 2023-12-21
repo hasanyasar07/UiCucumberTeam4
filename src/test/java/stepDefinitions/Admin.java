@@ -400,6 +400,7 @@ import java.awt.*;
             }
         }
 
+
         @Then("details butonun gorunur ve aktif oldugu dogrulanır")
         public void detailsButonunGorunurVeAktifOlduguDogrulanır() {
 

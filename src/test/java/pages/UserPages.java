@@ -151,6 +151,7 @@ public class UserPages {
     @FindBy(xpath = "//a[@class='btn btn--base btn--xl w-100 policy']")
     public WebElement alow;
 
+
     @FindBy(xpath = "//*[text()='Login']")
     public WebElement loginButtonGorme;
   
@@ -176,18 +177,22 @@ public class UserPages {
     public WebElement allowCokies;
 
 
+
     // ********** Dashboard **********
     @FindBy(xpath = "//*[@class='btn btn--success btn--smd']")
     public WebElement yesilDepositButon;
+
 
     @FindBy(xpath = "//a[@class='active']")
     public WebElement dashboardButton;
 
     @FindBy(xpath = "//button[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text']")
     public WebElement loginButton2;
-    
+
+
     @FindBy(xpath = "//*[@class='btn btn--base btn--xl w-100 policy']")
     public WebElement dashboardCookieKabul;
+
 
 
 
@@ -357,12 +362,16 @@ public class UserPages {
     @FindBy(xpath = "//h4[text()='Test Loan']")
     public WebElement testLoanButton;
 
-    @FindBy(xpath = "(//*[@class='btn btn-md btn--xl xl-text w-100 btn--base loanBtn'])[5]")
+    @FindBy(xpath = "//*[@data-planname='Basic Loan 1']")
     public WebElement applyNowButton;
 
     @FindBy(xpath = "//div[@class='cookies-card__btn mt-4']")
     public WebElement cookieButonu;
+@FindBy(xpath = "(//*[@class='plan-feature-list-title'])[47]")
+public WebElement appYaziElement;
 
+@FindBy(xpath = "//*[@class='las la-check-circle']")
+public WebElement appButon;
     @FindBy(xpath = "//*[@id='exampleModalLabel']")
     public WebElement applyForBasicLoan1Sayfasi;
 
@@ -375,7 +384,7 @@ public class UserPages {
     @FindBy(xpath = "//h5[text()='Application Form']")
     public WebElement applicationFormYazisi;
 
-    @FindBy(xpath = "//*[@class='btn btn--base w-100']")
+    @FindBy(xpath = "//*[text()='Bugra Test Loan']")
     public WebElement applyButton;
 
     @FindBy(xpath = "//div[@class='d-flex justify-content-between']")
