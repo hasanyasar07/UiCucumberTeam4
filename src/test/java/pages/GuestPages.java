@@ -88,6 +88,19 @@ public class GuestPages {
 
     @FindBy(xpath = "(//*[@class='t-link t-link--primary t-text-white text-capitalize'])[3]")
     public WebElement footerContactUs;
+    
+    @FindBy (xpath = "//input[@id='email']")
+    public WebElement newLetterMailTextBox;
+
+    @FindBy (xpath = "//body/div[3]//footer/div[1]/div/div/div[4]/h4")
+    public WebElement footerNewLetter;
+
+    @FindBy (xpath = "//button[@class='newsletter__btn flex-shrink-0']")
+    public WebElement footerNewLetterMailButton;
+
+    @FindBy (xpath = "//body/div[5]/div/div/div[1]/div[1]/p")
+    public  WebElement nemLetterMailNotification;
+
 
     @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[1]")
     public WebElement facebookIkon;
