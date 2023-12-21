@@ -112,7 +112,23 @@ public class AdminPages {
     @FindBy(xpath = "//tr/th")
     public List<WebElement> userListeBasliklari;
 
+    @FindBy(xpath = "(//*[@class='form-control'])[1]")
+    public WebElement userFirstNameBox;
 
+    @FindBy(xpath = "(//*[@class='form-control'])[2]")
+    public WebElement userLastNameBox;
+
+    @FindBy(xpath = "(//*[@class='form-control'])[3]")
+    public WebElement userEmailBox;
+
+    @FindBy(xpath = "//*[@class='form-control checkUser']")
+    public WebElement userPhoneNumberBox;
+
+    @FindBy(xpath = "//*[@class='btn btn--primary w-100 h-45 mt-3']")
+    public WebElement usersSubmitButon;
+
+    @FindBy(xpath = "//*[text()='User details updated successfully']")
+    public WebElement usersConfirmElementi;
     @FindBy(xpath = "//*[@class='btn btn-sm btn-outline--primary']")
     public WebElement detailsButtonElement;
 

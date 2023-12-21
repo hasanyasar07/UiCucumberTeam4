@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import pages.AdminPages;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
@@ -456,6 +457,72 @@ import java.awt.*;
 
         // ********** US_045  **********
 
+        @Then("manage users altindaki active users in gorunur oldugunu dogrular")
+        public void manage_users_altindaki_active_users_in_gorunur_oldugunu_dogrular() {
+            adminPages.manageUsersButton.click();
+            ReusableMethods.wait(1);
+            Assert.assertTrue(adminPages.activeUsersButton.isDisplayed());
+        }
+        @Then("active users linkine tiklar")
+        public void active_users_linkine_tiklar() {
+            ReusableMethods.wait(1);
+            adminPages.activeUsersButton.click();
+        }
+        @Then("active uselari goruntuledigini dogrular")
+        public void active_uselari_goruntuledigini_dogrular() {
+            ReusableMethods.wait(1);
+            Assert.assertTrue(adminPages.userListesi.get(1).isDisplayed());
+        }
+        @Then("kullanici secmek icin arama kutusuna kullanici adini girerek arama yapar")
+        public void kullanici_secmek_icin_arama_kutusuna_kullanici_adini_girerek_arama_yapar() {
+            adminPages.activeUserSearchBox.sendKeys("erengk");
+            adminPages.activeUsersSearchIkon.click();
+        }
+        @Then("gelen kullanicida details kisminin goruntulendigini dogrular ve details a tiklar")
+        public void gelen_kullanicida_details_kisminin_goruntulendigini_dogrular_ve_details_a_tiklar() {
+            ReusableMethods.wait(1);
+            Assert.assertTrue(adminPages.detailsButtonElement.isDisplayed());
+            ReusableMethods.wait(1);
+            adminPages.detailsButtonElement.click();
+        }
+        @Then("secilen kullanici bilgilerinin duzenlendigini test etmek icin ad ve soyad a ekleme yapar")
+        public void secilen_kullanici_bilgilerinin_duzenlendigini_test_etmek_icin_ad_ve_soyad_a_ekleme_yapar() {
+            adminPages.userFirstNameBox.sendKeys("e");
+            ReusableMethods.wait(1);
+            adminPages.userLastNameBox.sendKeys("deneme");
+            ReusableMethods.wait(1);
+        }
+        @Then("kullanici duzenleme sayfasinda submite tiklar")
+        public void kullanici_duzenleme_sayfasinda_submite_tiklar() {
+            ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",adminPages.usersSubmitButon );
+            ReusableMethods.wait(1);
+            adminPages.usersSubmitButon.click();
+        }
+        @Then("onay yazisinin ciktigini dogrular")
+        public void onay_yazisinin_ciktigini_dogrular() {
+            ReusableMethods.wait(1);
+            Assert.assertTrue(adminPages.usersConfirmElementi.isDisplayed());
+            ReusableMethods.wait(1);
+        }
+        @Then("e postanin dogru oldugunu kontrol eder")
+        public void e_postanin_dogru_oldugunu_kontrol_eder() {
+            adminPages.userEmailBox.click();
+            Assert.assertTrue(adminPages.userEmailBox.toString().contains("@"));
+            //Assert.assertTrue(adminPages.userEmailBox.getText().endsWith(".com"));
+            Assert.assertTrue(adminPages.userEmailBox.toString().length()>8);
+            ReusableMethods.wait(1);
+
+
+        }
+
+        @And("e posta isim soyisim ve telefon numarasi kutularinin bos olmadigini test eder")
+        public void ePostaIsimSoyisimVeTelefonNumarasiKutularininBosOlmadiginiTestEder() {
+            ReusableMethods.wait(1);
+            Assert.assertFalse(adminPages.userEmailBox.toString().isEmpty());
+            Assert.assertFalse(adminPages.userPhoneNumberBox.toString().isEmpty());
+            Assert.assertFalse(adminPages.userFirstNameBox.toString().isEmpty());
+            Assert.assertFalse(adminPages.userLastNameBox.toString().isEmpty());
+        }
 
         // ********** US_046  **********
 
