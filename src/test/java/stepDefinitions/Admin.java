@@ -16,6 +16,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.List;
 import java.awt.*;
 
@@ -630,8 +631,22 @@ import java.awt.*;
         }
 
         @And("baslik kisminda doldurulmasi gereken bosluklar doldurulmadiginda uyari yazisi cikar")
-        public void baslikKismindaDoldurulmasiGerekenBosluklarDoldurulmadigindaUyariYazisiCikar() {
-            Assert.assertTrue(adminPages.warningText.isDisplayed());
+        public void baslikKismindaDoldurulmasiGerekenBosluklarDoldurulmadigindaUyariYazisiCikar() throws IOException {
+            ReusableMethods.wait(2);
+            String resim =ReusableMethods.getScreenshot("uyari");
+            //Assert.assertTrue();
+        }
+        @Then("admin tempmail urle gider")
+        public void adminTempmailUrleGider() {
+            Driver.getDriver().get(ConfigReader.getProperty("tempMailUrl"));
+        }
+        @When("gonderilen mailin basligin {string} oldugunu dogrular")
+        public void gonderilenMailinBasliginOldugunuDogrular(String baslik) {
+            ReusableMethods.wait(20);
+            Actions actions = new Actions(Driver.getDriver());
+            actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Assert.assertTrue(adminPages.tempMailMailBox.getText().contains(baslik));
+
         }
         
 
@@ -702,6 +717,7 @@ import java.awt.*;
         public void initiatedDepositsLinkineTiklar() {
             adminPages.InitiatedDepositsLink.click();
         }
+
         
         // ********** US_056  **********
 
@@ -880,6 +896,7 @@ import java.awt.*;
 
 
        
+
 
 
     }

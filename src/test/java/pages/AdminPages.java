@@ -361,7 +361,7 @@ public WebElement unbannedSuccessfullyYaziElementi;
 
     // ********** Cron Job Setting **********
 
-
-
-
+    // ********** Temp Mail **********
+    @FindBy(xpath = "//*[@class='inbox-dataList']")
+    public WebElement tempMailMailBox;
 }
