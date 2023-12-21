@@ -735,8 +735,6 @@ public class User {
         ReusableMethods.wait(1);
         Assert.assertTrue(userPages.successfulDepositYaziElementi.isDisplayed());
 
-
-    }
         ReusableMethods.wait(1);
         Assert.assertTrue(userPages.successfulWithdrawalsYaziElementi.isDisplayed());
 
