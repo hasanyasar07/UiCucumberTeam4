@@ -25,9 +25,7 @@ import java.util.Random;
 
 public class Guest {
     GuestPages guestPages=new GuestPages();
-    public void navigateToTheRequestedUrl(String url){
-        Driver.getDriver().get(ConfigReader.getProperty(url));
-    }
+
     Faker faker = new Faker();
     String password;
 
@@ -262,7 +260,7 @@ public class Guest {
     // ********** US_012  ********** hasan
     @Given("The Visitor opens Browser and goes {string}")
     public void the_visitor_opens_browser_and_goes(String url) {
-       navigateToTheRequestedUrl(url);
+       ReusableMethods.navigateToTheRequestedUrl(url);
     }
     @Given("It is confirmed that the Get Started button is visible and active")
     public void ıt_is_confirmed_that_the_button_is_visible_and_active() {
@@ -271,13 +269,13 @@ public class Guest {
     }
     @Given("When clicking the Get Started button, it is confirmed that It went to {string}")
     public void when_clicking_the_button_it_is_confirmed_that_ıt_went_to(String registerUrl) {
-        navigateToTheRequestedUrl(registerUrl);
+        ReusableMethods.navigateToTheRequestedUrl(registerUrl);
 
     }
 
     @Given("The Visitor opens Browser and go to {string}")
     public void the_visitor_opens_browser_and_go_to(String registerUrl) {
-        navigateToTheRequestedUrl(registerUrl);
+        ReusableMethods.navigateToTheRequestedUrl(registerUrl);
     }
     @Given("It is confirmed that the registration form is visible")
     public void ıt_is_confirmed_that_the_registration_form_is_visible() {

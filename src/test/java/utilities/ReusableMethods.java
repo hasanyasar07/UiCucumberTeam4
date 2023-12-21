@@ -108,6 +108,18 @@ public class ReusableMethods {
         return new String(passwordArray);
     }
 
+    // istenilen Url e gitme
+    public  static void navigateToTheRequestedUrl(String url){
+        Driver.getDriver().get(ConfigReader.getProperty(url));
+    }
+
+    // belirtilen aralıkta random değer üretme
+    public static String generateRandomValue(int min,int max){
+        Random random = new Random();
+        int randomNumber = random.nextInt((max - min) + 1) + min;
+        return String.valueOf(randomNumber);
+    }
+
     //========Switching Window=====//
     public static void switchToWindow(String targetTitle) {
         String origin = Driver.getDriver().getWindowHandle();
