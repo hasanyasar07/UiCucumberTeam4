@@ -1,15 +1,20 @@
 package pages;
 
-import io.cucumber.java.zh_cn.假如;
+import org.openqa.selenium.WebElement;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.util.List;
+import java.util.Set;
 
 public class GuestPages {
     public GuestPages(){
@@ -55,6 +60,16 @@ public class GuestPages {
         }
     }
 
+    public void socialMedyaIkonlariDogrulama(WebElement gidilecekSayfa,WebElement dogrularama){
+        ReusableMethods.wait(1);
+        String Loantech= Driver.getDriver().getWindowHandle();
+        gidilecekSayfa.click();
+        Driver.getDriver().switchTo().window(ReusableMethods.getNewWindowHandle());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(dogrularama.isDisplayed());
+        Driver.getDriver().switchTo().window(Loantech);
+    }
+
     @FindBy(xpath = "//a[text()='Allow']")
     public WebElement cookieKabul;
 
@@ -87,11 +102,106 @@ public class GuestPages {
     public  WebElement nemLetterMailNotification;
 
 
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[1]")
+    public WebElement facebookIkon;
+    @FindBy(xpath = "//*[@id='email']")
+    public WebElement facebookDogrulama;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[2]")
+    public WebElement xIkon;
+
+    @FindBy(xpath = "(//*[@class='css-1qaijid r-bcqeeo r-qvutc0 r-poiln3'])[2]")
+    public WebElement xDogrulama;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[3]")
+    public WebElement instagramIkon;
+
+    @FindBy(xpath = "//*[@class='_ab1y']")
+    public WebElement instagramDogrulama;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[4]")
+    public WebElement youtubeIkon;
+
+    @FindBy(id = "search-input")
+    public WebElement youtubeDogrulama;
+
+    @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[5]")
+    public WebElement linkedinIkon;
+
+    @FindBy(xpath = "(//input[@class='text-color-text font-sans text-md outline-0 bg-color-transparent grow'])[1]")
+    public WebElement linkedinDogrulama;
+
 
     // ********** Home Body **********
+@FindBy(xpath = "//div[@class='section--sm']")
+    public WebElement companyLogosSlider;
+
+@FindBy(xpath = "//img[@class='img-fluid mx-auto']")
+    public  WebElement companyLogosName;
+
+    @FindBy(xpath = "//a[@href='user/register']")
+    public WebElement getStartedButton;
+
+    @FindBy(xpath = "//form[@method='POST']")
+    public WebElement formElement;
+
+    @FindBy(xpath = "//input[@name='username']")
+    public WebElement usernameTextBox;
+
+    @FindBy(xpath = "//input[@name='email' and @type='text']")
+    public WebElement emailTextBox;
+
+    @FindBy(xpath = "//div[@class='nice-select']")
+    public WebElement countryDropDownList;
+
+    @FindAll(@FindBy(xpath = "//li[@class='option']"))
+    public List<WebElement> countriesList;
+
+    @FindBy(xpath = "//input[@name='mobile']")
+    public WebElement mobilTextBox;
+
+    @FindBy(id = "password")
+    public WebElement passwordTextBox;
+
+    @FindBy(xpath = "//input[@name='password_confirmation']")
+    public WebElement passwordConfirmationTextBox;
+
+    @FindBy(xpath = "(//*[@class='auth-form__input-icon auth-form__toggle-pass'])[1]")
+    public WebElement passwordVisible;
+
+    @FindBy(xpath = "(//*[@class='auth-form__input-icon auth-form__toggle-pass'])[1]")
+    public WebElement passwordConfirmationVisible;
 
 
+    @FindBy(id = "agree")
+    public WebElement agreeCheckBox;
 
+    @FindBy(id = "recaptcha")
+    public WebElement registerButton;
+
+    @FindBy(xpath = "//input[@name='firstname']")
+    public WebElement firstname;
+
+    @FindBy(xpath = "//input[@name='lastname']")
+    public WebElement lastname;
+
+    @FindBy(xpath = "//input[@name='address']")
+    public WebElement address;
+
+    @FindBy(xpath = "//input[@name='state']")
+    public WebElement state;
+
+    @FindBy(xpath = "//input[@name='zip']")
+    public WebElement zip;
+
+    @FindBy(xpath = "//input[@name='city']")
+    public WebElement city;
+
+    @FindBy(xpath = "(//button[@type='submit'])[1]")
+    public WebElement submitButton;
+
+    @FindBy(xpath = "//div[@class='iziToast-body']")
+    public WebElement registerAlertText;
 
     // **********  About Body **********
 
@@ -108,21 +218,45 @@ public class GuestPages {
     public WebElement aboutBodyAboutIkonu;
 
 
+
+
     // ********** Plans Body **********
 
+    @FindBy(xpath = "//a[@class='nav-link active']")
+    public WebElement plansButton;
 
+    @FindBy(xpath = "//*[@id='pills-standart-loan-tab']")
+    public WebElement standartLoanButton;
 
+    @FindBy(xpath = "//*[@id='pills-car-loan-tab']")
+    public WebElement carLoanButton;
 
+    @FindBy(xpath = "//*[@id='pills-basic-loan-tab']")
+    public WebElement basicLoanButton;
 
-    // **********  Blogs Body **********
+    @FindBy(xpath = "//h4[text()='Basic Loan 1']")
+    public WebElement basicLoan1Button;
 
+    @FindBy(xpath = "//h4[text()='Car Loan 9']")
+    public WebElement carLoan9Button;
+    @FindBy(xpath = "//h4[text()='Test Loan']")
+    public WebElement testLoanButton;
 
+    @FindBy(xpath = "//*[@data-planname='Basic Loan 1']")
+    public WebElement basicLoan1ApplyNowButton;
 
+    @FindBy(xpath = "//*[@id='exampleModalLabel']")
+    public WebElement applyForBasicLoan1Sayfasi;
 
+    @FindBy(xpath = "//*[@name='amount']")
+    public WebElement amountBox;
 
-    // ********** Contact Body  **********
+    @FindBy(xpath = "//*[@class='btn btn--base w-100']")
+    public WebElement amountBoxConfirmButton;
 
-    @FindBy(xpath = "(//*[@class='nav-link '])[3]")
+    @FindBy(xpath = "//h5[text()='Application Form']")
+    public WebElement applicationFormYazisi;
+
     public WebElement anasayfaContactButon;
 
     @FindBy(xpath = "//*[@class='hero__content-title text-capitalize t-text-white']")
@@ -160,5 +294,11 @@ public class GuestPages {
 
     @FindBy(xpath = "//*[@class='container-fluid p-0']")
     public WebElement ContactUsHarita;
+
+    @FindBy(xpath = "//*[@class=' t-link breadcrumbs__link text-uppercase t-text-white t-link--primary ']")
+    public WebElement contactUsContactUsLink;
+
+    @FindBy(xpath = "//*[@class='t-link breadcrumbs__link text-uppercase t-text-white t-link--primary']")
+    public WebElement contactUsHomeLink;
 
 }
