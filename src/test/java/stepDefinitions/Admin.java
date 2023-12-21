@@ -4,28 +4,19 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-<<<<<<< HEAD
 import pages.AdminPages;
-=======
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import pages.AdminPages;
 import utilities.ConfigReader;
->>>>>>> main
 import utilities.Driver;
 import utilities.ReusableMethods;
-
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.List;
-import utilities.ReusableMethods;
-
 import java.awt.*;
 
 
@@ -467,8 +458,6 @@ import java.awt.*;
         // ********** US_046  **********
 
 
-<<<<<<< HEAD
-
     // ********** US_051  **********
 
 
@@ -645,7 +634,7 @@ import java.awt.*;
 
 
 }
-=======
+
         // ********** US_047  **********
 
 
@@ -705,11 +694,6 @@ import java.awt.*;
             ReusableMethods.wait(2);
             Assert.assertTrue(adminPages.unbannedSuccessfullyYaziElementi.isDisplayed());
             ReusableMethods.wait(2);
-
-
-
-
-
 
         }
 
@@ -898,4 +882,3 @@ import java.awt.*;
 
 
     }
->>>>>>> main
