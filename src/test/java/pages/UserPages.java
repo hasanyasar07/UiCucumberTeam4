@@ -148,7 +148,7 @@ public class UserPages {
     @FindBy(xpath = "//*[text()='These credentials do not match our records']")
     public WebElement notMatchOurRecords;
 
-    @FindBy(xpath = "//*[text()='Verify Email']")
+    @FindBy(xpath = "//*[@class='hero__content-title text-capitalize t-text-white']")
     public WebElement verifyEmail;
 
     @FindBy(xpath = "//*[@class='auth-form__input']")
