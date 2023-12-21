@@ -31,13 +31,13 @@ public class User {
 
     @Given("kullanici verilen {string} gider")
     public void kullanici_verilen_gider(String url) {
-<<<<<<< HEAD
-        userPages.istenilenUrlGitme(url);
-=======
+
+        
+
        userPages.istenilenUrlGitme(url);
 
        ReusableMethods.wait(2);
->>>>>>> main
+
     }
 
     @Given("kullanici verilen {string} ve {string} bilgileri ile userpage de login olur")
@@ -101,8 +101,7 @@ public class User {
         Assert.assertTrue(userPages.registerNowForm.isDisplayed());
     }
 
-<<<<<<< HEAD
-=======
+
 
     @Then("forgot password linkinin gorunur oldugunu dogrular ve linke tiklar")
     public void forgot_password_linkinin_gorunur_oldugunu_dogrular_ve_linke_tiklar() {
@@ -137,9 +136,6 @@ public class User {
         Assert.assertTrue(userPages.forgotPasswordTryToSendAgain.isDisplayed());
     }
 
-
-    // ********** US_014  **********
->>>>>>> main
 
     // ********** US_014  **********
     @Given("kullanici verilen url e gittikten sonra login login butonuna tiklar.")
@@ -548,9 +544,6 @@ public class User {
     }
 
 
-<<<<<<< HEAD
-        // ********** US_019  **********
-=======
     // ********** US_019  **********
     @Given("kullanici acilan dashboard sayfasinda Transactions linkinin gorundugunu test eder")
     public void kullanici_acilan_dashboard_sayfasinda_transactions_linkinin_gorundugunu_test_eder() {
@@ -592,8 +585,6 @@ public class User {
     }
 
 
->>>>>>> main
-
 
         // ********** US_020  **********
 
@@ -604,12 +595,8 @@ public class User {
         // ********** US_022  **********
 
 
-<<<<<<< HEAD
-        // ********** US_023  **********
+      
 
-
-        // ********** US_024  **********
-=======
     @Given("kullaniciya verilen {string} ve {string} bilgileri ile user sayfasinda login olur")
     public void kullaniciya_verilen_ve_bilgileri_ile_user_sayfasinda_login_olur(String username, String password) {
       //  userPages.userLoginMethod(username,password);
@@ -744,14 +731,10 @@ public class User {
     // ********** US_024  **********
     @Then("dashboard sayfasinda successful deposits successful withdrawals total Loan baslıkları gorunur oldugunu test eder")
     public void dashboardSayfasindaSuccessfulDepositsSuccessfulWithdrawalsTotalLoanBasliklariGorunurOldugunuTestEder() {
->>>>>>> main
 
         ReusableMethods.wait(1);
         Assert.assertTrue(userPages.successfulDepositYaziElementi.isDisplayed());
 
-<<<<<<< HEAD
-    }
-=======
         ReusableMethods.wait(1);
         Assert.assertTrue(userPages.successfulWithdrawalsYaziElementi.isDisplayed());
 
@@ -790,4 +773,4 @@ public class User {
 
     }
 }
->>>>>>> main
+

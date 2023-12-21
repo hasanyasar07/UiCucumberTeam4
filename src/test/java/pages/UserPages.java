@@ -148,7 +148,6 @@ public class UserPages {
     @FindBy(xpath = "//*[@id='VGhlc2UlMjBjcmVkZW50aWFscyUyMGRvJTIwbm90JTIwbWF0Y2glMjBvdXIlMjByZWNvcmRzLnJlZA']")
     public WebElement yanlisGirisUyariElementi;
 
-
     @FindBy(xpath = "//a[@class='btn btn--base btn--xl w-100 policy']")
     public WebElement alow;
 
@@ -189,6 +188,7 @@ public class UserPages {
 
     @FindBy(xpath = "//button[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text']")
     public WebElement loginButton2;
+
 
     @FindBy(xpath = "//*[@class='btn btn--base btn--xl w-100 policy']")
     public WebElement dashboardCookieKabul;
