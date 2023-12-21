@@ -155,7 +155,7 @@ public class UserPages {
     @FindBy(xpath = "//*[text()='These credentials do not match our records']")
     public WebElement notMatchOurRecords;
 
-    @FindBy(xpath = "//*[text()='Verify Email']")
+    @FindBy(xpath = "//*[@class='hero__content-title text-capitalize t-text-white']")
     public WebElement verifyEmail;
 
     @FindBy(xpath = "//*[@class='auth-form__input']")
@@ -259,6 +259,9 @@ public class UserPages {
 
     @FindBy(xpath = "(//*[text()='Rejected'])[1]")
     public WebElement myLoanRejectedYaziElementi;
+
+    @FindBy(xpath = "//*[text()='Loan application submitted successfully']")
+    public WebElement loansubmittedSuccessfullyMesaji;
 
 
 

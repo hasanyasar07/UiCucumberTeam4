@@ -42,7 +42,7 @@ Feature:Bir yonetici (admin)  tum kullanıcılara bildirim gonderebilmeli
     Given admin manage users linkine tiklar
     Then admin notification to all linkine tiklar
     When Notification sayfasinda "Selected Users" secer
-    Then Userlardan "velobi3310@arsus.com" secilir
+    Then Userlardan "velobi3310@arensus.com" secilir
     Then baslik "important" yazar
     When mesaj "onemli duyuru" yazar
     Given per batch alanina 3 degeri girer
@@ -61,6 +61,8 @@ Feature:Bir yonetici (admin)  tum kullanıcılara bildirim gonderebilmeli
     Then cooling period alanina 2 degeri girer
     Then notification sayfasinda submit butonuna basar
     When basarili bir sekilde mesajini gonderdigini dogrular ve kutuyu kapatir
+    Then kullanici verilen "tempMailUrl" gider
+    When gonderilen mailin basligin "important" oldugunu dogrular
     And admin sayfayi kapatir
 
   Scenario: TC_08 Admin sayfada doldurulmasi gereken alanlari bos biraktiginda hata mesaji alir
@@ -70,5 +72,6 @@ Feature:Bir yonetici (admin)  tum kullanıcılara bildirim gonderebilmeli
     Then Userlardan "velobi3310@arensus.com" secilir
     When notification sayfasinda submit butonuna basar
     And baslik kisminda doldurulmasi gereken bosluklar doldurulmadiginda uyari yazisi cikar
+    And sayfayi kapatir
 
 

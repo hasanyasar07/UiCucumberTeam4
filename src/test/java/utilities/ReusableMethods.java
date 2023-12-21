@@ -24,7 +24,7 @@ public class ReusableMethods {
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location
-        String target = System.getProperty("user.dir") + "/raporlar/Screenshots/" + name + date + ".png";
+        String target = "C:\\Users\\41768\\Desktop\\UiCucumberTeam4\\src\\test\\java\\picture\\"+name + date + ".png";
 
         File finalDestination = new File(target);
         // save the screenshot to the path given

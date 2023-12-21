@@ -2,7 +2,7 @@ Feature: Bir ziyaretci olarak şirkete ait sosyal medya hesaplarına kolay eriş
   Background:
     * kullanici verilen "guestUrl" gider
 
-    Scenario: kullanici acilan sayfada footer kismina iner ve bulunan youtube ve facebook sosyal medya ikonlarinin gorunur ve aktif oldugunu dogrular
+    Scenario: kullanici acilan sayfada footer kismina iner ve bulunan youtube facebook ve x sosyal medya ikonlarinin gorunur ve aktif oldugunu dogrular
 
       Given kullanici anasayfada footer kismina iner
       Then youtube facebook ve x ikonlarinin gorunurlugunu dogrular
