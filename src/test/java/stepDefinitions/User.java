@@ -318,6 +318,8 @@ public class User {
         ReusableMethods.wait(1);
         userPages.applyButton.click();
         ReusableMethods.wait(3);
+        Assert.assertTrue(userPages.loansubmittedSuccessfullyMesaji.isDisplayed());
+
     }
     // ********** US_024  **********
     @Then("dashboard sayfasinda successful deposits successful withdrawals total Loan baslıkları gorunur oldugunu test eder")

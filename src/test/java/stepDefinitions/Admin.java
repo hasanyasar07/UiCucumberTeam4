@@ -330,6 +330,10 @@ import java.awt.*;
             ReusableMethods.wait(2);
             adminPages.passwordSubmitButton.click();
             ReusableMethods.wait(2);
+            Assert.assertTrue(adminPages.passwordSuccessfullYaziElementi.isDisplayed());
+            ReusableMethods.wait(2);
+
+
         }
 
         @Then("Logout linkine tıklayarak sayfadan basaralı bir sekilde ayrıldıgı dogrulanabilmeli")
@@ -515,6 +519,15 @@ import java.awt.*;
             adminPages.unbanUserYesButonu.isDisplayed();
             ReusableMethods.wait(1);
             adminPages.unbanUserYesButonu.click();
+            ReusableMethods.wait(2);
+            Assert.assertTrue(adminPages.unbannedSuccessfullyYaziElementi.isDisplayed());
+            ReusableMethods.wait(2);
+
+
+
+
+
+
         }
 
         @Then("active users sayfasinda search box'a  kullanıcıyı aratip ve detail bilgilerine erisebildigini test eder")

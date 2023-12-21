@@ -67,6 +67,9 @@ public class AdminPages {
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement profilSubmitButon;
 
+    @FindBy(xpath = "//*[text()='Password changed successfully.']")
+    public WebElement passwordSuccessfullYaziElementi;
+
 
     @FindBy(xpath = "//*[text()='Change Password']")
     public WebElement changePasswordYaziElementi;
@@ -143,7 +146,8 @@ public class AdminPages {
     public WebElement unbanUserButonu;
     @FindBy(xpath = "//*[@class='btn btn--primary']")
     public WebElement unbanUserYesButonu;
-
+@FindBy(xpath = "//*[text()='User unbanned successfully']")
+public WebElement unbannedSuccessfullyYaziElementi;
 
 
 

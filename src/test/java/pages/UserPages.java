@@ -260,6 +260,9 @@ public class UserPages {
     @FindBy(xpath = "(//*[text()='Rejected'])[1]")
     public WebElement myLoanRejectedYaziElementi;
 
+    @FindBy(xpath = "//*[text()='Loan application submitted successfully']")
+    public WebElement loansubmittedSuccessfullyMesaji;
+
 
 
 
