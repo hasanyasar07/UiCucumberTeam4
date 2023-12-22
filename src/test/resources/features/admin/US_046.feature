@@ -23,7 +23,7 @@ Feature: As an administrator, I want to have a page where I can manage the withd
      * Add New Button must be visible and active
      * Add New Button is clicked
      * The withdrawal method name currency rate min max amount Range Charge Withdraw Instruction User Data information to be added must be determined.
-     * Click on the Submit button
+     * Click on the Submit buttonn
      * The browser closes
 
 

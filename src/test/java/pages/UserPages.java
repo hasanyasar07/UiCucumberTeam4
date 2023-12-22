@@ -6,9 +6,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.util.List;
 
 public class UserPages {
     public UserPages(){
@@ -38,9 +41,87 @@ public class UserPages {
         passwordBox.clear();
     }
 
+    public void transactionSearchBoxAktiflikTesti(){
+        ReusableMethods.wait(1);
+        transactionNumberSearchBox.sendKeys("123");
+        searchBoxSearchIkonu.click();
+        ReusableMethods.wait(1);
+        transactionNumberSearchBox.clear();
+        searchBoxSearchIkonu.click();
+    }
+
+    public void typeDropDownAktiflik(){
+        Select select=new Select(typeDropDown);
+        select.selectByVisibleText("All");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("All"));
+        ReusableMethods.wait(1);
+        select.selectByVisibleText("Plus");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Plus"));
+        ReusableMethods.wait(1);
+        select.selectByVisibleText("Minus");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Minus"));
+        ReusableMethods.wait(1);
+    }
+
+    public void remarkDropDownAktiflik(){
+        Select select=new Select(remarkDropDown);
+        select.selectByVisibleText("Any");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Any"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Application fee");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Application fee"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Balance add");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Balance add"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Balance subtract");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Balance subtract"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Deposit");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Deposit"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Loan installment");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Loan installment"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Loan taken");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Loan taken"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Withdraw");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Withdraw"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Withdraw reject");
+        Assert.assertTrue(select.getFirstSelectedOption().getText().contains("Withdraw reject"));
+        ReusableMethods.wait(1);
+
+        select.selectByVisibleText("Any");
+    }
+
+    public void transactionsIcerikGoruntuleme(){
+        Assert.assertTrue(transactionsTitle.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(transactionsAmount.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(transactionsCharge.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(transactionsPostBalance.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(transactionsDetails.isDisplayed());
+    }
+
     public void istenilenUrlGitme(String url){
         Driver.getDriver().get(ConfigReader.getProperty(url));
     }
+
+
+
 
     // ********** Login  **********
     @FindBy(xpath = "//*[@class='auth-form__content section']")
@@ -67,30 +148,379 @@ public class UserPages {
     @FindBy(xpath = "//*[@id='VGhlc2UlMjBjcmVkZW50aWFscyUyMGRvJTIwbm90JTIwbWF0Y2glMjBvdXIlMjByZWNvcmRzLnJlZA']")
     public WebElement yanlisGirisUyariElementi;
 
+    @FindBy(xpath = "//a[@class='btn btn--base btn--xl w-100 policy']")
+    public WebElement alow;
+
+
+    @FindBy(xpath = "//*[text()='Login']")
+    public WebElement loginButtonGorme;
+  
+    @FindBy(xpath = "//*[text()='These credentials do not match our records']")
+    public WebElement notMatchOurRecords;
+
+    @FindBy(xpath = "//*[@class='hero__content-title text-capitalize t-text-white']")
+    public WebElement verifyEmail;
+
+    @FindBy(xpath = "//*[@class='auth-form__input']")
+    public WebElement forgotPasswordUsernameBox;
+
+    @FindBy(xpath = "//*[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text mt-3']")
+    public WebElement forgotPasswordSubmitBox;
+
+    @FindBy(xpath = "//*[text()='Password reset email sent successfully']")
+    public WebElement passwordResetSucces;
+
+    @FindBy(xpath = "//*[text()='Try to send again']")
+    public WebElement forgotPasswordTryToSendAgain;
+
+    @FindBy(xpath = "//a[text()='Allow']")
+    public WebElement allowCokies;
+
+
+
     // ********** Dashboard **********
     @FindBy(xpath = "//*[@class='btn btn--success btn--smd']")
     public WebElement yesilDepositButon;
 
 
+    @FindBy(xpath = "//a[@class='active']")
+    public WebElement dashboardButton;
+
+    @FindBy(xpath = "//button[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text']")
+    public WebElement loginButton2;
+
+
+    @FindBy(xpath = "//*[@class='btn btn--base btn--xl w-100 policy']")
+    public WebElement dashboardCookieKabul;
+
+
+
+
+
     // ********** Take Loan **********
+    @FindBy(xpath = "//a[text()='Take Loan            ']")
+    public WebElement takeLoanSidebarLink;
+
+    @FindBy(xpath = "//h3[text()='Loan Plans']")
+    public WebElement loanPlansTitle;
+
+    @FindBy(xpath = "//button[@id='pills-car-loan-2-tab']")
+    public WebElement carLoan2Button;
+
+    @FindBy(xpath = "//*[text()='Personal Finance Loan']")
+    public WebElement personelFinanceLoanTitle;
+
+    @FindBy(xpath ="//*[text()='$2,000.00']" )
+    public  WebElement takeMinumumAmount;
+
+    @FindBy(xpath ="//*[text()='$5,000.00']" )
+    public  WebElement  takeMaximumAmount;
+
+    @FindBy(xpath ="//*[text()='4%']" )
+    public  WebElement perInstallmentAmount;
+
+    @FindBy(xpath ="(//span[@class='plan-feature-list-amount'])[2]" )
+    public  WebElement installmentIntervalAmount;
+
+    @FindBy(xpath ="(//span[@class='plan-feature-list-amount'])[3]" )
+    public  WebElement totalInstallmentAmount;
+
+    @FindBy(xpath ="//button[@data-id='52']" )
+    public  WebElement applyButtonCarLoan2;
+
+    @FindBy(xpath = "//h5//span[text()='Personal Finance Loan']")
+    public WebElement applyForPersonelLoanTitle;
+
+    @FindBy(xpath = "//input[@type='number']")
+    public WebElement enterAnAmounTextBox;
+
+    @FindBy(xpath = "//*[text()='Confirm']")
+    public WebElement confirmApplyForPersonalFinanceLoan;
+
+    @FindBy(xpath = " //button[@type='submit']")
+    public WebElement applicationFormApplyButton;
+
+    @FindBy(xpath = "//div[@class='iziToast-body']")
+    public WebElement applyForPersonelFinanceLoanAlertText;
+
+    @FindBy(xpath = "//button[@id='pills-basic-loan-tab']")
+    public WebElement basicLoanLinkElement;
+
+    @FindBy(xpath = "//h4[text()='Basic Loan 1']")
+    public WebElement basicLoan1LinkElement;
+
+    @FindBy(xpath = "//button[@data-planname='Basic Loan 1']")
+    public WebElement basicLoan1ApplyNowButton;
+
+    @FindBy(xpath = "(//span[@class='value'])[1]")
+    public WebElement planNameText;
+
+    @FindBy(xpath = "(//span[@class='value'])[2]")
+    public WebElement loanAmountText;
+
+    @FindBy(xpath = "(//span[@class='value'])[3]")
+    public WebElement totalInstallmentText;
+
+    @FindBy(xpath = "(//span[@class='value'])[4]")
+    public WebElement perInstallmenText;
+
+    @FindBy(xpath = "(//span[@class='value'])[5]")
+    public WebElement youWillNeedToPayText;
+
+    @FindBy(xpath = "//h4[text()='Car Loan 9']")
+    public WebElement carLoan9Title;
+
+    @FindBy(xpath = "//button[@data-planname='Car Loan 9']")
+    public WebElement carLoan9ApplyNowButton;
+
+    @FindBy(xpath = "//h4[text()='Test Loan']")
+    public WebElement testLoanTitle;
+
+    @FindBy(xpath = "//button[@data-planname='Test Loan']")
+    public WebElement testLoanApplyNowButton;
 
 
 
     // ********** My Loans **********
+    @FindBy(xpath = "(//h6[@title='Loan Plan'])[1]")
+    public WebElement myloansList1;
+
+    @FindBy(xpath = "//input[@id='search']")
+    public WebElement searchByLoanNumberTextBox;
+
+    @FindBy(xpath = "//select[@name='status']")
+    public WebElement loanStatusDropDownmenu;
+
+    @FindBy(xpath = "(//*[text()='Running'])[1]")
+    public WebElement runningListLabel;
+
+    @FindBy(xpath = "(//a[@class='btn btn--outline-primary btn--sm '])[1]")
+    public WebElement installmentButton;
+
+    @FindBy(xpath = "//h3[text()='Loan Installments']")
+    public WebElement loanInstallmentsTitle;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[1]")
+    public WebElement loanNumbervalue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[2]")
+    public WebElement planValue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[3]")
+    public WebElement loanAmountValue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[4]")
+    public WebElement perInstantValue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[5]")
+    public WebElement needsToPayValue;
+
+    @FindBy(xpath = "(//*[@class='top-0 fw-light me-1'])[7]")
+    public WebElement delayChargeValue;
+
+    @FindBy(xpath = "(//th)[1]")
+    public WebElement snListHeader;
+
+    @FindBy(xpath = "(//th)[2]")
+    public WebElement installmentDateListHeader;
+
+    @FindBy(xpath = "(//th)[3]")
+    public WebElement givenOnListHeader;
+
+    @FindBy(xpath = "(//th)[4]")
+    public WebElement delayListHeader;
+
+    @FindBy(xpath = "(//td)[1]")
+    public WebElement snListValue;
+
+    @FindBy(xpath = "(//td)[2]")
+    public WebElement installmentDateListValue;
+
+    @FindBy(xpath = "(//td)[3]")
+    public WebElement givenOnListValue;
+
+    @FindBy(xpath = "(//td)[4]")
+    public WebElement delayListValue;
+
+    @FindBy(xpath = "//*[text()='Plans']")
+    public WebElement plansButton;
+
+    @FindBy(xpath = "//*[@id='pills-standart-loan-tab']")
+    public WebElement standartYaziElementi;
+
+    @FindBy(xpath = "//*[@id='pills-car-loan-tab']")
+    public WebElement carLoanButton;
+
+    @FindBy(xpath = "//*[@id='pills-basic-loan-tab']")
+    public WebElement basicLoanButton;
+
+    @FindBy(xpath = "//h4[text()='Basic Loan 1']")
+    public WebElement basicLoan1Button;
+
+    @FindBy(xpath = "//h4[text()='Car Loan 9']")
+    public WebElement carLoan9Button;
+    @FindBy(xpath = "//h4[text()='Test Loan']")
+    public WebElement testLoanButton;
+
+    @FindBy(xpath = "//*[@data-planname='Basic Loan 1']")
+    public WebElement applyNowButton;
+
+    @FindBy(xpath = "//div[@class='cookies-card__btn mt-4']")
+    public WebElement cookieButonu;
+@FindBy(xpath = "(//*[@class='plan-feature-list-title'])[47]")
+public WebElement appYaziElement;
+
+@FindBy(xpath = "//*[@class='las la-check-circle']")
+public WebElement appButon;
+    @FindBy(xpath = "//*[@id='exampleModalLabel']")
+    public WebElement applyForBasicLoan1Sayfasi;
+
+    @FindBy(xpath = "//*[@name='amount']")
+    public WebElement amountBox;
+
+    @FindBy(xpath = "//*[@class='btn btn--base w-100']")
+    public WebElement amountBoxConfirmButton;
+
+    @FindBy(xpath = "//h5[text()='Application Form']")
+    public WebElement applicationFormYazisi;
+
+    @FindBy(xpath = "//*[text()='Bugra Test Loan']")
+    public WebElement applyButton;
+
+    @FindBy(xpath = "//div[@class='d-flex justify-content-between']")
+    public WebElement myLoansSayfasi;
+
+    @FindBy(xpath = "//*[@class='logo']")
+    public WebElement LoanTechLogo;
+
+    @FindBy(xpath = "//*[text()='Loan Plans']")
+    public WebElement loanPlansYaziElementi;
+
+    @FindBy(xpath = "//*[text()='Deposit Pending']")
+    public WebElement depositPendingYaziElementi;
+    @FindBy(xpath = "//*[text()='Successful Deposits']")
+    public WebElement successfulDepositYaziElementi;
+
+    @FindBy(xpath = "//*[text()='Successful Withdrawals']")
+    public WebElement successfulWithdrawalsYaziElementi;
+
+    @FindBy(xpath = "//*[text()='Total Loan']")
+    public WebElement totalLoanYaziElementi;
+
+    @FindBy(xpath = "(//*[text()='Submitted'])[1]")
+    public WebElement myLoanSubmittedYaziElementi;
+
+    @FindBy(xpath = "(//*[text()='Pending'])[1]")
+    public WebElement myLoanPendingYaziElementi;
+
+    @FindBy(xpath = "//tr/th")
+    public List<WebElement> loanNumber;
+
+    @FindBy(xpath = "(//*[text()='Rejected'])[1]")
+    public WebElement myLoanRejectedYaziElementi;
+
+    @FindBy(xpath = "//*[text()='Loan application submitted successfully']")
+    public WebElement loansubmittedSuccessfullyMesaji;
+
 
 
 
     // ********** Deposit **********
+    @FindBy(xpath = "//a[@class='btn btn--success btn--smd']")
+    public WebElement depositButton;
+
+    @FindBy(xpath = "//select[@class='form--control form-select']")
+    public WebElement selectGateway;
+
+    @FindBy(xpath = "//input[@name='amount']")
+    public WebElement AmountBox;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement depositSubmitButton;
+
+    @FindBy(xpath = "(//p[@class='text-muted font-size--14px'])[1]")
+    public WebElement depositTransactionNo;
 
 
 
     // ********** Withdraw **********
+    @FindBy (xpath = "/html/body/div[3]/div/div[1]/ul/li[5]/a")
+    public WebElement withdrawButton;
 
+    @FindBy (xpath = "//div[@class='row justify-content-center']")
+    public WebElement  withdrawMoneyPages;
 
+    @FindBy (xpath = "//select[@class='form-select form--control']")
+    public WebElement withdrawMethodBox;
+
+    @FindBy (xpath = "//input[@type='number']")
+    public WebElement withdrawAmountBox;
+
+    @FindBy (xpath = "//button[@class='btn btn--base w-100 mt-3']")
+    public WebElement withdrawSubmit;
+
+    @FindBy (xpath = "//a[@class='btn btn--base btn--smd']")
+    public WebElement withdrawLogButton;
+
+    @FindBy (xpath = "//div[@class='dashboard-inner']")
+    public WebElement withdrawHistoryPage;
+
+    @FindBy (xpath = "//button[@class='accordion-button collapsed']")
+    public WebElement withdrawParaCekme;
+
+    @FindBy (xpath = "//div[@class='accordion-body']")
+    public WebElement  withdrawParaCekmeIslem;
+
+    @FindBy (xpath = "//a[@class='btn btn--base btn--smd']")
+    public WebElement  withdrawMoney;
+    @FindBy(xpath = "//div[@class='row justify-content-center']")
+    public WebElement withdrawMoneyPage;
+
+    @FindBy (xpath = "//input[@type='text']")
+    public WebElement withdrawVia;
+
+    @FindBy (xpath = "//div[@class='form-group']")
+    public WebElement withdrawSubmitButton2;
+
+    @FindBy(xpath = "//p[@class='iziToast-message slideIn']")
+    public WebElement withdrawSuccesfully;
 
     // ********** Transactions **********
 
+    @FindBy(xpath = "//*[text()='Transactions']")
+    public WebElement userDahboardTransactionsButon;
 
+    @FindBy(xpath = "//h3[text()='My Transactions History']")
+    public WebElement myTransactionsHistoryYazisi;
+
+    @FindBy(xpath = "//*[@id='search']")
+    public WebElement transactionNumberSearchBox;
+    @FindBy(xpath = "//*[@class='icon-area']")
+    public WebElement searchBoxSearchIkonu;
+
+    @FindBy(xpath = "//*[@id='trx_type']")
+    public WebElement typeDropDown;
+
+    @FindBy(xpath = "//*[@id='remark']")
+    public WebElement remarkDropDown;
+
+    @FindBy(xpath = "(//*[@class='accordion-button collapsed'])[1]")
+    public WebElement yapilanTransactions;
+
+    @FindBy(xpath = "(//*[@class='trans-title'])[1]")
+    public WebElement transactionsTitle;
+
+    @FindBy(xpath = "(//*[@class='col-lg-4 col-sm-3 col-4 order-sm-3 order-2 text-end amount-wrapper'])[1]")
+    public WebElement transactionsAmount;
+
+    @FindBy(xpath = "(//*[@class='value'])[1]")
+    public WebElement transactionsCharge;
+
+    @FindBy(xpath = "(//*[@class='value'])[2]")
+    public WebElement transactionsPostBalance;
+
+    @FindBy(xpath = "(//*[@class='value'])[3]")
+    public WebElement transactionsDetails;
 
     // ********** Support Ticket **********
 
@@ -101,7 +531,53 @@ public class UserPages {
 
 
     // ********** Profile **********
+    @FindBy (xpath = "//a[@href='https://qa.loantechexper.com/user/profile-setting']")
+    public WebElement profileButton;
 
+    @FindBy (xpath = "//div[@class='row gy-4 justify-content-center']")
+    public WebElement profileInformation;
+
+    @FindBy (xpath = "//ul[@class='list-group list-group-flush mt-3']")
+    public WebElement profileCard;
+
+    @FindBy (xpath = "//input[@id='imageUpload']")
+    public WebElement profileSettingImage;
+
+    @FindBy (xpath = "//button[@type='submit']")
+    public WebElement profileSubmitButton;
+
+    @FindBy (xpath = "//p[@class='iziToast-message slideIn']")
+    public WebElement profileUpdatedSuccsessfulyText;
+
+    @FindBy(xpath = "//input[@id='state']")
+    public WebElement profileSettingStateBox;
+
+    @FindBy(xpath = "//input[@id='firstname']")
+    public WebElement profileSettingFirstNameBox;
+
+    @FindBy(xpath = "//input[@id='lastname']")
+    public WebElement profileSettingLastNameBox;
+
+    @FindBy(xpath = "//input[@id='city']")
+    public WebElement profileSettingCityBox;
+
+    @FindBy(xpath = "//input[@id='address']")
+    public WebElement profileSettingAdressBox;
+
+    @FindBy(xpath = "//input[@id='zip']")
+    public WebElement profileSettingZipCodeBox;
+
+    @FindBy(xpath = "//button[@class='btn btn--base mt-3 w-100']")
+    public WebElement profileSettingSubmit;
+
+    @FindBy(xpath = "//div[@class='iziToast-texts']")
+    public WebElement profileUpdatedSuccsessfulyText02;
+
+    @FindBy(xpath = "//input[@accept='.png, .jpg, .jpeg']")
+    public WebElement imageChooseFileButton;
+
+    @FindBy(xpath = "//div[@class='card-body p-3']")
+    public WebElement profileSettingCard;
 
 
     // ********** Change Password **********
@@ -109,11 +585,10 @@ public class UserPages {
 
 
     // ********** Logout **********
+    @FindBy(xpath = "//*[text()='Logout']")
+    public WebElement logoutButton;
 
-
-
-
-
-
+    @FindBy(xpath = "//div[@class='iziToast-body']")
+    public WebElement alertYazisi;
 
 }
