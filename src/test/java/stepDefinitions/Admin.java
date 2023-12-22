@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -712,6 +713,149 @@ import java.awt.*;
         public void initiatedDepositsLinkineTiklar() {
             adminPages.InitiatedDepositsLink.click();
         }
+
+        // ********** US_056  **********
+
+
+        // ********** US_057  **********
+
+
+        // ********** US_058  **********
+
+
+        // ********** US_059  **********
+
+        @Given("The user goes to the given {string} and login in to the adminpage with the given {string} and {string} information")
+        public void the_user_goes_to_the_given_and_login_in_to_the_adminpage_with_the_given_and_information(String url, String username, String password) {
+            ReusableMethods.navigateToTheRequestedUrl(url);
+            adminPages.adminLoginMethod(username,password);
+        }
+        @Given("In the admin panel, it is confirmed that the Pending Withdrawals page under the title of the Menu on the Side bar is confirmed")
+        public void ın_the_admin_panel_it_is_confirmed_that_the_pending_withdrawals_page_under_the_title_of_the_menu_on_the_side_bar_is_confirmed() {
+            adminPages.withdrawalsSidebarLink.click();
+            adminPages.pendingWithdrawalsSidebarLink.click();
+            Assert.assertTrue(adminPages.pendingWithdrawalsTitle.isDisplayed());
+        }
+        @Given("On the page, the Pending Withdrawals list should be displayed, the list is confirmed that Gateway, Initiated, User , Amount , Conversion , Status, Action and the information below is confirmed")
+        public void on_the_page_the_pending_withdrawals_list_should_be_displayed_the_list_is_confirmed_that_gateway_ınitiated_user_amount_conversion_status_action_and_the_information_below_is_confirmed() {
+            Assert.assertTrue(adminPages.gatewayHeader.isDisplayed());
+            Assert.assertTrue(adminPages.initiatedHeader.isDisplayed());
+            Assert.assertTrue(adminPages.userHeader.isDisplayed());
+            Assert.assertTrue(adminPages.amountHeader.isDisplayed());
+            Assert.assertTrue(adminPages.conversionHeader.isDisplayed());
+            Assert.assertTrue(adminPages.statusHeader.isDisplayed());
+            Assert.assertTrue(adminPages.actionHeader.isDisplayed());
+            Assert.assertTrue(adminPages.gatewayData.isDisplayed());
+            Assert.assertTrue(adminPages.initiatedData.isDisplayed());
+            Assert.assertTrue(adminPages.userData.isDisplayed());
+            Assert.assertTrue(adminPages.amountData.isDisplayed());
+            Assert.assertTrue(adminPages.conversionData.isDisplayed());
+            Assert.assertTrue(adminPages.statusData.isDisplayed());
+            Assert.assertTrue(adminPages.actionData.isDisplayed());
+        }
+        @Given("In order to reach and reject reject the selected payment process selected from the list, click the Details button under the Action title and the User Withdraw Information title is displayed")
+        public void ın_order_to_reach_and_reject_reject_the_selected_payment_process_selected_from_the_list_click_the_details_button_under_the_action_title_and_the_user_withdraw_ınformation_title_is_displayed() {
+            adminPages.actionData.click();
+            Assert.assertTrue(adminPages.userWithdrawInformationTitle.isDisplayed());
+
+        }
+        @Given("For the payment process on the Details page, clicking the Approve button is opened in the window that opens Textbox a random, a sentence is entered and clicked on the submit button and confirmed that  the Withdrowal approved successfully alert appears")
+        public void for_the_payment_process_on_the_details_page_clicking_the_approve_button_is_opened_in_the_window_that_opens_textbox_a_random_a_sentence_is_entered_and_clicked_on_the_submit_button_and_confirmed_that_the_withdrowal_approved_successfully_alert_appears() {
+            adminPages.approveWithdrowButton.click();
+            Faker faker=new Faker();
+            adminPages.withdrowalApproveOrRejectTextBox.sendKeys(faker.lorem().sentence(5));
+            adminPages.withdrowalApproveOrRejectSubmit.click();
+            ReusableMethods.wait(2);
+            Assert.assertTrue(adminPages.successfullyApproveWithdrawalConfirmation.getText().contains("Withdrawal approved successfully"));
+
+
+
+
+        }
+        @Given("It is confirmed that on the Pending withdrwals table, it can be searched with Username Transaction No and Start Date  End Date information")
+        public void ıt_is_confirmed_that_on_the_pending_withdrwals_table_it_can_be_searched_with_username_transaction_no_and_start_date_end_date_information() {
+
+            adminPages.searchTransaction.click();
+            adminPages.searchTransaction.sendKeys(adminPages.transactionNo.getText());
+            adminPages.searchTransactionButton.click();
+            ReusableMethods.wait(3);
+            adminPages.searchTransaction.clear();
+            adminPages.searchTransactionButton.click();
+            ReusableMethods.wait(3);
+            adminPages.searchStartDataEndData.click();
+            adminPages.searchStartDataEndData.sendKeys("12/01/2023 - 12/20/2023");
+            adminPages.searchStartDataEndDataButton.click();
+            ReusableMethods.wait(3);
+            adminPages.searchStartDataEndData.clear();
+            adminPages.searchStartDataEndDataButton.click();
+
+        }
+
+
+        // ********** US_060  **********
+
+
+
+        @Given("On the admin panel, it is confirmed that the Approved withdrawals page can be accessed under the title of the Menu on the Side Bar")
+        public void on_the_admin_panel_it_is_confirmed_that_the_approved_withdrawals_page_can_be_accessed_under_the_title_of_the_menu_on_the_side_bar() {
+            adminPages.withdrawalsSidebarLink.click();
+            adminPages.approvedWithdrawalsSideBarLink.click();
+            Assert.assertTrue(adminPages.approveWithdrawalsTitle.isDisplayed());
+
+        }
+        @Given("On the page, Approved withdrawals list should be displayed, the list Gateway, Initiated, User , Amount , Conversion ,Status, Action headlines and below information is confirmed to be visible")
+        public void on_the_page_approved_withdrawals_list_should_be_displayed_the_list_gateway_ınitiated_user_amount_conversion_status_action_headlines_and_below_information_is_confirmed_to_be_visible() {
+            Assert.assertTrue(adminPages.gatewayHeader.isDisplayed());
+            Assert.assertTrue(adminPages.initiatedHeader.isDisplayed());
+            Assert.assertTrue(adminPages.userHeader.isDisplayed());
+            Assert.assertTrue(adminPages.amountHeader.isDisplayed());
+            Assert.assertTrue(adminPages.conversionHeader.isDisplayed());
+            Assert.assertTrue(adminPages.statusHeader.isDisplayed());
+            Assert.assertTrue(adminPages.actionHeader.isDisplayed());
+            Assert.assertTrue(adminPages.gatewayData.isDisplayed());
+            Assert.assertTrue(adminPages.initiatedData.isDisplayed());
+            Assert.assertTrue(adminPages.userData.isDisplayed());
+            Assert.assertTrue(adminPages.amountData.isDisplayed());
+            Assert.assertTrue(adminPages.conversionData.isDisplayed());
+            Assert.assertTrue(adminPages.statusData.isDisplayed());
+            Assert.assertTrue(adminPages.actionData.isDisplayed());
+        }
+
+        @Given("In order to reach the details of the accepted payment process selected from the list, it is confirmed that the Details page is accessible under the Action title")
+        public void ın_order_to_reach_the_details_of_the_accepted_payment_process_selected_from_the_list_it_is_confirmed_that_the_details_page_is_accessible_under_the_action_title() {
+            adminPages.actionData.click();
+            Assert.assertTrue(adminPages.userWithdrawInformationTitle.isDisplayed());
+            Driver.getDriver().navigate().back();
+
+        }
+
+        // ********** US_061  **********
+        @Given("In the admin panel, it is confirmed that the Rejected Withdrawals page can be accessed under the title of the Menu on the Side Bar")
+        public void ın_the_admin_panel_it_is_confirmed_that_the_rejected_withdrawals_page_can_be_accessed_under_the_title_of_the_menu_on_the_side_bar() {
+            adminPages.withdrawalsSidebarLink.click();
+            adminPages.rejectedWithdrawalsSideBarLink.click();
+            Assert.assertTrue(adminPages.rejectedWithdrawalsTitle.isDisplayed());
+        }
+        @Given("On the page, the list of Rejected Withdrawals should be displayed, the list Gateway, Initiated, User , Amount , Conversion , Status, Action headlines and below information is confirmed that the information below is visible")
+        public void on_the_page_the_list_of_rejected_withdrawals_should_be_displayed_the_list_gateway_ınitiated_user_amount_conversion_status_action_headlines_and_below_information_is_confirmed_that_the_information_below_is_visible() {
+            Assert.assertTrue(adminPages.gatewayHeader.isDisplayed());
+            Assert.assertTrue(adminPages.initiatedHeader.isDisplayed());
+            Assert.assertTrue(adminPages.userHeader.isDisplayed());
+            Assert.assertTrue(adminPages.amountHeader.isDisplayed());
+            Assert.assertTrue(adminPages.conversionHeader.isDisplayed());
+            Assert.assertTrue(adminPages.statusHeader.isDisplayed());
+            Assert.assertTrue(adminPages.actionHeader.isDisplayed());
+            Assert.assertTrue(adminPages.gatewayData.isDisplayed());
+            Assert.assertTrue(adminPages.initiatedData.isDisplayed());
+            Assert.assertTrue(adminPages.userData.isDisplayed());
+            Assert.assertTrue(adminPages.amountData.isDisplayed());
+            Assert.assertTrue(adminPages.conversionData.isDisplayed());
+            Assert.assertTrue(adminPages.statusData.isDisplayed());
+            Assert.assertTrue(adminPages.actionData.isDisplayed());
+        }
+
+
+
 
 
     }
