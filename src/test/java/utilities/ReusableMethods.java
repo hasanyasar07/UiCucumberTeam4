@@ -427,6 +427,8 @@ public class ReusableMethods {
         wait(1);
     }
 
-    }
+    public static String getNewWindowHandle() {
+        return null;
+}
 
 
