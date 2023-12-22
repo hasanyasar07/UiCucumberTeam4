@@ -1,6 +1,7 @@
 package pages;
 
 import com.fasterxml.jackson.core.JsonParser;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class AdminPages {
     public JsonParser firstrowElement;
+
 
     public AdminPages(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -168,6 +170,8 @@ public WebElement unbannedSuccessfullyYaziElementi;
 
 
 
+
+
     @FindBy(xpath = "(//*[@class='menu-title'])[2]")
     public WebElement manageUsersLink;
     @FindBy(xpath = "(//*[@class='menu-title'])[11]")//Manage Users >>Notification To All
@@ -197,8 +201,49 @@ public WebElement unbannedSuccessfullyYaziElementi;
     @FindBy(xpath = "//button[@class='btn btn--danger']")
     public WebElement succesfullyDoneCloseButton;
 
+
+    @FindBy(xpath = "(//span[@class='menu-title'])[3]")
+    public WebElement activeUsersLink;
+
+    @FindBy(xpath = "//h6[@class='page-title'])")
+    public WebElement UserDetailUserNameText;
+
+    @FindBy(xpath = "(//*[@class='las la-desktop'])[1]")
+    public WebElement ActiveUserDetailButton;
+
+    @FindBy(xpath = "(//a[@class='widget-two__btn btn btn-outline--primary'])[1]")
+    public WebElement BalanceviewAllButton;
+
+    @FindBy(xpath = "//h6[@class='page-title']")
+    public WebElement TransactionLogsText;
+
+    @FindBy(xpath ="//table[@class='table table--light style--two']")
+    public WebElement TransactionLogsTable;
+
+    @FindBy(xpath = "//button[@class='btn btn--primary w-100 h-45']")
+    public WebElement ViewAllFilterButton;
+
+    @FindBy(xpath = "//button[@class='btn btn--success btn--shadow w-100 btn-lg bal-btn']")
+    public WebElement AddBalanceButton;
+
+
+    @FindBy(xpath = "(//*[@class='required'])[4]")
+    public WebElement AmountButton;
+
+    @FindBy(xpath = "//*[@class='required'][5]")
+    public WebElement RemarkButton;
+
+    @FindBy(xpath ="//button['submit'][8]")
+    public WebElement AmountSubmitButton;
+
+    @FindBy(xpath = "//div[@class='iziToast-wrapper iziToast-wrapper-topRight']")
+    public WebElement AddSuccesfullyButton;
+
+
+
     @FindBy(xpath = "//*[text()='Please fill out this field.']")
     public WebElement warningText;
+
 
     // ********** Categories **********
 
@@ -259,13 +304,81 @@ public WebElement unbannedSuccessfullyYaziElementi;
     public WebElement RejectedDepositsLink;
     @FindBy(xpath = "(//span[@class='menu-title'])[29]")
     public WebElement InitiatedDepositsLink;
+    @FindBy(xpath = "(//span[@class='menu-title'])[25]")
+    public WebElement PendingDepositsLink;
+
+    @FindBy(xpath = "//button[@class='btn btn-outline--success btn-sm ms-1 confirmationBtn']")
+    public WebElement PendingDepositApproveButton;
+
+    @FindBy(xpath = "//button[@class='btn btn-outline--danger btn-sm ms-1 rejectBtn']")
+    public WebElement PendingDepositRejectionButton;
+
+    @FindBy(xpath = "//button[@class='btn btn--primary']")
+    public WebElement PendingDepositYesButton;
+
+    @FindBy(xpath = "//*[text()='Deposit request approved successfully']")
+    public WebElement PendingAlertText;
+
+    @FindBy(xpath = "//*[@class='form-control']")
+    public WebElement PendingAlertRejectBox;
+
+    @FindBy(xpath = "//button[@type='submit'][1]")
+    public WebElement PendingAlertSubmitButton;
+
+    @FindBy(xpath = "(//tr[1])[2]")
+    public WebElement PendingDepositsFirstRow;
+
+    @FindBy(xpath = "(//span[@class='menu-title'])[30]")
+    public WebElement AllDepositsLink;
+
+    @FindBy(xpath = "//input[@class='form-control bg--white']")
+    public WebElement SearchBox;
+
+    @FindBy(xpath = "(//input[@type='search'])[3]")
+    public WebElement StartEndDateBox;
+
+    @FindBy(xpath = "//a[@class='item-link'][1]")
+    public WebElement SuccessfullDepositBox;
+
+    @FindBy(xpath = "//a[@class='item-link'][2]")
+    public WebElement PendingDepositBox;
+
+    @FindBy(xpath = "//a[@class='item-link'][3]")
+    public WebElement RejectedDepositBox;
+
+    @FindBy(xpath = "//a[@class='item-link'][4]")
+    public WebElement InitiatedDepositBox;
+
+
+
 
 
 
 
     // **********  Withdrawals **********
+
+    @FindBy(xpath = "(//span[@class='menu-title'])[31]")
+    public WebElement Withdrawalslink;
+
+    @FindBy(xpath = "(//span[@class='menu-title'])[32]")
+    public WebElement WithdrawalMethodsLink;
+
+    @FindBy(xpath = "(//span[@class='menu-title'])[33]")
+    public WebElement PendingWithdrawalsLink;
+
+    @FindBy(xpath = "(//span[@class='menu-title'])[34]")
+    public WebElement ApprovedWithdrawalsLink;
+
+    @FindBy(xpath = "(//span[@class='menu-title'])[35]")
+    public WebElement RejectedWithdrawalLink;
+
+    @FindBy(xpath = "(//span[@class='menu-title'])[36]")
+    public WebElement AllWithdrawalLink;
+
+
     @FindBy(xpath = "//span[text()='Withdrawals ']")
     public WebElement withdrawalsSidebarLink;
+
 
     @FindBy(xpath = "//span[text()='Pending Withdrawals']")
     public WebElement pendingWithdrawalsSidebarLink;
