@@ -10,9 +10,7 @@ import org.junit.runner.RunWith;
         features = {"src/test/resources/features/admin","src/test/resources/features/guest","src/test/resources/features/user"},
         glue ="stepDefinitions",
 
-        tags ="@ra",
-
-        tags ="@us_061",
+       tags ="@us_061",
 
         dryRun = true
 
