@@ -4,6 +4,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
+import java.awt.*;
+import java.awt.Point;
+import java.awt.event.InputEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -13,6 +16,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
+
+import static utilities.Driver.getDriver;
 
 public class ReusableMethods {
     private static int timeout = 5;
@@ -388,4 +393,40 @@ public class ReusableMethods {
     public static void waitAndClickLocationText(WebElement element, String value) {
         Driver.getDriver().findElement(By.xpath("//*[text()='" + value + "']")).click();
     }
-}
+    public static void usersTableList(String string){
+
+        List<WebElement> elements = getDriver().findElements(By.xpath("//td[@data-label='"+string+"']"));
+
+        //td[@data-label='+ User +']
+        // List to hold user information
+        List<String> users = new ArrayList<>();
+
+        // Iterate over elements and extract user information
+        for (WebElement each : elements) {
+            // Assuming the user's name or relevant text is directly inside the <td> tag
+            users.add(each.getText());
+            System.out.println(users);
+        }
+
+
+    }
+    public static void coordidanateFind() {
+        wait(5);
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        int x = (int) point.getX();
+        int y = (int) point.getY();
+        System.out.println("Mouse coordinates: " + x + ", " + y);
+    }
+    public static void coordinateClick(int x,int y) throws AWTException {
+        Point point = new Point(x,y);
+        Robot robot = new Robot();
+        robot.mouseMove(point.x, point.y); // Farenin konumunu ayarla
+        wait(1);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK); // Sol tıklama yap
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); // Sol tıklama bırak
+        wait(1);
+    }
+
+    }
+
+

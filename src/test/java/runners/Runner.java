@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
         plugin = {"html:target/cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",
                 "junit:target/xml-report/cucumber.xml"},
-        features ="src/test/resources/features",
-        glue = "stepDefinitions",
-        tags ="@us_38",
+        features = {"src/test/resources/features/admin","src/test/resources/features/guest","src/test/resources/features/user"},
+        glue ="stepDefinitions",
+        tags ="@us_35",
         dryRun = true
 )
 public class Runner {
@@ -29,3 +29,13 @@ public class Runner {
         dryRun = false secilmelidir
      */
 }
+
+
+
+
+
+
+
+
+
+
