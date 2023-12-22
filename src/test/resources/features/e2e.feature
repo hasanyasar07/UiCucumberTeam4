@@ -1,3 +1,4 @@
+
 Feature:
   @a
   Scenario: Take a deposit.
@@ -11,10 +12,8 @@ Feature:
     * Click the pay now button;
     * Closes the page
 
-    * Launch browser
     * Navigate to "adminUrl"
     * the user logs in to the admin page with the given "hilalciftciUsername" and "adminPassword" information
-    * Verify that Admin homepage is visible successfully
     * Click Manage Users link on the DashboardPage
     * Clicks on Active Users link.
     * Click on the Details button

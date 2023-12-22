@@ -446,7 +446,12 @@ public class ReusableMethods {
     }
 
     public static String generatePassword() {
+
         return null;
+    }
+
+    public static void scrollToBottom(WebDriver driver) {
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
     }
 }
 

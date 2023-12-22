@@ -437,6 +437,17 @@ public WebElement appButon;
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement depositPayNowButton;
 
+    @FindBy(xpath = "//a[@class='btn btn--success btn--smd']")
+    public WebElement depositButton;
+
+    @FindBy(xpath = "//select[@class='form--control form-select']")
+    public WebElement selectGateway;
+
+    @FindBy(xpath = "//input[@name='amount']")
+    public WebElement AmountBox;
+
+    @FindBy(xpath = "(//p[@class='text-muted font-size--14px'])[1]")
+    public WebElement depositTransactionNo;
 
 
 
