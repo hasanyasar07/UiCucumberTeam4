@@ -264,6 +264,102 @@ public WebElement unbannedSuccessfullyYaziElementi;
 
 
     // **********  Withdrawals **********
+    @FindBy(xpath = "//span[text()='Withdrawals ']")
+    public WebElement withdrawalsSidebarLink;
+
+    @FindBy(xpath = "//span[text()='Pending Withdrawals']")
+    public WebElement pendingWithdrawalsSidebarLink;
+
+    @FindBy(xpath = "//h6[text()='Pending Withdrawals']")
+    public WebElement pendingWithdrawalsTitle;
+
+    @FindBy(xpath = "(//th)[1]")
+    public WebElement gatewayHeader;
+
+    @FindBy(xpath = "(//th)[2]")
+    public WebElement initiatedHeader;
+
+    @FindBy(xpath = "(//th)[3]")
+    public WebElement userHeader;
+
+    @FindBy(xpath = "(//th)[4]")
+    public WebElement amountHeader;
+
+    @FindBy(xpath = "(//th)[5]")
+    public WebElement conversionHeader;
+
+    @FindBy(xpath = "(//th)[6]")
+    public WebElement statusHeader;
+
+    @FindBy(xpath = "(//th)[7]")
+    public WebElement actionHeader;
+
+    @FindBy(xpath = "(//td)[1]")
+    public WebElement gatewayData;
+
+    @FindBy(xpath = "(//td)[2]")
+    public WebElement initiatedData;
+
+    @FindBy(xpath = "(//td)[3]")
+    public WebElement userData;
+
+    @FindBy(xpath = "(//td)[4]")
+    public WebElement amountData;
+
+    @FindBy(xpath = "(//td)[5]")
+    public WebElement conversionData;
+
+    @FindBy(xpath = "(//td)[6]")
+    public WebElement statusData;
+
+    @FindBy(xpath = "(//td)[7]")
+    public WebElement actionData;
+
+    @FindBy(xpath = "//*[text()='User Withdraw Information']")
+    public  WebElement userWithdrawInformationTitle;
+
+    @FindBy(xpath = "//*[@class='btn btn-outline--success ms-1 approveBtn']")
+    public WebElement approveWithdrowButton;
+
+    @FindBy(xpath = "//*[@class='btn btn-outline--danger ms-1 rejectBtn']")
+    public WebElement rejectWithdrowButton;
+
+    @FindBy(xpath = "(//textarea[@name='details'])[1]")
+    public WebElement withdrowalApproveOrRejectTextBox;
+
+    @FindBy(xpath = "(//button[@type='submit'])[1]")
+    public  WebElement withdrowalApproveOrRejectSubmit;
+
+    @FindBy(xpath = "//div[@class='iziToast-body']")
+    public WebElement successfullyApproveWithdrawalConfirmation;
+
+    @FindBy(xpath = "(//small)[1]")
+    public WebElement transactionNo;
+
+    @FindBy(xpath = "(//input[@type='search'])[2]")
+    public WebElement searchTransaction;
+
+    @FindBy(xpath = "(//input[@type='search'])[3]")
+    public WebElement searchStartDataEndData;
+
+    @FindBy(xpath = "//button[@class='btn btn--primary']")
+    public WebElement searchTransactionButton;
+
+    @FindBy(xpath = "//button[@class='btn btn--primary input-group-text']")
+    public WebElement searchStartDataEndDataButton;
+
+    @FindBy(xpath = "//span[text()='Approved Withdrawals']")
+    public WebElement approvedWithdrawalsSideBarLink;
+
+    @FindBy(xpath = "//h6[text()='Approved Withdrawals']")
+    public WebElement approveWithdrawalsTitle;
+
+    @FindBy(xpath = "//span[text()='Rejected Withdrawals']")
+    public WebElement rejectedWithdrawalsSideBarLink;
+
+    @FindBy(xpath = "//h6[text()='Rejected Withdrawals']")
+    public WebElement rejectedWithdrawalsTitle;
+
     @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[1]/ul/li[8]/a/span[1]")
     public WebElement withdrawalsButton;
 
@@ -304,6 +400,7 @@ public WebElement unbannedSuccessfullyYaziElementi;
 
     @FindBy(xpath =  "//input[@type='number']")
     public WebElement newWithdrawalMethodRate;
+
 
     @FindBy(xpath =  "//input[@step='any']")
     public WebElement newWithdrawalMethodMinimumAmount;
