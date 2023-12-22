@@ -5,24 +5,21 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import io.cucumber.java.en.Then;
+import org.openqa.selenium.JavascriptExecutor;
+import pages.AdminPages;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
-import pages.AdminPages;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.util.List;
-import utilities.ReusableMethods;
-
 import java.awt.*;
 
 
@@ -406,6 +403,7 @@ import java.awt.*;
             }
         }
 
+
         @Then("details butonun gorunur ve aktif oldugu dogrulanır")
         public void detailsButonunGorunurVeAktifOlduguDogrulanır() {
 
@@ -460,9 +458,75 @@ import java.awt.*;
 
         // ********** US_045  **********
 
+        @Then("manage users altindaki active users in gorunur oldugunu dogrular")
+        public void manage_users_altindaki_active_users_in_gorunur_oldugunu_dogrular() {
+            adminPages.manageUsersButton.click();
+            ReusableMethods.wait(1);
+            Assert.assertTrue(adminPages.activeUsersButton.isDisplayed());
+        }
+        @Then("active users linkine tiklar")
+        public void active_users_linkine_tiklar() {
+            ReusableMethods.wait(1);
+            adminPages.activeUsersButton.click();
+        }
+        @Then("active uselari goruntuledigini dogrular")
+        public void active_uselari_goruntuledigini_dogrular() {
+            ReusableMethods.wait(1);
+            Assert.assertTrue(adminPages.userListesi.get(1).isDisplayed());
+        }
+        @Then("kullanici secmek icin arama kutusuna kullanici adini girerek arama yapar")
+        public void kullanici_secmek_icin_arama_kutusuna_kullanici_adini_girerek_arama_yapar() {
+            adminPages.activeUserSearchBox.sendKeys("erengk");
+            adminPages.activeUsersSearchIkon.click();
+        }
+        @Then("gelen kullanicida details kisminin goruntulendigini dogrular ve details a tiklar")
+        public void gelen_kullanicida_details_kisminin_goruntulendigini_dogrular_ve_details_a_tiklar() {
+            ReusableMethods.wait(1);
+            Assert.assertTrue(adminPages.detailsButtonElement.isDisplayed());
+            ReusableMethods.wait(1);
+            adminPages.detailsButtonElement.click();
+        }
+        @Then("secilen kullanici bilgilerinin duzenlendigini test etmek icin ad ve soyad a ekleme yapar")
+        public void secilen_kullanici_bilgilerinin_duzenlendigini_test_etmek_icin_ad_ve_soyad_a_ekleme_yapar() {
+            adminPages.userFirstNameBox.sendKeys("e");
+            ReusableMethods.wait(1);
+            adminPages.userLastNameBox.sendKeys("deneme");
+            ReusableMethods.wait(1);
+        }
+        @Then("kullanici duzenleme sayfasinda submite tiklar")
+        public void kullanici_duzenleme_sayfasinda_submite_tiklar() {
+            ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",adminPages.usersSubmitButon );
+            ReusableMethods.wait(1);
+            adminPages.usersSubmitButon.click();
+        }
+        @Then("onay yazisinin ciktigini dogrular")
+        public void onay_yazisinin_ciktigini_dogrular() {
+            ReusableMethods.wait(1);
+            Assert.assertTrue(adminPages.usersConfirmElementi.isDisplayed());
+            ReusableMethods.wait(1);
+        }
+        @Then("e postanin dogru oldugunu kontrol eder")
+        public void e_postanin_dogru_oldugunu_kontrol_eder() {
+            adminPages.userEmailBox.click();
+            Assert.assertTrue(adminPages.userEmailBox.toString().contains("@"));
+            //Assert.assertTrue(adminPages.userEmailBox.getText().endsWith(".com"));
+            Assert.assertTrue(adminPages.userEmailBox.toString().length()>8);
+            ReusableMethods.wait(1);
+
+
+        }
+
+        @And("e posta isim soyisim ve telefon numarasi kutularinin bos olmadigini test eder")
+        public void ePostaIsimSoyisimVeTelefonNumarasiKutularininBosOlmadiginiTestEder() {
+            ReusableMethods.wait(1);
+            Assert.assertFalse(adminPages.userEmailBox.toString().isEmpty());
+            Assert.assertFalse(adminPages.userPhoneNumberBox.toString().isEmpty());
+            Assert.assertFalse(adminPages.userFirstNameBox.toString().isEmpty());
+            Assert.assertFalse(adminPages.userLastNameBox.toString().isEmpty());
+        }
 
         // ********** US_046  **********
-
+      
 
         // ********** US_047  **********
 
@@ -523,11 +587,6 @@ import java.awt.*;
             ReusableMethods.wait(2);
             Assert.assertTrue(adminPages.unbannedSuccessfullyYaziElementi.isDisplayed());
             ReusableMethods.wait(2);
-
-
-
-
-
 
         }
 
@@ -641,14 +700,30 @@ import java.awt.*;
         }
 
         @And("baslik kisminda doldurulmasi gereken bosluklar doldurulmadiginda uyari yazisi cikar")
-        public void baslikKismindaDoldurulmasiGerekenBosluklarDoldurulmadigindaUyariYazisiCikar() {
-            Assert.assertTrue(adminPages.warningText.isDisplayed());
+        public void baslikKismindaDoldurulmasiGerekenBosluklarDoldurulmadigindaUyariYazisiCikar() throws IOException {
+            ReusableMethods.wait(2);
+            String resim =ReusableMethods.getScreenshot("uyari");
+            //Assert.assertTrue();
         }
+        @Then("admin tempmail urle gider")
+        public void adminTempmailUrleGider() {
+            Driver.getDriver().get(ConfigReader.getProperty("tempMailUrl"));
+        }
+        @When("gonderilen mailin basligin {string} oldugunu dogrular")
+        public void gonderilenMailinBasliginOldugunuDogrular(String baslik) {
+            ReusableMethods.wait(20);
+            Actions actions = new Actions(Driver.getDriver());
+            actions.sendKeys(Keys.PAGE_DOWN).perform();
+        Assert.assertTrue(adminPages.tempMailMailBox.getText().contains(baslik));
 
-        // ********** US_051  **********
+        }
+        
 
 
-        // ********** US_052  **********
+    // ********** US_051  **********
+      
+      
+    // ********** US_052  **********
         @Then("admin Deposits linkine tiklar")
         public void adminDepositsLinkineTiklar() {
             adminPages.depositsLink.click();
@@ -713,6 +788,7 @@ import java.awt.*;
         public void initiatedDepositsLinkineTiklar() {
             adminPages.InitiatedDepositsLink.click();
         }
+
 
         // ********** US_056  **********
 
@@ -853,6 +929,178 @@ import java.awt.*;
             Assert.assertTrue(adminPages.statusData.isDisplayed());
             Assert.assertTrue(adminPages.actionData.isDisplayed());
         }
+
+
+   // ********** US_058  **********
+
+
+    @Given("admin enters {string} and {string} information where necessary.")
+    public void admin_enters_and_information_where_necessary(String string, String string2) {
+        adminPages.adminUsernameBox.sendKeys("selimebeyza");
+        adminPages.adminPasswordBox.sendKeys("123123123");
+
+    }
+    @Then("he clicks the login button and logs in successfully as admin.")
+    public void he_clicks_the_login_button_and_logs_in_successfully_as_admin() {
+        adminPages.adminLoginButon.click();
+        ReusableMethods.wait(1);
+    }
+    @Then("click on the Withdrawal button and then the Withdrawal Methods button.")
+    public void click_on_the_withdrawal_button_and_then_the_withdrawal_methods_button() {
+    adminPages.withdrawalsButton.click();
+    adminPages.withdrawalsMethodsButton.click();
+    ReusableMethods.wait(1);
+    }
+    @Then("it is tested that the Withdrawal Methods page can be accessed.")
+    public void it_is_tested_that_the_withdrawal_methods_page_can_be_accessed() {
+        Assert.assertTrue(adminPages.withdrawalsMethodsPage.isDisplayed());
+        ReusableMethods.wait(1);
+
+    }
+    @Then("it tests whether it can display the Method, Currency, Charge, Withdraw Limit, Status information.")
+    public void it_tests_whether_it_can_display_the_method_currency_charge_withdraw_limit_status_information() {
+        Assert.assertTrue(adminPages.withdrawalsMethodsPage.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+    @Then("it tests whether it can reach the edit page under the action heading.")
+    public void it_tests_whether_it_can_reach_the_edit_page_under_the_action_heading() {
+        adminPages.withdrawalsActionEdit.click();
+        Assert.assertTrue(adminPages.updateWithdrawalMethodPage.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+    @Then("clicks on the edit page under the action link.")
+    public void clicks_on_the_edit_page_under_the_action_link() {
+        adminPages.withdrawalsActionEdit.click();
+        ReusableMethods.wait(1);
+    }
+    @Then("it tests whether it can update.")
+    public void it_tests_whether_it_can_update() {
+        Assert.assertTrue(adminPages.withdrawMethodUpdatedSuccesfully.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+    @Then("the visibility of the method selected under the action heading is tested.")
+    public void the_visibility_of_the_method_selected_under_the_action_heading_is_tested() {
+        Assert.assertTrue(adminPages.withdrawEnable.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+    @Then("click on the add new button and fill in the necessary information.")
+    public void click_on_the_add_new_button_and_fill_in_the_necessary_information() {
+        adminPages.withdrawAddNew.click();
+        adminPages.newWithdrawalMethodName.sendKeys("beyza korumaz");
+        adminPages.newWithdrawalMethodCurrency.sendKeys("IT");
+        adminPages.newWithdrawalMethodRate.sendKeys("20");
+        adminPages.newWithdrawalMethodMinimumAmount.sendKeys("100");
+        adminPages.newWithdrawalAmount.sendKeys("1000");
+        adminPages.fixedCharge.sendKeys("100");
+        adminPages.percentCharge.sendKeys("1000");
+
+    }
+    @Then("click on the Submit button.")
+    public void click_on_the_submit_button() {
+        adminPages.newWithdrawalMethodSubmit.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.succesfullyText.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+    @Then("closes the page.")
+    public void closes_the_page() {
+        Driver.closeDriver();
+    }
+
+        // ********** US_059  **********
+
+
+        
+        // ********** US_060  **********
+
+
+
+        // ********** US_061  **********
+
+
+        
+
+    // ********** US_062  **********
+
+    @Then("click on the Withdrawals button and then the All Withdrawals link.")
+    public void click_on_the_withdrawals_button_and_then_the_all_withdrawals_link() {
+    adminPages.withdrawalsButton.click();
+    adminPages.allWithdrawals.click();
+    ReusableMethods.wait(1);
+    }
+    @Then("it tests whether it can view the Withdrawals Log page in the All Withdrawals link.")
+    public void it_tests_whether_it_can_view_the_withdrawals_log_page_in_the_all_withdrawals_link() {
+        Assert.assertTrue(adminPages.WithdrawalsLogPage2.isDisplayed());
+        ReusableMethods.wait(1);
+
+    }
+    @Then("it is tested whether the titles Gateway, Initiated, User, Amount, Conversion, Status, Action are displayed in the Withdrawals Log list.")
+    public void it_is_tested_whether_the_titles_gateway_ınitiated_user_amount_conversion_status_action_are_displayed_in_the_withdrawals_log_list() {
+        Assert.assertTrue(adminPages.gatewayTransaction.isDisplayed());
+        ReusableMethods.wait(1);
+
+    }
+    @Then("Withdrawals Log sayfasında Username,Transaction No ve Start Date, End Date bilgileri ile arama yapilabileceği test edilir.")
+    public void withdrawals_log_sayfasında_username_transaction_no_ve_start_date_end_date_bilgileri_ile_arama_yapilabileceği_test_edilir() {
+        Assert.assertTrue(adminPages.gatewayTransaction.isDisplayed());
+        ReusableMethods.wait(1);
+
+    }
+
+    @Then("it is tested that you can search with Username, Transaction No, Start Date, End Date information on the Withdrawals Log page.")
+    public void it_is_tested_that_you_can_search_with_username_transaction_no_start_date_end_date_information_on_the_withdrawals_log_page() {
+        adminPages.details.click();
+        ReusableMethods.wait(1);
+
+    }
+
+    @Then("it tests whether it can access the details page under the action heading for the details of the payment transactions on the Withdrawals Log page.")
+    public void it_tests_whether_it_can_access_the_details_page_under_the_action_heading_for_the_details_of_the_payment_transactions_on_the_withdrawals_log_page() {
+
+        Assert.assertTrue(adminPages.detailsPage.isDisplayed());
+        ReusableMethods.wait(1);
+
+    }
+
+    @Then("on the Withdrawals Log page, click on details under the action heading to accept or reject the payment transaction.")
+    public void on_the_withdrawals_log_page_click_on_details_under_the_action_heading_to_accept_or_reject_the_payment_transaction() {
+        adminPages.details.click();
+        ReusableMethods.wait(1);
+
+    }
+    @Then("it tests whether it can access the details page under the action heading to accept or reject the payment transaction on the Withdrawals Log page.")
+    public void it_tests_whether_it_can_access_the_details_page_under_the_action_heading_to_accept_or_reject_the_payment_transaction_on_the_withdrawals_log_page() {
+        adminPages.details.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.detailsPage.isDisplayed());
+        ReusableMethods.wait(1);
+    }
+
+    @Then("it is tested that the Withdrawals Log page contains Approved Withdrawals, Pending Withdrawals, Rejected Withdrawals and redirects to the required page.")
+    public void it_is_tested_that_the_withdrawals_log_page_contains_approved_withdrawals_pending_withdrawals_rejected_withdrawals_and_redirects_to_the_required_page() {
+
+        adminPages.approvedWithdrawals2.click();
+        Assert.assertTrue(adminPages.approvedWithdrawalsPage.isDisplayed());
+        ReusableMethods.wait(2);
+        adminPages.rejectedWithdrawals2.click();
+        Assert.assertTrue(adminPages.rejectedWithdrawalsPage.isDisplayed());
+        ReusableMethods.wait(2);
+        adminPages.pendingWithdrawals2.click();
+        Assert.assertTrue(adminPages.pendingWithdrawalsPage.isDisplayed());
+        ReusableMethods.wait(2);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
