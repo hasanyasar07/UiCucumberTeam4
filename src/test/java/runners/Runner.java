@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
                 "junit:target/xml-report/cucumber.xml"},
         features = {"C:\\Users\\Dell\\IdeaProject\\UiCucumberTeam4\\src\\test\\resources\\features"},
         glue = "stepdefinitions",
-        tags ="@tst",
+        tags ="@c",
         dryRun =true
 
 )

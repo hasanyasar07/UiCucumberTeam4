@@ -2,6 +2,7 @@ package pages;
 
 import io.cucumber.java.zh_cn.假如;
 import org.apache.commons.compress.archivers.zip.X000A_NTFS;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
@@ -14,6 +15,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.security.PublicKey;
+import java.util.List;
 import java.util.Set;
 
 public class GuestPages {
@@ -84,8 +86,28 @@ public class GuestPages {
     @FindBy(xpath = "(//a[@class='nav-link '])[1]")
     public WebElement plansHeaderButon;
 
+    @FindBy(xpath = "(//*[@*='btn btn--md btn--base fw-bold w-100'])[2]")
+    public WebElement loginButonHomePage;
+    @FindBy(xpath = "(//p[@*='label mb-0 fw-bold text-uppercase t-text-white'])[1]")
+    public WebElement emailHomePageHeader;
+    @FindBy(xpath = "(//p[@*='label mb-0 fw-bold text-uppercase t-text-white'])[2]")
+    public WebElement addressHomePageHeader;
+    @FindBy(xpath = "(//p[@*='label mb-0 fw-bold text-uppercase t-text-white'])[3]")
+    public WebElement phoneHomePageHeader;
 
+    @FindBy(xpath = "//*[@*='nav-link active']")
+    public WebElement HomeButtonHomePageHeader;
+    @FindBy(xpath = "//*[@*=' nav-link']")
+    public WebElement AboutButtonHomePageHeader;
+    @FindBy(xpath = "(//li[@class='nav-item'])[3]")
+    public WebElement PlansButtonHomePageHeader;
+    @FindBy(xpath = "(//a[@class='nav-link '])[2]")
+    public WebElement  BlogsButtonHomePageHeader;
+    @FindBy(xpath = "(//a[@class='nav-link '])[3]")
+    public WebElement ContactButtonHomePageHeader;
 
+    @FindBy(xpath = "//img[@*='viserhyip']")
+    public  WebElement LoantechIkonHomePage;
     // ********** Footer **********
     @FindBy(xpath = "(//*[@class='t-link t-link--primary t-text-white text-capitalize'])[2]")
     public WebElement footerAboutButon;
@@ -129,14 +151,38 @@ public class GuestPages {
 
 
     // ********** Home Body **********
-@FindBy(xpath = "//div[@class='section--sm']")
+
+
+    @FindBy(xpath = "//div[@class='section--sm']")
     public WebElement companyLogosSlider;
 
-@FindBy(xpath = "//img[@class='img-fluid mx-auto']")
-    public  WebElement companyLogosName;
+    @FindBy(xpath = "(//*[@alt='client'])[10]")
+    public WebElement ExxonMobilcompanyLogosSlider;
 
-@FindBy(xpath = "//div[@class='section--sm']")
-public  WebElement companyLogosslider;
+    @FindBy(xpath = "(//*[@alt='client'])[11]")
+    public WebElement PandGcompanyLogosSlider;
+
+    @FindBy(xpath = "(//*[@alt='client'])[12]")
+    public WebElement CVShealtcompanyLogosSlider;
+
+    @FindBy(xpath = "(//*[@alt='client'])[13]")
+    public WebElement BerkshireHathawaycompanyLogosSlider;
+
+    @FindBy(xpath = "(//*[@alt='client'])[14]")
+    public WebElement PelotoncompanyLogosSlider;
+
+    @FindBy(xpath = "(//*[@alt='client'])[15]")
+    public WebElement emergentcompanyLogosSlider;
+    @FindBy(xpath = "(//*[@alt='client'])[16]")
+    public WebElement SolarEdgecompanyLogosSlider;
+
+    @FindBy(xpath = "(//*[@alt='client'])[17]")
+    public WebElement SunBasketcompanyLogosSlider;
+
+    @FindBy(xpath = "(//*[@alt='client'])[18]")
+    public WebElement CovenantTransportcompanyLogosSlider;
+
+
 
 @FindBy(xpath = "(//h5[@class='text-capitalize mt-0 t-body-font fw-md text-start'])[1]")
 public  WebElement supportTitle;
@@ -193,19 +239,19 @@ public  WebElement CountryWideHomeBody;
     @FindBy(xpath = "//div[@class='row justify-content-center g-4']")
     public WebElement FrequentlyAskedHomePageBody;
 
-    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[1]")
+    @FindBy(xpath = "//button[@class='accordion-button vf-accordion__btn']")
     public  WebElement AccordionButton1FqaHomePageBody;
-    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[2]")
+    @FindBy(xpath = "//*[@class='accordion-button vf-accordion__btn']")
     public  WebElement AccordionButton2FqaHomePageBody;
-    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[3]")
+    @FindBy(xpath = "(//*[@*='accordion-button vf-accordion__btn collapsed'])[2]")
     public  WebElement AccordionButton3FqaHomePageBody;
-    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[4]")
+    @FindBy(xpath = "(//*[@*='accordion-button vf-accordion__btn collapsed'])[3]")
     public  WebElement AccordionButton4FqaHomePageBody;
-    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[]")
+    @FindBy(xpath = "(//*[@*='accordion-button vf-accordion__btn collapsed'])[4]")
     public  WebElement AccordionButton5FqaHomePageBody;
-    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[6]")
+    @FindBy(xpath = "(//*[@*='accordion-button vf-accordion__btn collapsed'])[5]")
     public  WebElement AccordionButton6FqaHomePageBody;
-    @FindBy(xpath = "(//button[@class='accordion-button vf-accordion__btn collapsed'])[7]")
+    @FindBy(xpath = "(//*[@*='accordion-button vf-accordion__btn collapsed'])[6]")
     public  WebElement AccordionButton7FqaHomePageBody;
     @FindBy(xpath = "//section[@class='feedback-section section']")
     public WebElement CompanyEmployeesSliderHomeBody;
@@ -231,10 +277,11 @@ public  WebElement CountryWideHomeBody;
     public WebElement LikeToBecomeHeroHomePage;
     @FindBy(xpath = "//a[@class='btn btn--base text-capitalize']")
     public  WebElement TakeLoanButtonHomePage;
-    @FindBy(xpath = "(//img[@class='blog-post__img-is'])[1]")
+    @FindBy(xpath = "(//a[@class='t-link t-link--primary t-text'])[3]")
     public  WebElement Picter1BlogHomePageBody;
     @FindBy(xpath = "(//a[@class='nav-link '])[1]")
     public WebElement PlansButtonHomePage;
+
 
     // **********  About Body **********
 
@@ -339,6 +386,30 @@ public  WebElement CountryWideHomeBody;
     public WebElement contactUsHomeLink;
     @FindBy(xpath = "//h2[@class='hero__content-title text-capitalize t-text-white']")
     public  WebElement LoanPlansPage;
+
+    @FindBy(xpath = "(//*[@class='row justify-content-center gy-4 gx-sm-2 gx-md-4'])[6]")
+    public  WebElement BasicLoanCardSection;
+
+
+    @FindBy(xpath = "(//li[@class='list--row__item breadcrumbs__item'])[1]")
+    public  WebElement homeButtonUnderLoanPlans;
+    @FindBy(xpath = "//*[@*='btn btn--xl xl-text btn--base btn--outline mt-3']")
+    public  WebElement getStartedHomePage;
+    @FindBy(xpath = "(//li[@class='list--row__item breadcrumbs__item'])[2]")
+    public  WebElement loanPlansButtonUnderLoanPlans;
+    @FindBy(xpath = "//button[@data-id='25']")
+    public  WebElement ApplyNow1ButtonUnderBasicLoan;
+    @FindBy(xpath = "//button[@data-id='30']")
+    public  WebElement ApplyNow2ButtonUnderBasicLoan;
+
+
+   @FindBy(xpath = "(//div[@class='plan-card-header-body'])[4]")
+    public  WebElement BasicLoan1Section;
+    @FindBy(xpath = "//*[@*='btn btn-sm btn--dark']")
+    public  WebElement closeAllertApplyNowButton;
+
+    @FindBy (xpath = "//a[@aria-current='page']")
+    public  WebElement contactPageHomeButon;
 
 }
 

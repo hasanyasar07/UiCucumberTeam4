@@ -61,8 +61,10 @@ public class UserPages {
 
     @FindBy(xpath = "//*[@class='text-decoration-none']")
     public WebElement registerNow;
+
     @FindBy(xpath = "//*[@class='btn btn--base btn--xxl w-100 text-capitalize xl-text']")
     public WebElement loginButon;
+
 
     @FindBy(xpath = "//*[@class='row g-4 verify-gcaptcha']")
     public WebElement registerNowForm;

@@ -33,8 +33,8 @@ Feature: US_004 As a visitor, I want to have a home page where I can access gene
     And   Tests that "Test Loan Card" is visible under Featured plans
     Then  Closes the page
 
-  Scenario: TC_08 The Apply Now button must be present and active under Featured plans
-    And Tests that the Apply Now button is present and active under Featured plans
+  Scenario: TC_08 The Apply Now button must be present and active under Basic Loan
+    And Tests that the Apply Now button is present and active under Basic Loan
     Then  Closes the page
 
   Scenario: TC_09 When the Apply Now button is clicked, 'You are not logged in!' message should be displayed.
