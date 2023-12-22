@@ -564,4 +564,26 @@ public class User {
 
 
     }
+    // ***************** take a deposit hilal***************
+    @Given("click deposit button.")
+    public void click_deposit_button() {
+        userPages.usersDeposit.click();
+    }
+    @Given("select getawey")
+    public void select_getawey() {
+        ReusableMethods.selectByVisibleText( userPages.usersSelectGetawey,"Manual");
+    }
+    @Given("The amount is entered between the given max and min values.")
+    public void the_amount_is_entered_between_the_given_max_and_min_values() {
+        userPages.depositAmountBox.sendKeys("3000");
+    }
+    @Given("click the submit.")
+    public void click_the_submit() {
+        userPages.depositSubmitButton.click();
+        ReusableMethods.wait(1);
+    }
+    @Given("Click the pay now button;")
+    public void click_the_pay_now_button() {
+        userPages.depositPayNowButton.click();
+    }
 }
