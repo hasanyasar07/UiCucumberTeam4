@@ -429,6 +429,25 @@ public class ReusableMethods {
 
     public static String getNewWindowHandle() {
         return null;
+    }
+
+    public static void navigateToTheRequestedUrl(String userUrl) {
+
+    }
+
+    public static CharSequence generateRandomValue(int i, int i1) {
+
+        return null;
+    }
+
+    public static String generateUsername() {
+
+        return null;
+    }
+
+    public static String generatePassword() {
+        return null;
+    }
 }
 
 

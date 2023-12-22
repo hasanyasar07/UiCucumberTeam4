@@ -426,6 +426,17 @@ public WebElement appButon;
 
 
     // ********** Deposit **********
+    @FindBy(xpath = "(//*[text()='Deposit'])[1]")
+    public WebElement usersDeposit;
+    @FindBy(xpath = "//select")
+    public WebElement usersSelectGetawey;
+    @FindBy(xpath = "//*[@name='amount']")
+    public WebElement depositAmountBox;
+    @FindBy(xpath = "//*[@type='submit']")
+    public WebElement depositSubmitButton;
+    @FindBy(xpath = "//*[@type='submit']")
+    public WebElement depositPayNowButton;
+
 
 
 

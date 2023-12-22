@@ -315,7 +315,7 @@ public class AdminPages {
     @FindBy(xpath = "//*[@class='btn btn--primary']")
     public WebElement depositHistoryApproveYes;
 
-    @FindBy (xpath = "//*[text()='Deposit request approved successfully']")
+    @FindBy (xpath = "//*[text()='Deposit request approved Successfully']")
     public WebElement depositApprovedMessage;
     @FindBy (xpath = "//*[text()='Withdrawal rejected successfully']")
     public WebElement depositRejectedMessage;
