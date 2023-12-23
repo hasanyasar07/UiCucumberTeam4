@@ -852,28 +852,53 @@ public class Admin {
     }
     @Given("Necessary information is entered to add a new Plan")
     public void necessary_information_is_entered_to_add_a_new_plan() {
-       adminPages.LoanPlansName.sendKeys("Kredi1");
-       adminPages.LoanPlansTitle.sendKeys("yasemin");
-       adminPages.LoanPlansMinimumAmount.sendKeys("1000");
-       adminPages.LoanPlansMaximumAmount.sendKeys("5000");
-        // adminPages.LoanPlansCategory.sendKeys();
+        adminPages.LoanPlansName.sendKeys("Luna");
+        ReusableMethods.wait(1);
+        adminPages.LoanPlansTitle.sendKeys("yasemin");
+        ReusableMethods.wait(1);
+        adminPages.LoanPlansMinimumAmount.sendKeys("1000");
+        ReusableMethods.wait(1);
+        adminPages.LoanPlansMaximumAmount.sendKeys("5000");
+        ReusableMethods.wait(1);
+        ReusableMethods.selectByValue(adminPages.LoanPlansCategory,"40");
+
         adminPages.LoanPlansPerInstallment.sendKeys("10");
+        ReusableMethods.wait(1);
+
         adminPages.LoanPlansInstallmentInterval.sendKeys("28");
+        ReusableMethods.wait(1);
         adminPages.LoanPlansTotalInstallments.sendKeys("36");
+        ReusableMethods.wait(1);
         adminPages.LoanPlansFixedCharge.sendKeys("100");
+        ReusableMethods.wait(1);
         adminPages.LoanPlansApplicationFixedCharge.sendKeys("5");
+        ReusableMethods.wait(1);
         adminPages.LoanPlansChargeWillApplyIfDelay.sendKeys("1");
+        ReusableMethods.wait(1);
+        js.executeScript("window.scrollTo(0, document.body.scrollDown)");
         adminPages.LoanPlansFixedCharge.sendKeys("5");
+        ReusableMethods.wait(1);
         adminPages.LoanPlansApplicationPercentCharge.sendKeys("5");
+        ReusableMethods.wait(1);
+
+        // adminPages.delayApplyCharge.sendKeys("100");
+        // ReusableMethods.wait(1);
+        // adminPages.delayFixedCharge.sendKeys("100");
+        // ReusableMethods.wait(1);
+         adminPages.delayPercentCharge.sendKeys("10");
+         ReusableMethods.wait(2);
+//
 
     }
     @Given("After the information is entered, the submit button is clicked")
     public void after_the_information_is_entered_the_submit_button_is_clicked() {
         adminPages.LoanPlansAddNewSubmit.submit();
+        ReusableMethods.wait(1);
     }
     @Given("You will receive a warning that the new credit plan has been added successfully")
     public void you_will_receive_a_warning_that_the_new_credit_plan_has_been_added_successfully() {
        Assert.assertTrue(adminPages.LoanPlanYeniPlanEklendi.isDisplayed());
+        ReusableMethods.wait(4);
 
     }
 
@@ -918,9 +943,8 @@ public class Admin {
     // TC_05
     @Given("Takes the necessary action to remove the existing credit plan")
     public void takes_the_necessary_action_to_remove_the_existing_credit_plan() {
-
         adminPages.LoanPlansDisable.click();
-      adminPages.LoanPlansDisableYes.click();
+        adminPages.LoanPlansDisableYes.click();
     }
     @Given("Verifying that the credit plan has been removed")
     public void verifying_that_the_credit_plan_has_been_removed() {

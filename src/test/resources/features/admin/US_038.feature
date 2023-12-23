@@ -91,4 +91,4 @@ Feature: As a User (Admin), I want to have a page where I can see active users
     * Verify that Deposit request approved successfully is appeared
     * Close the page
 
-    @a
+
