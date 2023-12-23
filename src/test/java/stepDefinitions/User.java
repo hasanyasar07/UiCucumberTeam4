@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 import pages.GuestPages;
 import pages.UserPages;
 
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -382,6 +383,108 @@ public class User {
 
 
     // ********** US_021  **********
+
+    @Given("user goes to homepage with {string}")
+    public void user_goes_to_homepage_with(String string) {
+        Driver.getDriver().get(ConfigReader.getProperty("guestUrl"));
+    }
+    @Given("Verifies that the opened page is the home page")
+    public void verifies_that_the_opened_page_is_the_home_page() {
+        ReusableMethods.wait(2);
+        guestPages.cookieKabul.click();
+        Assert.assertTrue( guestPages.getStartedHomePage.isDisplayed());
+    }
+    @Given("Tests that e-mail, phone and address information appear on the top bar of the home page.")
+    public void tests_that_e_mail_phone_and_address_information_appear_on_the_top_bar_of_the_home_page() {
+        ReusableMethods.wait(2);
+        guestPages.cookieKabul.click();
+        Assert.assertTrue(guestPages.emailHomePageHeader.isDisplayed());
+     ReusableMethods.wait(1);
+     Assert.assertTrue(guestPages.addressHomePageHeader.isDisplayed());
+        ReusableMethods.wait(1);
+     Assert.assertTrue(guestPages.phoneHomePageHeader.isDisplayed());
+    }
+
+
+    @Given("It tests whether the site logo and menu titles \\(Home Page, About, Plans, Blogs, Contact, Login Icon, Getting Started Icon) are visible and active on the home page top bar.")
+    public void ıt_tests_whether_the_site_logo_and_menu_titles_home_page_about_plans_blogs_contact_login_ıcon_getting_started_ıcon_are_visible_and_active_on_the_home_page_top_bar() {
+        ReusableMethods.wait(2);
+        guestPages.cookieKabul.click();
+        Assert.assertTrue(guestPages.getStartedHomePage.isDisplayed());
+        guestPages.getStartedHomePage.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.loginButonHomePage.isDisplayed());
+        guestPages.loginButonHomePage.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.AboutButtonHomePageHeader.isDisplayed());
+       guestPages.AboutButtonHomePageHeader.click();
+        ReusableMethods.wait(1);
+
+     Assert.assertTrue(guestPages.PlansButtonHomePageHeader.isDisplayed());
+     guestPages.PlansButtonHomePageHeader.click();
+     ReusableMethods.wait(1);
+
+     Assert.assertTrue(guestPages.BlogsButtonHomePageHeader.isDisplayed());
+      guestPages.BlogsButtonHomePageHeader.click();;
+       ReusableMethods.wait(2);
+
+     Assert.assertTrue(guestPages.ContactButtonHomePageHeader.isDisplayed());
+     guestPages.ContactButtonHomePageHeader.click();
+     ReusableMethods.wait(1);
+
+     Assert.assertTrue(guestPages.HomeButtonHomePageHeader.isDisplayed());
+        guestPages.contactPageHomeButon.click();
+        ReusableMethods.wait(2);
+
+
+
+    }
+    @Given("It tests whether you can go to the home page when you click on the logo on the top bar of the home page.")
+    public void ıt_tests_whether_you_can_go_to_the_home_page_when_you_click_on_the_logo_on_the_top_bar_of_the_home_page() {
+       guestPages.LoantechIkonHomePage.click();
+       ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.getStartedHomePage.isDisplayed());
+
+    }
+    @Given("It tests whether you can switch to the relevant page when you click on the headings \\(Home Page, About, Plans, Blogs, Contact, Login Icon, Getting Started Icon) on the home page top bar.")
+    public void ıt_tests_whether_you_can_switch_to_the_relevant_page_when_you_click_on_the_headings_home_page_about_plans_blogs_contact_login_ıcon_getting_started_ıcon_on_the_home_page_top_bar() {
+        guestPages.HomeButtonHomePageHeader.click();
+        ReusableMethods.wait(1);
+        String expectedUrlHomePage="https://qa.loantechexper.com/";
+        String actualUrlHomePage=Driver.getDriver().getCurrentUrl();
+        ReusableMethods.wait(1);
+        guestPages.getStartedHomePage.click();
+        ReusableMethods.wait(1);
+        String expectedUrlgetStartedHome="https://qa.loantechexper.com/user/register";
+        String actualUrlgetStartedHome=Driver.getDriver().getCurrentUrl();
+        ReusableMethods.wait(2);
+        guestPages.PlansButtonHomePageHeader.click();
+        ReusableMethods.wait(1);
+        String expectedUrlPlansHome="https://qa.loantechexper.com/loan";
+        String actualUrlPlansHome=Driver.getDriver().getCurrentUrl();
+        ReusableMethods.wait(1);
+        guestPages.AboutButtonHomePageHeader.click();
+        ReusableMethods.wait(1);
+        String expectedUrlAboutHome="https://qa.loantechexper.com/about";
+        String actualUrlAboutHome=Driver.getDriver().getCurrentUrl();
+        ReusableMethods.wait(2);
+        guestPages.BlogsButtonHomePageHeader.click();
+        String expectedUrlBlogsHome="https://qa.loantechexper.com/blog";
+        String actualUrlBlogsHome=Driver.getDriver().getCurrentUrl();
+        ReusableMethods.wait(1);
+        guestPages.ContactButtonHomePageHeader.click();
+        ReusableMethods.wait(1);
+        String expectedUrlContactHome="https://qa.loantechexper.com/contact";
+        String actualUrlContactHome=Driver.getDriver().getCurrentUrl();
+        ReusableMethods.wait(1);
+        guestPages.loginButonHomePage.click();
+        ReusableMethods.wait(1);
+        String expectedUrlloginHome="https://qa.loantechexper.com/user/login";
+        String actualUrlloginHome=Driver.getDriver().getCurrentUrl();
+        ReusableMethods.wait(1);
+
+    }
+
 
 
     // ********** US_022  **********
