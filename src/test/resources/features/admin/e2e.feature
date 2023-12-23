@@ -1,6 +1,7 @@
 
+@e2e
 Feature:
-  @a
+
   Scenario: Take a deposit.
 
     * kullanici verilen "userUrl" gider

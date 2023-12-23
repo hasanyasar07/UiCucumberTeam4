@@ -518,6 +518,7 @@ public class Admin {
     }
     @Given("Verify that Deposit request approved successfully is appeared")
     public void verify_that_deposit_request_approved_successfully_is_appeared() {
+        ReusableMethods.wait(2);
        String expectedText = "Deposit request approved successfully";
        String actualText = adminPages.depositApprovedMessage.getText();
 

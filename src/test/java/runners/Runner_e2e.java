@@ -2,6 +2,7 @@ package runners;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
   
@@ -11,11 +12,11 @@ import org.junit.runner.RunWith;
                 "junit:target/xml-report/cucumber.xml"},
         features = {"src/test/resources/features/admin","src/test/resources/features/guest","src/test/resources/features/user"},
         glue ="stepDefinitions",
-        tags ="@us_12",
+        tags ="@e2e",
         dryRun = false
 
 )
-public class Runner {
+public class Runner_e2e {
     /*
         Runner class'i bos bir class'dir
         bu class'da asil isi

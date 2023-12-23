@@ -4,7 +4,6 @@ Feature: As a User (Admin), I want to have a page where I can see active users
           on the site and manage Deposit (withdrawal) transactions.
 
   Background: In this step, the registered user reaches the user home page by entering his username and password.
-    Given Launch browser
     Given Navigate to "adminUrl"
     Given the user logs in to the admin page with the given "hilalciftciUsername" and "adminPassword" information
     Given  Verify that Admin homepage is visible successfully
@@ -91,4 +90,3 @@ Feature: As a User (Admin), I want to have a page where I can see active users
     * Verify that Deposit request approved successfully is appeared
     * Close the page
 
-    @a
