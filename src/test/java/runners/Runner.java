@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"html:target/cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",
+
                 "junit:target/xml-report/cucumber.xml"},
         features = {"C:\\Users\\Dell\\IdeaProject\\UiCucumberTeam4\\src\\test\\resources\\features"},
         glue = "stepdefinitions",

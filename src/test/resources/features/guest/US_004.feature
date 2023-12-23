@@ -38,7 +38,7 @@ Feature: US_004 As a visitor, I want to have a home page where I can access gene
     Then  Closes the page
 
   Scenario: TC_09 When the Apply Now button is clicked, 'You are not logged in!' message should be displayed.
-    And Clicks the Apply Now button under Featured plans
+    And Clicks the Apply Now button under Basic Loan
     Then It tests that when the Apply Now button is clicked, the "You are not logged in!" message appears in the window that opens and there is a link button that directs you to the login page.
     Then Closes the page
 

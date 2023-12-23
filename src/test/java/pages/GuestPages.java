@@ -8,13 +8,17 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+
 import java.security.PublicKey;
+
 import java.util.List;
 import java.util.Set;
 
@@ -117,6 +121,19 @@ public class GuestPages {
 
     @FindBy(xpath = "(//*[@class='t-link t-link--primary t-text-white text-capitalize'])[3]")
     public WebElement footerContactUs;
+    
+    @FindBy (xpath = "//input[@id='email']")
+    public WebElement newLetterMailTextBox;
+
+    @FindBy (xpath = "//body/div[3]//footer/div[1]/div/div/div[4]/h4")
+    public WebElement footerNewLetter;
+
+    @FindBy (xpath = "//button[@class='newsletter__btn flex-shrink-0']")
+    public WebElement footerNewLetterMailButton;
+
+    @FindBy (xpath = "//body/div[5]/div/div/div[1]/div[1]/p")
+    public  WebElement nemLetterMailNotification;
+
 
     @FindBy(xpath = "(//*[@class='t-link social-icon--alt'])[1]")
     public WebElement facebookIkon;
@@ -283,6 +300,75 @@ public  WebElement CountryWideHomeBody;
     public WebElement PlansButtonHomePage;
 
 
+    @FindBy(xpath = "//a[@href='user/register']")
+    public WebElement getStartedButton;
+
+    @FindBy(xpath = "//form[@method='POST']")
+    public WebElement formElement;
+
+    @FindBy(xpath = "//input[@name='username']")
+    public WebElement usernameTextBox;
+
+    @FindBy(xpath = "//input[@name='email' and @type='text']")
+    public WebElement emailTextBox;
+
+    @FindBy(xpath = "//div[@class='nice-select']")
+    public WebElement countryDropDownList;
+
+    @FindAll(@FindBy(xpath = "//li[@class='option']"))
+    public List<WebElement> countriesList;
+
+    @FindBy(xpath = "//input[@name='mobile']")
+    public WebElement mobilTextBox;
+
+    @FindBy(id = "password")
+    public WebElement passwordTextBox;
+
+    @FindBy(xpath = "//input[@name='password_confirmation']")
+    public WebElement passwordConfirmationTextBox;
+
+    @FindBy(xpath = "(//*[@class='auth-form__input-icon auth-form__toggle-pass'])[1]")
+    public WebElement passwordVisible;
+
+    @FindBy(xpath = "(//*[@class='auth-form__input-icon auth-form__toggle-pass'])[1]")
+    public WebElement passwordConfirmationVisible;
+
+
+    @FindBy(id = "agree")
+    public WebElement agreeCheckBox;
+
+    @FindBy(id = "recaptcha")
+    public WebElement registerButton;
+
+    @FindBy(xpath = "//input[@name='firstname']")
+    public WebElement firstname;
+
+    @FindBy(xpath = "//input[@name='lastname']")
+    public WebElement lastname;
+
+    @FindBy(xpath = "//input[@name='address']")
+    public WebElement address;
+
+    @FindBy(xpath = "//input[@name='state']")
+    public WebElement state;
+
+    @FindBy(xpath = "//input[@name='zip']")
+    public WebElement zip;
+
+    @FindBy(xpath = "//input[@name='city']")
+    public WebElement city;
+
+    @FindBy(xpath = "(//button[@type='submit'])[1]")
+    public WebElement submitButton;
+
+    @FindBy(xpath = "//div[@class='iziToast-body']")
+    public WebElement registerAlertText;
+    @FindBy(xpath = "//div[@class='iziToast-body784']")
+    public WebElement TestLoanCardHomePage;
+
+    @FindBy(xpath = "(//button[@class='nav-link '])[6]")
+    public WebElement BasicLoanApplyCardHomePage;
+
     // **********  About Body **********
 
     @FindBy(xpath = "//a[@class=' nav-link']")
@@ -397,7 +483,7 @@ public  WebElement CountryWideHomeBody;
     public  WebElement getStartedHomePage;
     @FindBy(xpath = "(//li[@class='list--row__item breadcrumbs__item'])[2]")
     public  WebElement loanPlansButtonUnderLoanPlans;
-    @FindBy(xpath = "//button[@data-id='25']")
+    @FindBy(xpath = "//button[@data-id='55']")
     public  WebElement ApplyNow1ButtonUnderBasicLoan;
     @FindBy(xpath = "//button[@data-id='30']")
     public  WebElement ApplyNow2ButtonUnderBasicLoan;
