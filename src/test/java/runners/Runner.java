@@ -4,14 +4,15 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
+  
         plugin = {"html:target/cucumber-reports.html",
                 "json:target/json-reports/cucumber.json",
 
                 "junit:target/xml-report/cucumber.xml"},
-        features = {"C:\\Users\\Dell\\IdeaProject\\UiCucumberTeam4\\src\\test\\resources\\features"},
-        glue = "stepdefinitions",
-        tags ="@c",
-        dryRun =true
+        features = {"src/test/resources/features/admin","src/test/resources/features/guest","src/test/resources/features/user"},
+        glue ="stepDefinitions",
+        tags ="@a",
+        dryRun = true
 
 )
 public class Runner {
@@ -31,3 +32,6 @@ public class Runner {
         dryRun = false secilmelidir
      */
 }
+
+
+

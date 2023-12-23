@@ -1,61 +1,62 @@
 package stepDefinitions;
 
-import io.cucumber.java.bs.A;
-
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.junit.Assert;
+
+import com.sun.source.tree.AssertTree;
+import io.cucumber.java.bs.A;
+import io.cucumber.java.en.Given;
+import org.junit.Assert;
+import org.openqa.selenium.*;
 import pages.AdminPages;
 import utilities.Driver;
 import utilities.ReusableMethods;
-
-
 import com.github.javafaker.Faker;
-
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
-import pages.AdminPages;
+import net.bytebuddy.agent.builder.AgentBuilder;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
-
 import pages.AdminPages;
-import pages.UserPages;
-
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import pages.UserPages;
+import utilities.ConfigReader;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.awt.geom.RectangularShape;
 import java.io.IOException;
 import java.util.List;
+
 import java.awt.*;
+public class Admin {
+    AdminPages adminPages=new AdminPages();
+    UserPages userPages = new UserPages();
+    Select select;
+    JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
+    String kisiselTransactionNo;
+    @Given("kullanici verilen {string} ve {string} bilgileri ile admin sayfasinda login olur")
+    public void kullanici_verilen_ve_bilgileri_ile_admin_sayfasinda_login_olur(String username, String password) {
+        adminPages.adminLoginMethod(username,password);
+    }
+
+    // ********** US_025  **********
 
 
 
-    public class Admin {
-        String kisiselTransactionNo;
-        AdminPages adminPages = new AdminPages();
-        UserPages userpages = new UserPages();
-        Select select;
-        @Given("kullanici verilen {string} ve {string} bilgileri ile admin sayfasinda login olur")
-
-
-        public void kullanici_verilen_ve_bilgileri_ile_admin_sayfasinda_login_olur(String username, String password) {
-            adminPages.adminLoginMethod(username, password);
-        }
-
-
-        // ********** US_025  ********** YUSUF
+    // ********** US_025  ********** YUSUF
     @Given("kullaniciya verilen {string} ve {string} bilgileri ile admin sayfasina login olur.")
     public void kullaniciya_verilen_ve_bilgileri_ile_admin_sayfasina_login_olur(String username, String adminpassword) {
-      adminPages.adminLoginMethod(username,adminpassword);
+        adminPages.adminLoginMethod(username,adminpassword);
     }
     @Then("Admin ekraninda {string} yazisinin gorunurlugu kontrol edilir.")
     public void admin_ekraninda_yazisinin_gorunurlugu_kontrol_edilir(String string) {
@@ -118,206 +119,712 @@ import java.awt.*;
     @Then("Rejected Loans sayfasinda {string} yazisinin gorunurlugu kontrol edilir.")
     public void rejected_loans_sayfasinda_yazisinin_gorunurlugu_kontrol_edilir(String string) {
         Assert.assertTrue(adminPages.rejectedLoansButton.isDisplayed());
-       
-       }
-      
-      // ********** US_026  **********
 
-      
+    }
 
-      // ********** US_027  **********
-      
-      
-      
-      // ********** US_028  **********
+    // ********** US_026  **********
 
-      
+
+
+    // ********** US_027  **********
+
+
+
+    // ********** US_028  **********
+
+
+    @Then("{string} ogesne tiklanir.")
+    public void ogesneTiklanir(String arg0) {
+        adminPages.LoansButton.click();
+    }
     @Then("Loans menu basligi altindaki {string} sayfa linkine tiklandiginda {string} sayfasina gectiginin kontrolu yapilir.")
     public void loans_menu_basligi_altindaki_sayfa_linkine_tiklandiginda_sayfasina_gectiginin_kontrolu_yapilir(String string, String string2) {
-
+        adminPages.dueLoansButton.click();
+        Assert.assertTrue(adminPages.dueLoansButton.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda S.N. gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_s_n_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPages.loansSn.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda Loan No. | Plan gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_loan_no_plan_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPages.loansNoPlan.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda User gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_user_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPages.loansUser.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda Amount gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_amount_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPages.loansAmount.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda İnstallment Amount gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_installment_amount_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPages.loansInstallmentAmount.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda İnstallment gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_installment_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPages.loansInstallment.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda Created | Next Installment gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_created_next_ınstallment_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPages.loansCreatedNextInstallment.isDisplayed());
     }
     @Then("Due Loans sayfasinda Due İnstallment Loans Tablosunda Status gorunurlugu kontrol edilir.")
     public void due_loans_sayfasinda_due_installment_loans_tablosunda_status_gorunurlugu_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertTrue(adminPages.loansStatus.isDisplayed());
     }
     @Given("Due Loans sayfasindaki Due Installment Loans tablosu uzerinde {string} bilgileri ile alanında numara ve tarih girilerek arama yapilir.")
     public void due_loans_sayfasindaki_due_ınstallment_loans_tablosu_uzerinde_bilgileri_ile_alanında_numara_ve_tarih_girilerek_arama_yapilir(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Given("Due Installment Loans tablosunda bulunan Action basligi altinda secilen kredinin Details ve Installment bilgilerine erisilebilirligi kontrol edilir.")
     public void due_ınstallment_loans_tablosunda_bulunan_action_basligi_altinda_secilen_kredinin_details_ve_ınstallment_bilgilerine_erisilebilirligi_kontrol_edilir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Given("Details sayfasinda kredi detaylarina \\(Plan, Date of Application, Loan Number,Amount,  Per Installment, Total Installment, Given Installment,  Total Payable, Profit, Status bilgilerine ) erisilebilmelidir.")
     public void details_sayfasinda_kredi_detaylarina_plan_date_of_application_loan_number_amount_per_ınstallment_total_ınstallment_given_ınstallment_total_payable_profit_status_bilgilerine_erisilebilmelidir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("Installments sayfasinda Loan summary bilgileri \\(Loan Number, Plan, Loan Amount,  Per Installment, Total Installment, Given Installment,  Receivable, Delay Charge) goruntulenmelidir.")
     public void ınstallments_sayfasinda_loan_summary_bilgileri_loan_number_plan_loan_amount_per_ınstallment_total_ınstallment_given_ınstallment_receivable_delay_charge_goruntulenmelidir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("Installments sayfasinda taksitler S.N., Installment Date, Given On, Delay, Charge bilgileri ile goruntulenmelidir.")
     public void ınstallments_sayfasinda_taksitler_s_n_ınstallment_date_given_on_delay_charge_bilgileri_ile_goruntulenmelidir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("Installments sayfasindan Due Loans sayfasina donus yapilabilmelidir.")
     public void ınstallments_sayfasindan_due_loans_sayfasina_donus_yapilabilmelidir() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("Installments sayfasinda taksitler {int}'den fazlaysa bir sonraki sayfada listelenmeye devam etmelidir.")
     public void ınstallments_sayfasinda_taksitler_den_fazlaysa_bir_sonraki_sayfada_listelenmeye_devam_etmelidir(Integer int1) {
+
+    }
+
+    // ********** US_029  **********
+
+
+    // ********** US_030  **********
+
+
+    // ********** US_026  **********
+
+
+
+
+    // ********** US_027  **********
+
+
+
+    // ********** US_028  **********
+
+
+
+    // ********** US_029  **********
+
+
+
+    // ********** US_030  **********
+
+
+
+    // ********** US_031  **********
+
+
+
+    // ********** US_032 HILAL **********
+
+    @Given("Navigate to {string}")
+    public void navigateTo(String arg0) {
+        Driver.getDriver().get(ConfigReader.getProperty("adminUrl"));
+
+    }
+
+    @Given("click with find coordinate method.")
+    public void click_with_find_coordinate_method() throws AWTException {
+       ReusableMethods.coordinateClick(433,324);
+       ReusableMethods.coordinateClick(433,324);
+
+    }
+    @Given("the user logs in to the admin page with the given {string} and {string} information")
+    public void theUserLogsInToTheAdminPageWithTheGivenAndInformation(String username, String password)  {
+        adminPages.adminLoginMethod(username,password);
+    }
+    @Given("Verify that Admin homepage is visible successfully")
+    public void verify_that_admin_homepage_is_visible_successfully() {
+        adminPages.manageUsersButton.click();
+        Assert.assertTrue(adminPages.manageUsersButton.isDisplayed());
+
+    }
+    @Given("Close the page")
+    public void close_the_page() {
+        Driver.closeDriver();
+
+    }
+
+
+
+
+    // ********** US_033  **********
+
+
+
+    // ********** US_034  **********
+
+
+
+    // ********** US_035  **********
+    @Given("Verify summary board titles: Total Users, Active Users, Email Unverified Users, Mobile Unverified Users,")
+    public void verify_summary_board_titles_total_users_active_users_email_unverified_users_mobile_unverified_users() {
+        Assert.assertTrue(adminPages.titleTotalUsers.isDisplayed());
+        Assert.assertTrue(adminPages.titleTotalUsers.isEnabled());
+        adminPages.titleTotalUsers.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.allUsersPage.isDisplayed());
+
+        Assert.assertTrue(adminPages.titleActiveUsers.isDisplayed());
+        Assert.assertTrue(adminPages.titleActiveUsers.isEnabled());
+        adminPages.titleActiveUsers.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.activeUsersPage.isDisplayed());
+
+        Assert.assertTrue(adminPages.titleEmailUnverifiedUsers.isDisplayed());
+        Assert.assertTrue(adminPages.titleEmailUnverifiedUsers.isEnabled());
+        adminPages.titleEmailUnverifiedUsers.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.emailUnverifiedUsersPage.isDisplayed());
+
+        Assert.assertTrue(adminPages.titleMobileUnverifiedUsers.isDisplayed());
+        Assert.assertTrue(adminPages.titleMobileUnverifiedUsers.isEnabled());
+        adminPages.titleMobileUnverifiedUsers.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.mobileUnverifiedUsersPage.isDisplayed());
+    }
+    @Given("Verify summary board titles: Running Loan, Pending Loan, Due Loan, Paid Loan, Total Deposited, Pending Deposits,")
+    public void verify_summary_board_titles_running_loan_pending_loan_due_loan_paid_loan_total_deposited_pending_deposits() {
+
+    }
+    @Given("Verify summary board titles: Rejected Deposits, Deposited Charge, Total Withdrawn, Pending Withdrawals, Rejected Withdrawals, Withdrawal Charge.")
+    public void verify_summary_board_titles_rejected_deposits_deposited_charge_total_withdrawn_pending_withdrawals_rejected_withdrawals_withdrawal_charge() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Given("Click View All buttons next to each title and verify redirection.")
+    public void click_view_all_buttons_next_to_each_title_and_verify_redirection() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Given("Verify the display of charts: Monthly Deposit & Withdraw Report \\(Last {int} Month) and Transactions Report \\(Last {int} Days).")
+    public void verify_the_display_of_charts_monthly_deposit_withdraw_report_last_month_and_transactions_report_last_days(Integer int1, Integer int2) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Given("Verify the display of login charts: Login By Browser \\(Last {int} days), Login By OS \\(Last {int} days), Login By Country \\(Last {int} days).")
+    public void verify_the_display_of_login_charts_login_by_browser_last_days_login_by_os_last_days_login_by_country_last_days(Integer int1, Integer int2, Integer int3) {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
 
-         // ********** US_029  **********
 
-
-        // ********** US_030  **********
-
-
-        // ********** US_031  **********
-
-
-        // ********** US_032 HILAL **********
-      
-        @Given("Launch browser")
-        public void launch_browser() {
-
-
-        }
-
-        @Given("Navigate to {string}")
-        public void navigateTo(String arg0) {
-            Driver.getDriver().get(ConfigReader.getProperty("adminUrl"));
-
-        }
-
-        @Given("the user logs in to the admin page with the given {string} and {string} information")
-        public void theUserLogsInToTheAdminPageWithTheGivenAndInformation(String username, String password) {
-            adminPages.adminLoginMethod(username, password);
-        }
-
-        @Given("Verify that Admin homepage is visible successfully")
-        public void verify_that_admin_homepage_is_visible_successfully() {
-            adminPages.manageUsersButton.click();
-            Assert.assertTrue(adminPages.manageUsersButton.isDisplayed());
-
-        }
-
-        @Given("Close the page")
-        public void close_the_page() {
-            Driver.closeDriver();
-
-        }
+    // ********** US_036  **********
 
 
 
-        // ********** US_033  **********
+    // ********** US_037  **********
 
 
-        // ********** US_034  **********
-        @Given("acilan login sayfasinda admin ikonu gorunur oldugunu test eder ve admin ikonuna tiklar")
 
-        public void acilanLoginSayfasindaAdminIkonuGorunurOldugunuTestEderVeAdminIkonunaTiklar() {
-            ReusableMethods.wait(1);
-            Assert.assertTrue(adminPages.adminIkonu.isDisplayed());
-            ReusableMethods.wait(1);
-            adminPages.adminIkonu.click();
+    // ********** US_038 Hilal **********
+    @Given("Click Manage Users link on the DashboardPage")
+    public void click_link_on_the_dashboard_page() {
+        adminPages.manageUsersButton.click();
 
-            ReusableMethods.wait(2);
-
-        }
-
-        @Then("admin ikonuna tiklaninca acilan dropdown menüde Profile Password Logout linklerinin gorunur oldugunu test eder")
-        public void adminIkonunaTiklanincaAcilanDropdownMenüdeProfilePasswordLogoutLinklerininGorunurOldugunuTestEder() {
-            ReusableMethods.wait(1);
-            Assert.assertTrue(adminPages.profilLinkElementi.isDisplayed());
-            ReusableMethods.wait(1);
-        }
-
-        @Then("profil linkine tiklanir")
-        public void profilLinkineTiklanir() {
-            adminPages.profilLinkElementi.click();
-
-            ReusableMethods.wait(1);
-            Assert.assertTrue(adminPages.profileInformationYaziElementi.isDisplayed());
-            ReusableMethods.wait(1);
-        }
-
-        @And("aCılan sayfada name  email text boxları ve fotoğraf gUncellenip aktif oldugu dogrulanir")
-        public void acılanSayfadaNameEmailTextBoxlarıVeFotoğrafGUncellenipAktifOlduguDogrulanir() throws AWTException {
-
-            adminPages.ProfilNameBox.clear();
-            ReusableMethods.wait(1);
-            adminPages.ProfilNameBox.sendKeys("Gulizar");
-
-            ReusableMethods.wait(1);
-            adminPages.ProfilEmailBox.clear();
-            ReusableMethods.wait(1);
-            adminPages.ProfilEmailBox.sendKeys("gul.ataalp@gmail.com");
-            ReusableMethods.wait(2);
-            adminPages.uploadImageButon.click();
-            ReusableMethods.wait(2);
+    }
+    @Given("Verify Active Users link is appear on the DashboardPage")
+    public void verify_link_is_appear_on_the_dashboard_page() {
+        adminPages.activeUsersButton.click();
 
 
-            StringSelection resim = new StringSelection("C:\\Users\\Gülizar\\IdeaProjects\\UiCucumberTeam4\\src\\test\\java\\picture\\profil.png");
-            //StringSelection resim=new StringSelection(System.getProperty("user.dir")+"SmartCardLink_Team3\\a.jpg");
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(resim, null);
-            Robot robot = new Robot();
-            ReusableMethods.wait(1);
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_V);
-            ReusableMethods.wait(1);
-            robot.keyRelease(KeyEvent.VK_V);
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            ReusableMethods.wait(5);
-            robot.keyPress(KeyEvent.VK_ENTER);
-            ReusableMethods.wait(3);
+    }
 
-        }
+    @Given("Verify Active Users List and list titles is displayed")
+    public void verify_and_list_titles_is_displayed() {
+
+        ReusableMethods.usersTableList("User");
+
+    }
+
+    @Given("Clicks on Active Users link.")
+    public void clicks_on_active_users_link() {
+        adminPages.activeUsersButton.click();
+
+    }
+    @Given("Click the details button for any user.")
+    public void click_the_details_button_for_any_user() {
+        js.executeScript("window.scrollBy(-100,0)");
+        ReusableMethods.wait(3);
+        adminPages.searchBox.sendKeys("hilal");
+        adminPages.searchBoxButton.click();
+        ReusableMethods.wait(3);
+        adminPages.detailsButton.click();
+
+
+    }
+    @Given("Confirms that the User Detail-User Name page is accessed.")
+    public void confirms_that_the_user_detail_user_name_page_is_accessed() {
+        String expectedValue="User Detail - hilalciftci";
+        String actualValue= adminPages.userDetail.getText();
+        Assert.assertEquals(expectedValue,actualValue);
+
+
+
+    }
+
+
+
+
+    @Given("Verify that the text x requested x USD should be displayed")
+    public void verify_that_the_text_x_requested_x_usd_should_be_displayed() {
+        System.out.println(adminPages.pendingDepositAmount.getText()+ "requested");
+
+    }
+
+
+    @Given("Click on the view all icon")
+    public void click_on_the_view_all_icon() {
+
+
+    }
+    @Given("Click on the Details button")
+    public void click_on_the_details_button() {
+
+    }
+    @Given("Click  all deposit button")
+    public void click_all_deposit_button() {
+        adminPages.viewAllDeposit.click();
+
+    }
+    @Given("Verify that Deposit Card and Date, Transaction Number, Username, Method, Amount, Charge, After Charge, Rate, Payable, Status titles is visible")
+    public void verify_that_deposit_card_and_date_transaction_number_username_method_amount_charge_after_charge_rate_payable_status_titles_is_visible() {
+
+        Assert.assertTrue(adminPages.gatewayTransaction.isDisplayed());
+        Assert.assertTrue(adminPages.initiated.isDisplayed());
+        Assert.assertTrue(adminPages.user.isDisplayed());
+        Assert.assertTrue(adminPages.amount.isDisplayed());
+        Assert.assertTrue(adminPages.conversion.isDisplayed());
+        Assert.assertTrue(adminPages.status.isDisplayed());
+        Assert.assertTrue(adminPages.action.isDisplayed());
+
+    }
+
+
+
+    @Given("Verify that \"Successful Deposit', 'Pending Deposit', 'Rejected Deposit', 'Initiated Deposit' titles and values are visible")
+    public void verify_that_successful_deposit_pending_deposit_rejected_deposit_ınitiated_deposit_titles_and_values_are_visible() {
+
+        Assert.assertTrue(adminPages.successfullyDeposit.isDisplayed());
+        Assert.assertTrue(adminPages.pendingDeposit.isDisplayed());
+        Assert.assertTrue(adminPages.rejectedDeposit.isDisplayed());
+        Assert.assertTrue(adminPages.initiatedDeposit.isDisplayed());
+
+
+    }
+
+
+
+    @Given("Click on the Successful Deposits heading")
+    public void click_on_the_successful_deposits_heading() {
+        adminPages.successfullyDeposit.click();
+
+    }
+    @Given("Verify that Succesful Deposits page is visible")
+    public void verify_that_succesful_deposits_page_is_visible() {
+        Assert.assertTrue(adminPages.depositPageTitle.isDisplayed());
+
+    }
+    @Given("Enter the credentilas in the Filtering and Search boxes")
+    public void enter_the_credentilas_in_the_filtering_and_search_boxes() throws AWTException {
+
+        adminPages.dateBox.click();
+        ReusableMethods.wait(3);
+        ReusableMethods.coordinateClick(1215, 402);
+        ReusableMethods.coordinateClick(1215, 402);
+        adminPages.searchBox.sendKeys("hilal");
+        adminPages.searchBoxButton.click();
+        ReusableMethods.wait(3);
+
+
+
+
+
+    }
+    @Given("Verify that Filtering and Search buttons are fonctional")
+    public void verify_that_filtering_and_search_buttons_are_fonctional() {
+        Assert.assertTrue(adminPages.approvedText.isDisplayed());
+
+    }
+    @Given("Verify that a list of successful deposits are displayed")
+    public void verify_that_a_list_of_successful_deposits_are_displayed() {
+
+    }
+
+
+
+    @Given("Click the Pending Deposits Heading")
+    public void click_the_pending_deposits_heading() {
+        adminPages.pendingDeposit.click();
+
+    }
+    @Given("Verify that Pending Deposits page is visible")
+    public void verify_that_pending_deposits_page_is_visible() {
+        Assert.assertTrue(adminPages.depositPageTitle.isDisplayed());
+
+    }
+    @Given("Verify that Details button is active")
+    public void verify_that_details_button_is_active() {
+        adminPages.searchBox.sendKeys("hilal");
+        adminPages.searchBoxButton.click();
+        ReusableMethods.wait(3);
+        js.executeScript("window.scrollBy(-100,0)");
+        adminPages.detailsuserCardInformation.click();
+
+    }
+    @Given("Verify that Approve and Reject buttons on the Transaction Detail page")
+    public void verify_that_approve_and_reject_buttons_on_the_transaction_detail_page() {
+        Assert.assertTrue(adminPages.approvedButton.isDisplayed());
+        Assert.assertTrue(adminPages.rejectButton.isDisplayed());
+
+    }
+    @Given("Click on the spesific user Details button")
+    public void click_on_the_spesific_user_details_button() {
+        adminPages.searchBox.sendKeys("hilal");
+        adminPages.searchBoxButton.click();
+        ReusableMethods.wait(3);
+        adminPages.depositHistoryDatails.click();
+
+    }
+
+    @Given("Click on the Approve button")
+    public void click_on_the_approve_button() {
+        adminPages.depositHistoryApprove.click();
+
+    }
+    @Given("On the page that appears click on the Yes button")
+    public void on_the_page_that_appears_click_on_the_yes_button() {
+        adminPages.depositHistoryApproveYes.click();
+
+    }
+    @Given("Verify that Deposit request approved successfully is appeared")
+    public void verify_that_deposit_request_approved_successfully_is_appeared() {
+       String expectedText = "Deposit request approved successfully";
+       String actualText = adminPages.depositApprovedMessage.getText();
+
+        Assert.assertEquals(expectedText,actualText);
+
+    }
+
+
+    // ********** US_039  **********
+
+
+
+    // ********** US_040  **********
+
+    @Given("Find and click on the {string} button for a selected user.")
+    public void find_and_click_on_the_button_for_a_selected_user(String userNumber) {
+        String userXPath = String.format("(//td[@data-label='User'])[%d]//button", userNumber);
+
+        Driver.getDriver().findElement(By.xpath(userXPath)).click();
+
+    }
+
+    //(//td[@data-label='User'])[5]
+    public static String getAnyUser(int user) {
+        return "(//td[@data-label='User'])[" + user + "]";
+    }
+    @Given("Verify that the page is displayed.")
+    public void verify_that_the_page_is_displayed() {
+        Assert.assertTrue(adminPages.userDetail.isDisplayed());
+    }
+
+
+    @Given("Click on link under Withdrawn and go to page")
+    public void click_on_link_under_withdrawn_and_go_to_page() {
+      adminPages.withdrawnWiewAll.click();
+    }
+    @Given("List and list headings are displayed on the page.")
+    public void list_and_list_headings_are_displayed_on_the_page() {
+        Assert.assertTrue(adminPages.approvedWithdrawals.isEnabled());
+        Assert.assertTrue(adminPages.pendingWithdrawals.isEnabled());
+        Assert.assertTrue(adminPages.rejectedWithdrawals.isEnabled());
+        Assert.assertTrue(adminPages.gatewayTransaction.isDisplayed());
+        Assert.assertTrue(adminPages.initiated.isDisplayed());
+        Assert.assertTrue(adminPages.initiated.isDisplayed());
+        Assert.assertTrue(adminPages.amount.isDisplayed());
+        Assert.assertTrue(adminPages.status.isDisplayed());
+        Assert.assertTrue(adminPages.conversion.isDisplayed());
+        Assert.assertTrue(adminPages.action.isDisplayed());
+
+    }
+    @Then("{string} sayfasinda {string} aDinin  Gorundugunu dogrulayin.")
+    public void sayfasindaADininGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.loansUser.isDisplayed());
+    }
+    @Then("{string} Sayfasinda {string} adinin gorundugu_nu dogrulayin.")
+    public void sayfasindaAdininGorundugu_nuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.loansAmount.isDisplayed());
+    }
+    @Then("{string} Sayfasinda  {string} adinin gorundugunu dogrulay_in.")
+    public void sayfasindaAdininGorundugunuDogrulay_in(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.loansInstallmentAmount.isDisplayed());
+    }
+    @Then("{string} sayfasind_a  {string} Adinin gorundugunu dogrulayin.")
+    public void sayfasind_aAdininGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.loansInstallment.isDisplayed());
+    }
+    @Then("{string} sayfa_sinda {string} adinin gorundugunu  dogrulayin.")
+    public void sayfa_sindaAdininGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.loansCreatedNextInstallment.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} adinin gorundugunu dog_rulayin.")
+    public void sayfasindaAdininGorundugunuDog_rulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.loansStatus.isDisplayed());
+    }
+
+    @Then("{string} sayfasinda {string}  adinin g_orundugunu Dogrulayin.")
+    public void sayfasindaAdininG_orundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.allLoansAction.isDisplayed());
+    }
+
+    @Then("{string} alanina kredi numarasini girin.")
+    public void alaninaKrediNumarasiniGirin(String arg0) {
+        adminPages.loanNo.sendKeys("EPEGJ1CXNW47");
+    }
+
+    @Then("Kredi numarasinin arama kutusu simgesine tiklayin.")
+    public void krediNumarasininAramaKutusuSimgesineTiklayin() {
+        adminPages.loansSearchButton.click();
+
+        adminPages.loanNo.clear();
+    }
+
+    @Then("Kredi numarasi ile sorgulama islemi yaptiktan sonra ilk gelen krediyi dogrulayin.")
+    public void krediNumarasiIleSorgulamaIslemiYaptiktanSonraIlkGelenKrediyiDogrulayin() {
+        Assert.assertTrue(adminPages.loanNoDogrulama.isDisplayed());
+    }
+    @Then("Kredilerin Baslangıc Tarihi - Bitis Tarihi metin kutusuna tıklayin.")
+    public void kredilerinBaslangıcTarihiBitisTarihiMetinKutusunaTıklayin() {
+        adminPages.startDateEndDate.click();
+    }
+
+    @Then("{string} – {string} metin kutusuna “{double}.{int}-{int}.{int}.{int}” tarihleri yazilir.")
+    public void metin_kutusuna_tarihleri_yazilir(String string, String string2, Double double1, Integer int1, Integer int2, Integer int3, Integer int4) {
+        adminPages.startDateEndDate.sendKeys("01.12.2023-16.12.2023");
+    }
+
+    @Then("{string} – {string} secme islemi yaptiktan sonra arama kutusu simgesine tiklanir.")
+    public void secmeIslemiYaptiktanSonraAramaKutusuSimgesineTiklanir(String arg0, String arg1) {
+        adminPages.loansSearchButton.click();
+        ReusableMethods.wait(2);
+    }
+
+    @Then("{string} sayfasindaki {string} – {string} bilgileri ile arama yapildigi dogrulanir.")
+    public void sayfasindakiBilgileriIleAramaYapildigiDogrulanir(String arg0, String arg1, String arg2) {
+        Assert.assertTrue(adminPages.startDateEndDateDogrulama.isDisplayed());
+    }
+    @Then("{string} sayfasinda ilk satirda yer alan {string} butonuna tiklanir.")
+    public void sayfasindaIlkSatirdaYerAlanButonunaTiklanir(String arg0, String arg1) {
+        adminPages.detailsButtonu.click();
+        ReusableMethods.wait(2);
+    }
+
+    @Then("{string} sayfasinda {string} adi_nin gorundugunu dogrulayin.")
+    public void sayfasindaAdi_ninGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsPlan.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} adİnin gorundugunu dogrulayin.")
+    public void sayfasindaAdİninGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsDateOfApplication.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} adinin gorUndugunu dogrulayin.")
+    public void sayfasindaAdininGorUndugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsLoanNumber.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} adinin gorunDugunu dogrulayin.")
+    public void sayfasindaAdininGorunDugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsAmount.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} adinin gorunduGunu dogrulayin.")
+    public void sayfasindaAdininGorunduGunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsPerInstallment.isDisplayed());
+    }
+    @Then("{string} sayfasindA {string} aDinin gorundugUnu dogrulayin.")
+    public void sayfasindaADininGorundugUnuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsTotalInstallment.isDisplayed());
+    }
+    @Then("{string} sayFasinda {string} adinin gorundugunu dogrulayiN.")
+    public void sayfasindaAdininGorundugunuDogrulayiN(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsGivenInstallment.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} yazisinin gorundugunu dogrulayin.")
+    public void sayfasindaYazisininGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsTotalPayable.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} adinin gorundugunu dogruLayin.")
+    public void sayfasindaAdininGorundugunuDogruLayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsProfit.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} adinin gorundugUnu dogrulayin.")
+    public void sayfasindaAdininGorundugUnuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsStatus.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} adinin goruNdugunu dogrulayin.")
+    public void sayfasindaAdininGoruNdugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.detailsLfSByUser.isDisplayed());
+    }
+
+    @Then("{string} alanina tiklayin. Geri donus yapin.")
+    public void alaninaTiklayinGeriDonusYapin(String arg0) {
+        adminPages.allLoansButton.click();
+        ReusableMethods.wait(2);
+    }
+    @Then("{string} sayfasındaki ilk satirda yer alan {string} butonuna tıklayin.")
+    public void sayfasındakiIlkSatirdaYerAlanButonunaTıklayin(String arg0, String arg1) {
+        adminPages.InstallmentsButton.click();
+        ReusableMethods.wait(2);
+    }
+
+    @Then("{string} sayfa_sinda {string} gorundugunu dogrulayin.")
+    public void sayfa_sindaGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsLoanNumber.isDisplayed());
+    }
+    @Then("{string} sayfasind_a {string} gorundugunu dogrulayin.")
+    public void sayfasind_aGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsPlan.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} gorun_dugunu dogrulayin.")
+    public void sayfasindaGorun_dugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsLoanAmount.isDisplayed());
+    }
+    @Then("{string} saYfasinda {string} gorundugunu dogrulayin.")
+    public void sayfasindaGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsPerInstallment.isDisplayed());
+    }
+    @Then("{string} sayfasi_nda {string} gorundugunu dogrulayin.")
+    public void sayfasi_ndaGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsTotalInstallment.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} gor_undugunu dogrulayin.")
+    public void sayfasindaGor_undugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsGivenInstallment.isDisplayed());
+    }
+
+    @Then("{string} sayfas_inda {string} gorundugunu dogrulayin.")
+    public void sayfas_indaGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsReceivable.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} gorundugun_u dogrulayin.")
+    public void sayfasindaGorundugun_uDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentSN.isDisplayed());
+    }
+    @Then("{string} s_ayfasinda {string} gorundugunu dogrulayin.")
+    public void s_ayfasindaGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsInstallmentDate.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} _gorundugunu dogrulayin.")
+    public void sayfasinda_gorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InsttalmentsGivenOn.isDisplayed());
+    }
+    @Then("{string} _sayfasinda {string} gorundugunu dogrulayin.")
+    public void _sayfasindaGorundugunuDogrulayin(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallmentsDelay.isDisplayed());
+    }
+    @Then("{string} sayfasinda {string} gorundugunu dogrulayi_n.")
+    public void sayfasindaGorundugunuDogrulayi_n(String arg0, String arg1) {
+        Assert.assertTrue(adminPages.InstallemntsCharge.isDisplayed());
+    }
+    @Then("{string} sayfasina donmek icin  {string} butonuna tiklayin.")
+    public void sayfasinaDonmekIcinButonunaTiklayin(String arg0, String arg1) {
+        adminPages.InstallmentsBack.click();
+    }
+    @Then("{string} sayfasına donuldugunu dogrulayin.")
+    public void sayfasınaDonuldugunuDogrulayin(String arg0) {
+        Assert.assertTrue(adminPages.allLoansButton.isDisplayed());
+    }
+    @Then("{string} sayfasinin sag alt kosesindeki {string} butonuna tiklayarak bir sonraki sayfaya gecin.")
+    public void sayfasininSagAltKosesindekiButonunaTiklayarakBirSonrakiSayfayaGecin(String arg0, String arg1) {
+        ReusableMethods.wait(2);
+        adminPages.InstallmentsPageSayfa.sendKeys(Keys.ENTER);
+    }
+    @Then("Sonraki sayfada oldugunuzu dogrulayin.")
+    public void sonrakiSayfadaOldugunuzuDogrulayin() {
+        Assert.assertTrue(adminPages.twosayfa.isDisplayed());
+    }
+    @And("Sayfayi kapatin.")
+    public void sayfayiKapatin() {
+        Driver.closeDriver();
+    }
+
+
+    // ********** US_031  **********
+
+    @Then("{string} menusune gidilerek tiklanir.")
+    public void menusune_gidilerek_tiklanir(String string) {
+        adminPages.depositsLink.click();
+        ReusableMethods.wait(2);
+    }
+    @Then("{string} yazisinin gorunurlugu kontrol edilir.")
+    public void yazisinin_gorunurlugu_kontrol_edilir(String string) {
+        Assert.assertTrue(adminPages.depositsLink.isDisplayed());
+    }
+    @Then("{string} alanina Tiklanir. {string} yazisinin gorunurlugu kontrol edilir.")
+    public void alanina_tiklanir_yazisinin_gorunurlugu_kontrol_edilir(String string, String string2) {
+        ReusableMethods.wait(2);
+        adminPages.pendingDepositsButton.click();
+        Assert.assertTrue(adminPages.pendingDepositsButton.isDisplayed());
+    }
+    @Then("{string} aLanina tiklanir. {string} yazisinin Gorunurlugu kontrol edilir.")
+    public void a_lanina_tiklanir_yazisinin_gorunurlugu_kontrol_edilir(String string, String string2) {
+        ReusableMethods.wait(2);
+        adminPages.approvedDepositsLink.click();
+        Assert.assertTrue(adminPages.approvedDepositsLink.isDisplayed());
+    }
+    @Then("{string} alanA tiklanir. {string} yazisi gorunurlugu Kontrol eder.")
+    public void alan_a_tiklanir_yazisi_gorunurlugu_kontrol_eder(String string, String string2) {
+        adminPages.succesfullDepositsLink.click();
+        Assert.assertTrue(adminPages.succesfullDepositsLink.isDisplayed());
+        ReusableMethods.wait(2);
+    }
+    @Then("{string} alanina tiklanir. {string} Yazisinin gorunurlugu kontrol edilir.")
+    public void alanina_tiklanir_yazisinİn_gorunurlugu_kontrol_edilir(String string, String string2) {
+        adminPages.RejectedDepositsLink.click();
+        Assert.assertTrue(adminPages.RejectedDepositsLink.isDisplayed());
+        ReusableMethods.wait(2);
+    }
+    @Then("{string} Alanina tiklanir. {string} gorunur oldugu kontrol edilir.")
+    public void alanina_tiklanir_gorunur_oldugu_kontrol_edilir(String string, String string2) {
+        adminPages.InitiatedDepositsLink.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(adminPages.InitiatedDepositsLink.isDisplayed());
+    }
+    @Then("{string} alanina tiklar. {string} gorunurlugu kont_rol Edilir.")
+    public void alanina_tiklar_gorunurlugu_kont_rol_edilir(String string, String string2) {
+        ReusableMethods.wait(2);
+        adminPages.AllDepositsButton.click();
+        Assert.assertTrue(adminPages.depositHistory.isDisplayed());
+    }
+    @Then("Sayfa kapatilir.")
+    public void sayfa_kapatilir() {
+        Driver.closeDriver();
+
+    }
+
+
+
+
+    // ********** US_032 HILAL **********
 
     // ********** US_036  **********
     //TC_01
@@ -692,62 +1199,35 @@ import java.awt.*;
     }
     // ********** US_050  **********
 
+    // ********** US_033  **********
 
 
-        @Then("password linkine tiklanir ve password sayfasinin acldigi dogrulanmali")
-        public void passwordLinkineTiklanirVePasswordSayfasininAcldigiDogrulanmali() {
-            adminPages.passwordLinkElementi.click();
-            ReusableMethods.wait(1);
+    // ********** US_034  **********
+    @Given("acilan login sayfasinda admin ikonu gorunur oldugunu test eder ve admin ikonuna tiklar")
 
-            Assert.assertTrue(adminPages.changePasswordYaziElementi.isDisplayed());
-            ReusableMethods.wait(2);
-        }
+    public void acilanLoginSayfasindaAdminIkonuGorunurOldugunuTestEderVeAdminIkonunaTiklar() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.adminIkonu.isDisplayed());
+        ReusableMethods.wait(1);
+        adminPages.adminIkonu.click();
 
-        @And("acilan sayfada ilgili alanlar doldurularak sifre guncellenir")
-        public void acilanSayfadaIlgiliAlanlarDoldurularakSifreGuncellenir() {
-            adminPages.profilPasswordBox.click();
-            ReusableMethods.wait(1);
-            adminPages.profilPasswordBox.sendKeys("123123123");
-            ReusableMethods.wait(3);
-            adminPages.profilNewPasswordBox.click();
-            ReusableMethods.wait(2);
-            adminPages.profilNewPasswordBox.sendKeys("123456789");
-            ReusableMethods.wait(2);
-            adminPages.profilConfirmPasswordBox.click();
-            ReusableMethods.wait(2);
-            adminPages.profilConfirmPasswordBox.sendKeys("123456789");
-            ReusableMethods.wait(2);
-            adminPages.passwordSubmitButton.click();
-            ReusableMethods.wait(2);
-            Assert.assertTrue(adminPages.passwordSuccessfullYaziElementi.isDisplayed());
-            ReusableMethods.wait(2);
+        ReusableMethods.wait(2);
 
+    }
 
-        }
+    @Then("admin ikonuna tiklaninca acilan dropdown menüde Profile Password Logout linklerinin gorunur oldugunu test eder")
+    public void adminIkonunaTiklanincaAcilanDropdownMenüdeProfilePasswordLogoutLinklerininGorunurOldugunuTestEder() {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.profilLinkElementi.isDisplayed());
+        ReusableMethods.wait(1);
+    }
 
-        @Then("Logout linkine tıklayarak sayfadan basaralı bir sekilde ayrıldıgı dogrulanabilmeli")
-        public void logoutLinkineTıklayarakSayfadanBasaralıBirSekildeAyrıldıgıDogrulanabilmeli() {
-            ReusableMethods.wait(1);
-            adminPages.logoutLinkElementi.click();
-            ReusableMethods.wait(1);
-
-            Assert.assertTrue(adminPages.WelcomeToYaziElementi.isDisplayed());
-            ReusableMethods.wait(2);
-        }
-
-
-        // ********** US_035  **********
-
-
-        // ********** US_036  **********
-
+    @Then("profil linkine tiklanir")
+    public void profilLinkineTiklanir() {
+        adminPages.profilLinkElementi.click();
+    }
 
         // ********** US_037  **********
-        @Given("admin Manage Users linkine tiklar")
-        public void adminManageUsersLinkineTiklar() {
-            adminPages.manageUsersLink.click();
-
-        }
         @Then("admin Active Users linkine tiklar")
         public void adminActiveUsersLinkineTiklar() {
             adminPages.activeUsersButton.click();
@@ -759,7 +1239,7 @@ import java.awt.*;
         }
         @And("active Users listesi gorunur olmalidir")
         public void activeUsersListesiGorunurOlmalidir() {
-          Assert.assertTrue(adminPages.depositsTable.isDisplayed());
+          Assert.assertTrue(adminPages.approvedDepositsTable.isDisplayed());
         }
         @And("sayfada User Detail Username gorulmelidir")
         public void sayfadaUserDetailUsernameGorulmelidir() {
@@ -842,110 +1322,95 @@ import java.awt.*;
             adminPages.RemarkButton.sendKeys(text);
         }
 
+    @And("aCılan sayfada name  email text boxları ve fotoğraf gUncellenip aktif oldugu dogrulanir")
+    public void acılanSayfadaNameEmailTextBoxlarıVeFotoğrafGUncellenipAktifOlduguDogrulanir() throws AWTException {
 
-        // ********** US_038  **********
+        adminPages.ProfilNameBox.clear();
+        ReusableMethods.wait(1);
+        adminPages.ProfilNameBox.sendKeys("Gulizar");
 
-
-        // ********** US_039  **********
-
-
-        // ********** US_040  **********
-
-
-        // ********** US_041  **********
-
-        @Given("acilan login sayfasinda manage users butonunu tılanır")
-        public void acilanLoginSayfasindaManageUsersButonunuTılanır() {
-
-            ReusableMethods.wait(1);
-            adminPages.manageUsersButton.click();
-            ReusableMethods.wait(1);
-        }
-
-        @Then("active users butonun linklerinin gorunur oldugunu ve aktif oldugu dogrulanır")
-        public void activeUsersButonunLinklerininGorunurOldugunuVeAktifOlduguDogrulanır() {
-            adminPages.activeUsersButton.isEnabled();
-            ReusableMethods.wait(1);
-            adminPages.activeUsersButton.isDisplayed();
-            ReusableMethods.wait(1);
-            adminPages.activeUsersButton.click();
-            ReusableMethods.wait(2);
-
-        }
-
-        @Then("active users butonuna tiklandiginda {string} sutunundaki active users listesi ve basliklarinin gorunur oldugunu test eder")
-        public void activeUsersButonunaTiklandigindaSutunundakiActiveUsersListesiVeBasliklarininGorunurOldugunuTestEder(String istenenBaslik) {
-
-            int istenenSutunIndexi = 0;
-            List<WebElement> headerElementListesi = adminPages.userListesi;
-            for (int i = 0; i < headerElementListesi.size(); i++) {
-
-                if (headerElementListesi.get(i).getText().equals(istenenBaslik)) {
-                    istenenSutunIndexi = i + 1;
-                }
-            }
-            String dinamikSutunXpath = "/tr/td[" + istenenSutunIndexi + "]";
-            List<WebElement> istenenSutunElementleriListesi = Driver.getDriver().findElements(By.xpath(dinamikSutunXpath));
-            for (int i = 0; i < istenenSutunElementleriListesi.size(); i++) {
-                System.out.println(istenenSutunElementleriListesi.get(i).getText());
-
-            }
-        }
+        ReusableMethods.wait(1);
+        adminPages.ProfilEmailBox.clear();
+        ReusableMethods.wait(1);
+        adminPages.ProfilEmailBox.sendKeys("gul.ataalp@gmail.com");
+        ReusableMethods.wait(2);
+        adminPages.uploadImageButon.click();
+        ReusableMethods.wait(2);
 
 
-        @Then("details butonun gorunur ve aktif oldugu dogrulanır")
-        public void detailsButonunGorunurVeAktifOlduguDogrulanır() {
-
-            adminPages.detailsButtonElement.isEnabled();
-            ReusableMethods.wait(1);
-            adminPages.detailsButtonElement.isDisplayed();
-            ReusableMethods.wait(1);
-            adminPages.detailsButtonElement.click();
-            ReusableMethods.wait(2);
-        }
-
-        @And("user Detail sayfasina yonlendirildigi dogrulanir")
-        public void userDetailSayfasinaYonlendirildigiDogrulanir() {
-            Assert.assertTrue(adminPages.userDetailSayfasi.isDisplayed());
-            ReusableMethods.wait(2);
-        }
-
-        @And("transactions butonuna tiklanir")
-        public void transactionsButonunaTiklanir() {
-            adminPages.viewAllButonu.click();
-            ReusableMethods.wait(2);
-        }
-
-        @Then("filtreleme içeriğindeki alanlar işlevsel ve aktif olmalıdır.")
-        public void filtrelemeIçeriğindekiAlanlarIşlevselVeAktifOlmalıdır() {
-            adminPages.typeAllButonu.isEnabled();
-            ReusableMethods.wait(1);
-            adminPages.typeAllButonu.isDisplayed();
-            ReusableMethods.wait(1);
-            adminPages.typeAllButonu.click();
-
-            adminPages.remarkAnyButonu.isEnabled();
-            ReusableMethods.wait(1);
-            adminPages.remarkAnyButonu.isDisplayed();
-            ReusableMethods.wait(1);
-            adminPages.remarkAnyButonu.click();
-
-            adminPages.dateStartButonu.isEnabled();
-            ReusableMethods.wait(1);
-            adminPages.dateStartButonu.isDisplayed();
-            ReusableMethods.wait(1);
-            adminPages.dateStartButonu.click();
-        }
-        // ********** US_042  **********
+        StringSelection resim = new StringSelection("C:\\Users\\Gülizar\\IdeaProjects\\UiCucumberTeam4\\src\\test\\java\\picture\\profil.png");
+        //StringSelection resim=new StringSelection(System.getProperty("user.dir")+"SmartCardLink_Team3\\a.jpg");
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(resim, null);
+        Robot robot = new Robot();
+        ReusableMethods.wait(1);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.keyPress(KeyEvent.VK_V);
+        ReusableMethods.wait(1);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        ReusableMethods.wait(5);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        ReusableMethods.wait(3);
 
 
-        // ********** US_043  **********
+
+    }
+
+    @Then("password linkine tiklanir ve password sayfasinin acldigi dogrulanmali")
+    public void passwordLinkineTiklanirVePasswordSayfasininAcldigiDogrulanmali() {
+        adminPages.passwordLinkElementi.click();
+        ReusableMethods.wait(1);
+
+        Assert.assertTrue(adminPages.changePasswordYaziElementi.isDisplayed());
+        ReusableMethods.wait(2);
+    }
+
+    @And("acilan sayfada ilgili alanlar doldurularak sifre guncellenir")
+    public void acilanSayfadaIlgiliAlanlarDoldurularakSifreGuncellenir() {
+        adminPages.profilPasswordBox.click();
+        ReusableMethods.wait(1);
+        adminPages.profilPasswordBox.sendKeys("123123123");
+        ReusableMethods.wait(3);
+        adminPages.profilNewPasswordBox.click();
+        ReusableMethods.wait(2);
+        adminPages.profilNewPasswordBox.sendKeys("123456789");
+        ReusableMethods.wait(2);
+        adminPages.profilConfirmPasswordBox.click();
+        ReusableMethods.wait(2);
+        adminPages.profilConfirmPasswordBox.sendKeys("123456789");
+        ReusableMethods.wait(2);
+        adminPages.passwordSubmitButton.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(adminPages.passwordSuccessfullYaziElementi.isDisplayed());
+        ReusableMethods.wait(2);
+    }
+
+    @Then("Logout linkine tıklayarak sayfadan basaralı bir sekilde ayrıldıgı dogrulanabilmeli")
+    public void logoutLinkineTıklayarakSayfadanBasaralıBirSekildeAyrıldıgıDogrulanabilmeli() {
+        ReusableMethods.wait(1);
+        adminPages.logoutLinkElementi.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.WelcomeToYaziElementi.isDisplayed());
+        ReusableMethods.wait(2);
+    }
 
 
-        // ********** US_044  **********
+    // ********** US_035  **********
 
 
-        // ********** US_045  **********
+    // ********** US_036  **********
+
+
+    // ********** US_037  **********
+
+
+    // ********** US_038  **********
+
+
+    // ********** US_039  **********
+
+
+    // ********** US_040  **********
 
         @Then("manage users altindaki active users in gorunur oldugunu dogrular")
         public void manage_users_altindaki_active_users_in_gorunur_oldugunu_dogrular() {
@@ -1014,179 +1479,104 @@ import java.awt.*;
             Assert.assertFalse(adminPages.userLastNameBox.toString().isEmpty());
         }
 
+
+    // ********** US_041  **********
+
         // ********** US_046  **********
       
 
-        // ********** US_047  **********
 
+    @Given("acilan login sayfasinda manage users butonunu tılanır")
+    public void acilanLoginSayfasindaManageUsersButonunuTılanır() {
 
-        // ********** US_048  **********
-        @Given("yonetici olarak banned users buton Link Gorunur ve aktif olmali,tiklandiginda banned users sayfasına yonlendirildigi dogrulanmalıdır")
-        public void yoneticiOlarakBannedUsersButonLinkGorunurVeAktifOlmaliTiklandigindaBannedUsersSayfasınaYonlendirildigiDogrulanmalıdır() {
+        ReusableMethods.wait(1);
+        adminPages.manageUsersButton.click();
+        ReusableMethods.wait(1);
+    }
 
-            adminPages.bannedUsersButonu.isEnabled();
-            ReusableMethods.wait(1);
-            adminPages.bannedUsersButonu.isDisplayed();
-            ReusableMethods.wait(1);
-            adminPages.bannedUsersButonu.click();
-            Assert.assertTrue(adminPages.bannedUsersYaziElementi.isDisplayed());
-            ReusableMethods.wait(2);
-        }
+    @Then("active users butonun linklerinin gorunur oldugunu ve aktif oldugu dogrulanır")
+    public void activeUsersButonunLinklerininGorunurOldugunuVeAktifOlduguDogrulanır() {
+        adminPages.activeUsersButton.isEnabled();
+        ReusableMethods.wait(1);
+        adminPages.activeUsersButton.isDisplayed();
+        ReusableMethods.wait(1);
+        adminPages.activeUsersButton.click();
+        ReusableMethods.wait(2);
 
-        @Then("banned users butonuna tiklandiginda {string} sutunundaki banned users listesi ve basliklarinin gorunur oldugunu test eder")
-        public void bannedUsersButonunaTiklandigindaSutunundakiBannedUsersListesiVeBasliklarininGorunurOldugunuTestEder(String istenenBaslik) {
+    }
 
-            int istenenSutunIndexi = 0;
-            List<WebElement> headerElementListesi = adminPages.userListeBasliklari;
-            for (int i = 0; i < headerElementListesi.size(); i++) {
+    @Then("active users butonuna tiklandiginda {string} sutunundaki active users listesi ve basliklarinin gorunur oldugunu test eder")
+    public void activeUsersButonunaTiklandigindaSutunundakiActiveUsersListesiVeBasliklarininGorunurOldugunuTestEder(String istenenBaslik) {
 
-                if (headerElementListesi.get(i).getText().equals(istenenBaslik)) {
-                    istenenSutunIndexi = i + 1;
-                }
-                System.out.println(headerElementListesi.get(i).getText());
+        int istenenSutunIndexi = 0;
+        List<WebElement> headerElementListesi = adminPages.userListesi;
+        for (int i = 0; i < headerElementListesi.size(); i++) {
+
+            if (headerElementListesi.get(i).getText().equals(istenenBaslik)) {
+                istenenSutunIndexi = i + 1;
             }
         }
-
-        @Then("search box'dan istenen kullanıcıyı seçebilmeli ve detail bilgilerine erisebildigini test eder")
-        public void searchBoxDanIstenenKullanıcıyıSeçebilmeliVeDetailBilgilerineErisebildiginiTestEder() {
-            adminPages.bannedSearcBox.click();
-            adminPages.bannedSearcBox.sendKeys("asyaturk");
-            ReusableMethods.wait(1);
-            adminPages.bannedSearchIkonu.click();
-            ReusableMethods.wait(1);
-            Assert.assertTrue(adminPages.arananIsimElementi.isDisplayed());
-            ReusableMethods.wait(2);
-            adminPages.bannedDetailButonu.click();
-        }
-
-        @Then("Unban User butonu gorunur ve aktif oldugunu dogrular")
-        public void unbanUserButonuGorunurVeAktifOldugunuDogrular() {
-
-            adminPages.unbanUserButonu.isEnabled();
-            ReusableMethods.wait(1);
-            adminPages.unbanUserButonu.isDisplayed();
-            ReusableMethods.wait(1);
-            adminPages.unbanUserButonu.click();
-            ReusableMethods.wait(1);
-            adminPages.unbanUserYesButonu.isEnabled();
-            ReusableMethods.wait(1);
-            adminPages.unbanUserYesButonu.isDisplayed();
-            ReusableMethods.wait(1);
-            adminPages.unbanUserYesButonu.click();
-            ReusableMethods.wait(2);
-            Assert.assertTrue(adminPages.unbannedSuccessfullyYaziElementi.isDisplayed());
-            ReusableMethods.wait(2);
+        String dinamikSutunXpath = "//tr/td[" + istenenSutunIndexi + "]";
+        List<WebElement> istenenSutunElementleriListesi = Driver.getDriver().findElements(By.xpath(dinamikSutunXpath));
+        for (int i = 0; i < istenenSutunElementleriListesi.size(); i++) {
+            System.out.println(istenenSutunElementleriListesi.get(i).getText());
 
         }
+    }
 
-        @Then("active users sayfasinda search box'a  kullanıcıyı aratip ve detail bilgilerine erisebildigini test eder")
-        public void activeUsersSayfasindaSearchBoxAKullanıcıyıAratipVeDetailBilgilerineErisebildiginiTestEder() {
-            ReusableMethods.wait(2);
-            adminPages.activeUsersButton.click();
-            ReusableMethods.wait(2);
+    @Then("details butonun gorunur ve aktif oldugu dogrulanır")
+    public void detailsButonunGorunurVeAktifOlduguDogrulanır() {
 
-            adminPages.activeUserSearchBox.click();
-            adminPages.activeUserSearchBox.sendKeys("asyaturk");
-            ReusableMethods.wait(1);
-            adminPages.activeUsersSearchIkon.click();
-            ReusableMethods.wait(1);
-            adminPages.detailsButtonElement.click();
+        adminPages.detailsButtonElement.isEnabled();
+        ReusableMethods.wait(1);
+        adminPages.detailsButtonElement.isDisplayed();
+        ReusableMethods.wait(1);
+        adminPages.detailsButtonElement.click();
+        ReusableMethods.wait(2);
+    }
 
-            Assert.assertTrue(adminPages.userDetailSayfasi.isDisplayed());
-            ReusableMethods.wait(2);
-        }
+    @And("user Detail sayfasina yonlendirildigi dogrulanir")
+    public void userDetailSayfasinaYonlendirildigiDogrulanir() {
+        Assert.assertTrue(adminPages.userDetailSayfasi.isDisplayed());
+        ReusableMethods.wait(2);
+    }
 
-        // ********** US_049  **********
+    @And("transactions butonuna tiklanir")
+    public void transactionsButonunaTiklanir() {
+        adminPages.viewAllButonu.click();
+        ReusableMethods.wait(2);
+    }
+
+    @Then("filtreleme içeriğindeki alanlar işlevsel ve aktif olmalıdır.")
+    public void filtrelemeIçeriğindekiAlanlarIşlevselVeAktifOlmalıdır() {
+        adminPages.typeAllButonu.isEnabled();
+        ReusableMethods.wait(1);
+        adminPages.typeAllButonu.isDisplayed();
+        ReusableMethods.wait(1);
+        adminPages.typeAllButonu.click();
+
+        adminPages.remarkAnyButonu.isEnabled();
+        ReusableMethods.wait(1);
+        adminPages.remarkAnyButonu.isDisplayed();
+        ReusableMethods.wait(1);
+        adminPages.remarkAnyButonu.click();
+
+        adminPages.dateStartButonu.isEnabled();
+        ReusableMethods.wait(1);
+        adminPages.dateStartButonu.isDisplayed();
+        ReusableMethods.wait(1);
+        adminPages.dateStartButonu.click();
+    }
+    // ********** US_042  **********
 
 
+    // ********** US_043  **********
 
-        // ********** US_050  **********
-        @When("admin basarili bir sekilde giris yaptigini {string} dogrular")
-        public void admin_basarili_bir_sekilde_giris_yaptigini_dogrular(String isim) {
-            Assert.assertTrue(adminPages.kisiselIsimMenu.getText().equals(isim));
-        }
-        @When("admin manage users linkine tiklar")
-        public void admin_manage_users_linkine_tiklar() {
-            adminPages.manageUsersLink.click();
-        }
 
-        @When("admin notification to all linkine tiklar")
-        public void admin_notification_to_all_linkine_tiklar() {
-            adminPages.notificationToAllLink.click();
-        }
+    // ********** US_044  **********
 
-        @Then("notification to all linkinin goruntulendigi dogrulanir")
-        public void notification_to_all_linkinin_goruntulendigi_dogrulanir() {
-            Assert.assertTrue(adminPages.notificationToAllLink.isDisplayed());
-        }
 
-        @And("notification to all linkinin aktif oldugu dogrulanir")
-        public void notificationToAllLinkininAktifOlduguDogrulanir() {
-            Assert.assertTrue(adminPages.notificationToAllLink.isEnabled());
-        }
-
-        @When("admin {string} sayfasinda {string} basligi oldugunu dogrular")
-        public void adminAdminUsersSendNotificationSayfasindaBeingSentBasligiOldugunuDogrular(String urlUzantisi,String baslik) {
-            String expectedUrl = ConfigReader.getProperty("guestUrl")+urlUzantisi;
-            ReusableMethods.wait(2);
-            String actualUrl=Driver.getDriver().getCurrentUrl();
-            Assert.assertEquals(expectedUrl,actualUrl);
-            String actualBaslik= adminPages.beingSendText.getText();
-            Assert.assertTrue(actualBaslik.contains(baslik));
-        }
-        @When("Notification sayfasinda {string} secer")
-        public void tum_kullanicilari_secer(String user) {
-            select = new Select(adminPages.DropDownChooseUserBox);
-            select.selectByVisibleText(user);
-        }
-        @Then("baslik {string} yazar")
-        public void baslik_yazar(String subject) {
-            adminPages.SubjectTitleBox.sendKeys(subject);
-        }
-        @When("mesaj {string} yazar")
-        public void mesaj_yazar(String messsage) {
-            adminPages.messageBox.sendKeys(messsage);
-        }
-        @Then("start form alanina {int} degeri girer")
-        public void start_form_alanina_degeri_girer(int sayi) {
-            adminPages.startFormBox.sendKeys(String.valueOf(sayi));
-        }
-        @Given("per batch alanina {int} degeri girer")
-        public void per_batch_alanina_degeri_girer(Integer int1) {
-            adminPages.perBatchBox.sendKeys(String.valueOf(int1));
-        }
-        @Given("cooling period alanina {int} degeri girer")
-        public void cooling_period_alanina_degeri_girer(Integer int1) {
-            adminPages.coolingPeriodBox.sendKeys(String.valueOf(int1));
-
-        }
-        @Then("notification sayfasinda submit butonuna basar")
-        public void notification_sayfasinda_submit_butonuna_basar() {
-            Actions actions = new Actions(Driver.getDriver());
-            actions.sendKeys(Keys.PAGE_DOWN).perform();
-            ReusableMethods.wait(2);
-            adminPages.notificationSubmitButton.click();
-            ReusableMethods.wait(10);
-        }
-
-        @Then("admin sayfayi kapatir")
-        public void sayfayiKapatir() {
-            Driver.closeDriver();
-        }
-
-        @Then("Userlardan {string} secilir")
-        public void userlardanSecilir(String userEmail) {
-            select = new Select(adminPages.DropDownChooseUserBox);
-            adminPages.selectUserBox.sendKeys(userEmail);
-            ReusableMethods.wait(2);
-            adminPages.selectedUserConfirm.click();
-            ReusableMethods.wait(2);
-        }
-        @When("basarili bir sekilde mesajini gonderdigini dogrular ve kutuyu kapatir")
-        public void basariliBirSekildeMesajiniGonderdiginiDogrularVeKutuyuKapatir() {
-            Assert.assertTrue(adminPages.succesfullyDoneText.isDisplayed());
-            adminPages.succesfullyDoneCloseButton.click();
-        }
+    // ********** US_045  **********
 
         @And("baslik kisminda doldurulmasi gereken bosluklar doldurulmadiginda uyari yazisi cikar")
         public void baslikKismindaDoldurulmasiGerekenBosluklarDoldurulmadigindaUyariYazisiCikar() throws IOException {
@@ -1245,9 +1635,9 @@ import java.awt.*;
 
         @Then("kullanici deposit linkine tiklar ve odeme seklini secer")
         public void kullaniciDepositLinkineTiklarVeOdemeSekliniSecer() {
-            userpages.depositButton.click();
+            userPages.depositButton.click();
             ReusableMethods.wait(5);
-            select = new Select( userpages.selectGateway);
+            select = new Select( userPages.selectGateway);
             select.selectByVisibleText("Manual");
 
 
@@ -1256,11 +1646,11 @@ import java.awt.*;
 
         @And("kullanici miktari {int} girer ve submit tusuna basar")
         public void kullaniciMiktariGirerVeSubmitTusunaBasar(int miktar) {
-            userpages.amountBox.sendKeys(String.valueOf(miktar));
-            userpages.depositSubmitButton.click();
+            userPages.amountBox.sendKeys(String.valueOf(miktar));
+            userPages.depositSubmitButton.click();
             ReusableMethods.wait(5);
-            userpages.depositSubmitButton.click();
-            kisiselTransactionNo = userpages.depositTransactionNo.getText();
+            userPages.depositSubmitButton.click();
+            kisiselTransactionNo = userPages.depositTransactionNo.getText();
 
 
         }
@@ -1289,73 +1679,40 @@ import java.awt.*;
       
       
     // ********** US_052  **********
-        @Then("admin Deposits linkine tiklar")
-        public void adminDepositsLinkineTiklar() {
-            adminPages.depositsLink.click();
+
+
+    // ********** US_046  **********
+
+
+    // ********** US_047  **********
+
+
+    // ********** US_048  **********
+    @Given("yonetici olarak banned users buton Link Gorunur ve aktif olmali,tiklandiginda banned users sayfasına yonlendirildigi dogrulanmalıdır")
+    public void yoneticiOlarakBannedUsersButonLinkGorunurVeAktifOlmaliTiklandigindaBannedUsersSayfasınaYonlendirildigiDogrulanmalıdır() {
+
+        adminPages.bannedUsersButonu.isEnabled();
+        ReusableMethods.wait(1);
+        adminPages.bannedUsersButonu.isDisplayed();
+        ReusableMethods.wait(1);
+        adminPages.bannedUsersButonu.click();
+        Assert.assertTrue(adminPages.bannedUsersYaziElementi.isDisplayed());
+        ReusableMethods.wait(2);
+    }
+
+    @Then("banned users butonuna tiklandiginda {string} sutunundaki banned users listesi ve basliklarinin gorunur oldugunu test eder")
+    public void bannedUsersButonunaTiklandigindaSutunundakiBannedUsersListesiVeBasliklarininGorunurOldugunuTestEder(String istenenBaslik) {
+
+        int istenenSutunIndexi = 0;
+        List<WebElement> headerElementListesi = adminPages.userListeBasliklari;
+        for (int i = 0; i < headerElementListesi.size(); i++) {
+
+            if (headerElementListesi.get(i).getText().equals(istenenBaslik)) {
+                istenenSutunIndexi = i + 1;
+            }
+            System.out.println(headerElementListesi.get(i).getText());
         }
-
-        @When("Approved Deposits linkine tiklar")
-        public void approvedDepositsLinkineTiklar() {
-            adminPages.approvedDepositsLink.click();
-        }
-
-        @And("admin mevcut sayfa uzantisinin {string} oldugunu dogrular")
-        public void adminMevcutSayfaUzantisininOldugunuDogrular(String urlUzanti) {
-            String actualData=Driver.getDriver().getCurrentUrl();
-            String expectedData=ConfigReader.getProperty("guestUrl")+urlUzanti;
-            Assert.assertEquals(expectedData,actualData);
-        }
-
-        @And("admin Deposits listesinin goruntulenebilir oldugunu dogrular")
-        public void adminApprovedDepoitsListesininGoruntulenebilirOldugunuDogrular() {
-            System.out.println("Deposit table "+adminPages.depositsTable.getText());
-            Assert.assertTrue(adminPages.depositsTable.isDisplayed());
-        }
-        @When("admin Deposits listesindeki basliklarin ve altindaki bilgilerin goruntulenebilir oldugunu dogrular")
-        public void admin_approved_deposits_listesindeki_basliklarin_ve_altindaki_bilgilerin_goruntulenebilir_oldugunu_dogrular() {
-            System.out.println("headers " + adminPages.depositsLinkHeaders.getText());
-            Assert.assertTrue(adminPages.depositsLinkHeaders.isDisplayed());
-            Assert.assertTrue(adminPages.depositsTable.isDisplayed());
-        }
-
-        @And("admin Details butonun gorunur ve aktif oldugunu dogrular")
-        public void adminDetailsButonunGorunurVeAktifOldugunuDogrular() {
-            Assert.assertTrue(adminPages.detailsButton.isDisplayed());
-            Assert.assertTrue(adminPages.detailsButton.isEnabled());
-        }
-
-        @And("admin Details butonuna tiklar")
-        public void adminDetailsButonunaTiklar() {
-            adminPages.detailsButton.click();
-        }
-
-        @Then("Details sayfasindaki bilgilerin goruntulendigi dogrulanir")
-        public void detailsSayfasindakiBilgilerinGoruntulendigiDogrulanir() {
-            ReusableMethods.wait(2);
-            Assert.assertTrue(adminPages.DetailspageAllInfos.isDisplayed());
-        }
-
-
-        // ********** US_053  **********
-        @Then("admin Succesful Deposits linkine tiklar")
-        public void adminSuccesfulDepositsLinkineTiklar() {
-            adminPages.succesfullDepositsLink.click();
-        }
-
-        // ********** US_054  **********
-        @Then("admin Rejected Deposits linkine tiklar")
-        public void adminRejectedDepositsLinkineTiklar() {
-            adminPages.RejectedDepositsLink.click();
-        }
-
-        // ********** US_055  **********
-        @Given("Initiated Deposits linkine tiklar")
-        public void initiatedDepositsLinkineTiklar() {
-            adminPages.InitiatedDepositsLink.click();
-        }
-
-
-
+    }
         @And("admin approve  butonuna tiklar")
         public void adminApproveButonunaTiklar() {
         }
@@ -1574,175 +1931,405 @@ import java.awt.*;
     public void admin_enters_and_information_where_necessary(String string, String string2) {
         adminPages.adminUsernameBox.sendKeys("selimebeyza");
         adminPages.adminPasswordBox.sendKeys("123123123");
+    }
+
+    @Then("search box'dan istenen kullanıcıyı seçebilmeli ve detail bilgilerine erisebildigini test eder")
+    public void searchBoxDanIstenenKullanıcıyıSeçebilmeliVeDetailBilgilerineErisebildiginiTestEder() {
+        adminPages.bannedSearcBox.click();
+        adminPages.bannedSearcBox.sendKeys("asyaturk");
+        ReusableMethods.wait(1);
+        adminPages.bannedSearchIkonu.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(adminPages.arananIsimElementi.isDisplayed());
+        ReusableMethods.wait(2);
+        adminPages.bannedDetailButonu.click();
+    }
+
+    @Then("Unban User butonu gorunur ve aktif oldugunu dogrular")
+    public void unbanUserButonuGorunurVeAktifOldugunuDogrular() {
+
+        adminPages.unbanUserButonu.isEnabled();
+        ReusableMethods.wait(1);
+        adminPages.unbanUserButonu.isDisplayed();
+        ReusableMethods.wait(1);
+        adminPages.unbanUserButonu.click();
+        ReusableMethods.wait(1);
+        adminPages.unbanUserYesButonu.isEnabled();
+        ReusableMethods.wait(1);
+        adminPages.unbanUserYesButonu.isDisplayed();
+        ReusableMethods.wait(1);
+        adminPages.unbanUserYesButonu.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(adminPages.unbannedSuccessfullyYaziElementi.isDisplayed());
+        ReusableMethods.wait(2);
+
+
+
+
+
 
     }
-    @Then("he clicks the login button and logs in successfully as admin.")
-    public void he_clicks_the_login_button_and_logs_in_successfully_as_admin() {
-        adminPages.adminLoginButon.click();
+
+    @Then("active users sayfasinda search box'a  kullanıcıyı aratip ve detail bilgilerine erisebildigini test eder")
+    public void activeUsersSayfasindaSearchBoxAKullanıcıyıAratipVeDetailBilgilerineErisebildiginiTestEder() {
+        ReusableMethods.wait(2);
+        adminPages.activeUsersButton.click();
+        ReusableMethods.wait(2);
+
+        adminPages.activeUserSearchBox.click();
+        adminPages.activeUserSearchBox.sendKeys("asyaturk");
+        ReusableMethods.wait(1);
+        adminPages.activeUsersSearchIkon.click();
+        ReusableMethods.wait(1);
+        adminPages.detailsButtonElement.click();
+
+        Assert.assertTrue(adminPages.userDetailSayfasi.isDisplayed());
+        ReusableMethods.wait(2);
+    }
+
+    // ********** US_049  **********
+
+
+
+    // ********** US_050  **********
+
+
+    @Given("Approved Withdrawals,Pending Withdrawals,Rejected Withdrawals links are displayed")
+    public void approved_withdrawals_pending_withdrawals_rejected_withdrawals_links_are_displayed() {
+        Assert.assertTrue(adminPages.approvedWithdrawals.isDisplayed());
+        Assert.assertTrue(adminPages.pendingWithdrawals.isDisplayed());
+        Assert.assertTrue(adminPages.rejectedWithdrawals.isDisplayed());
         ReusableMethods.wait(1);
     }
-    @Then("click on the Withdrawal button and then the Withdrawal Methods button.")
-    public void click_on_the_withdrawal_button_and_then_the_withdrawal_methods_button() {
-    adminPages.withdrawalsButton.click();
-    adminPages.withdrawalsMethodsButton.click();
-    ReusableMethods.wait(1);
-    }
-    @Then("it is tested that the Withdrawal Methods page can be accessed.")
-    public void it_is_tested_that_the_withdrawal_methods_page_can_be_accessed() {
-        Assert.assertTrue(adminPages.withdrawalsMethodsPage.isDisplayed());
-        ReusableMethods.wait(1);
+    @Given("Click on the Approved Withdrawals link")
+    public void click_on_the_approved_withdrawals_link() {
+        adminPages.approvedWithdrawals.click();
 
     }
-    @Then("it tests whether it can display the Method, Currency, Charge, Withdraw Limit, Status information.")
-    public void it_tests_whether_it_can_display_the_method_currency_charge_withdraw_limit_status_information() {
-        Assert.assertTrue(adminPages.withdrawalsMethodsPage.isDisplayed());
-        ReusableMethods.wait(1);
-    }
-    @Then("it tests whether it can reach the edit page under the action heading.")
-    public void it_tests_whether_it_can_reach_the_edit_page_under_the_action_heading() {
-        adminPages.withdrawalsActionEdit.click();
-        Assert.assertTrue(adminPages.updateWithdrawalMethodPage.isDisplayed());
-        ReusableMethods.wait(1);
-    }
-    @Then("clicks on the edit page under the action link.")
-    public void clicks_on_the_edit_page_under_the_action_link() {
-        adminPages.withdrawalsActionEdit.click();
-        ReusableMethods.wait(1);
-    }
-    @Then("it tests whether it can update.")
-    public void it_tests_whether_it_can_update() {
-        Assert.assertTrue(adminPages.withdrawMethodUpdatedSuccesfully.isDisplayed());
-        ReusableMethods.wait(1);
-    }
-    @Then("the visibility of the method selected under the action heading is tested.")
-    public void the_visibility_of_the_method_selected_under_the_action_heading_is_tested() {
-        Assert.assertTrue(adminPages.withdrawEnable.isDisplayed());
-        ReusableMethods.wait(1);
-    }
-    @Then("click on the add new button and fill in the necessary information.")
-    public void click_on_the_add_new_button_and_fill_in_the_necessary_information() {
-        adminPages.withdrawAddNew.click();
-        adminPages.newWithdrawalMethodName.sendKeys("beyza korumaz");
-        adminPages.newWithdrawalMethodCurrency.sendKeys("IT");
-        adminPages.newWithdrawalMethodRate.sendKeys("20");
-        adminPages.newWithdrawalMethodMinimumAmount.sendKeys("100");
-        adminPages.newWithdrawalAmount.sendKeys("1000");
-        adminPages.fixedCharge.sendKeys("100");
-        adminPages.percentCharge.sendKeys("1000");
+    @Given("The details button on the Approved Withdrawals page is displayed")
+    public void the_details_button_on_the_approved_withdrawals_page_is_displayed() {
+        String expectedValue= "Approved Withdrawals";
+        String actualValue= adminPages.pageTitlePendingWithdrawals.getText();
+        Assert.assertEquals(expectedValue,actualValue);
 
     }
-    @Then("click on the Submit button.")
-    public void click_on_the_submit_button() {
-        adminPages.newWithdrawalMethodSubmit.click();
-        ReusableMethods.wait(1);
-        Assert.assertTrue(adminPages.succesfullyText.isDisplayed());
-        ReusableMethods.wait(1);
+    @Given("Clicks on the details button")
+    public void clicks_on_the_details_button() {
+        adminPages.searchBox.sendKeys("hilal");
+        adminPages.searchBoxButton.click();
+        ReusableMethods.wait(3);
+        adminPages.detailsuserCardInformation.click();
+
+
     }
-    @Then("closes the page.")
-    public void closes_the_page() {
+    @Given("The information in the card is displayed.")
+    public void the_information_in_the_card_is_displayed() {
+        Assert.assertTrue(adminPages.userCardInformation.isDisplayed());
+
+    }
+
+    @Given("Click on the Pending Withdrawn button")
+    public void click_on_the_pending_withdrawn_button() {
+        adminPages.pendingWithdrawals.click();
+
+
+    }
+    @Given("Confirms the visibility of the pending and details buttons on this page.")
+    public void confirms_the_visibility_of_the_pending_and_details_buttons_on_this_page() {
+        String expectedValue= "Pending Withdrawals";
+        String actualValue= adminPages.pwPageTittle.getText();
+        Assert.assertEquals(expectedValue,actualValue);
+
+    }
+    @Given("Click on details button on the page that opens")
+    public void click_on_details_button_on_the_page_that_opens() {
+        adminPages.searchBox.sendKeys("hilal");
+        adminPages.searchBoxButton.click();
+        ReusableMethods.wait(3);
+        adminPages.detailsuserCardInformation.click();
+
+
+    }
+    @Given("Verifies the visibility of the Approve, Reject buttons on the page that opens")
+    public void verifies_the_visibility_of_the_buttons_on_the_page_that_opens() {
+       Assert.assertTrue(adminPages.pwApproveButton.isDisplayed());
+       Assert.assertTrue(adminPages.pwRejectButton.isDisplayed());
+       ReusableMethods.wait(3);
+
+
+    }
+    @Given("Click on the Reject button on the page, fill in the required field and click on the submit button")
+    public void click_on_the_button_on_the_page_fill_in_the_required_field_and_click_on_the_submit_button() {
+        adminPages.pwRejectButton.click();
+        adminPages.rejectionTextArea.sendKeys(ConfigReader.getProperty("rejectionReason"));
+        adminPages.rejectionSubmitButton.click();
+        ReusableMethods.wait(3);
+
+
+    }
+    @Given("Withdrawal rejected successfully is displayed")
+    public void withdrawal_rejected_successfully_is_displayed() {
+        Assert.assertTrue(adminPages.rejecteedSuccesffulyMesaggeText.isDisplayed());
+        ReusableMethods.wait(3);
+    }
+
+    @Given("Click on the Approved button on the page, fill in the required fields and press the submit button")
+    public void click_on_the_approved_button_on_the_page_fill_in_the_required_fields_and_press_the_submit_button() {
+        adminPages.pwApproveButton.click();
+        adminPages.approvedTextArea.sendKeys(ConfigReader.getProperty("approvedReason"));
+        adminPages.approvedSubmitButton.click();
+        ReusableMethods.wait(3);
+
+
+    }
+    @Given("Withdrawal approved successfully is displayed")
+    public void withdrawal_approved_successfully_is_displayed() {
+        Assert.assertTrue(adminPages.approvedSuccesffulyMesaggeText.isDisplayed());
+
+    }
+    @Given("Click on the Rejected Withdrawals link")
+    public void click_on_the_rejected_withdrawals_link() {
+        adminPages.rejectedWithdrawals.click();
+
+
+    }
+    @Given("It is seen that the status is Rejected")
+    public void ıt_is_seen_that_the_status_is_rejected() {
+        String expectedValue= "Rejected";
+        String actualValue= adminPages.statusReject.getText();
+        Assert.assertEquals(expectedValue,actualValue);
+
+    }
+
+
+
+
+    // ********** US_041  **********
+
+
+
+    // ********** US_042  **********
+
+
+
+    // ********** US_043  **********
+
+
+
+    // ********** US_044  **********
+
+
+
+    // ********** US_045  **********
+
+
+
+    // ********** US_046  **********
+
+
+
+    // ********** US_047  **********
+
+
+
+    // ********** US_048  **********
+
+
+
+    // ********** US_049  **********
+
+
+
+    // ********** US_050  **********
+    @When("admin basarili bir sekilde giris yaptigini {string} dogrular")
+    public void admin_basarili_bir_sekilde_giris_yaptigini_dogrular(String isim) {
+        Assert.assertTrue(adminPages.kisiselIsimMenu.getText().equals(isim));
+    }
+    @When("admin manage users linkine tiklar")
+    public void admin_manage_users_linkine_tiklar() {
+    adminPages.manageUsersLink.click();
+    }
+
+    @When("admin notification to all linkine tiklar")
+    public void admin_notification_to_all_linkine_tiklar() {
+    adminPages.notificationToAllLink.click();
+    }
+
+    @Then("notification to all linkinin goruntulendigi dogrulanir")
+    public void notification_to_all_linkinin_goruntulendigi_dogrulanir() {
+    Assert.assertTrue(adminPages.notificationToAllLink.isDisplayed());
+    }
+
+    @And("notification to all linkinin aktif oldugu dogrulanir")
+    public void notificationToAllLinkininAktifOlduguDogrulanir() {
+        Assert.assertTrue(adminPages.notificationToAllLink.isEnabled());
+    }
+
+    @When("admin {string} sayfasinda {string} basligi oldugunu dogrular")
+    public void adminAdminUsersSendNotificationSayfasindaBeingSentBasligiOldugunuDogrular(String urlUzantisi,String baslik) {
+        String expectedUrl = ConfigReader.getProperty("guestUrl")+urlUzantisi;
+        ReusableMethods.wait(2);
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        Assert.assertEquals(expectedUrl,actualUrl);
+        String actualBaslik= adminPages.beingSendText.getText();
+        Assert.assertTrue(actualBaslik.contains(baslik));
+    }
+    @When("Notification sayfasinda {string} secer")
+    public void tum_kullanicilari_secer(String user) {
+        select = new Select(adminPages.DropDownChooseUserBox);
+        select.selectByVisibleText(user);
+    }
+    @Then("baslik {string} yazar")
+    public void baslik_yazar(String subject) {
+        adminPages.SubjectTitleBox.sendKeys(subject);
+    }
+    @When("mesaj {string} yazar")
+    public void mesaj_yazar(String messsage) {
+        adminPages.messageBox.sendKeys(messsage);
+    }
+    @Then("start form alanina {int} degeri girer")
+    public void start_form_alanina_degeri_girer(int sayi) {
+      adminPages.startFormBox.sendKeys(String.valueOf(sayi));
+    }
+    @Given("per batch alanina {int} degeri girer")
+    public void per_batch_alanina_degeri_girer(Integer int1) {
+        adminPages.perBatchBox.sendKeys(String.valueOf(int1));
+    }
+    @Given("cooling period alanina {int} degeri girer")
+    public void cooling_period_alanina_degeri_girer(Integer int1) {
+        adminPages.coolingPeriodBox.sendKeys(String.valueOf(int1));
+
+    }
+
+   // @Then("sayfayi kapatir")
+
+    @Then("notification sayfasinda submit butonuna basar")
+    public void notification_sayfasinda_submit_butonuna_basar() {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.wait(2);
+        adminPages.notificationSubmitButton.click();
+        ReusableMethods.wait(10);
+    }
+
+    public void sayfayiKapatir() {
         Driver.closeDriver();
     }
 
-        // ********** US_059  **********
-
-
-        
-        // ********** US_060  **********
-
-
-
-        // ********** US_061  **********
-
-
-        
-
-    // ********** US_062  **********
-
-    @Then("click on the Withdrawals button and then the All Withdrawals link.")
-    public void click_on_the_withdrawals_button_and_then_the_all_withdrawals_link() {
-    adminPages.withdrawalsButton.click();
-    adminPages.allWithdrawals.click();
-    ReusableMethods.wait(1);
-    }
-    @Then("it tests whether it can view the Withdrawals Log page in the All Withdrawals link.")
-    public void it_tests_whether_it_can_view_the_withdrawals_log_page_in_the_all_withdrawals_link() {
-        Assert.assertTrue(adminPages.WithdrawalsLogPage2.isDisplayed());
-        ReusableMethods.wait(1);
-
-    }
-    @Then("it is tested whether the titles Gateway, Initiated, User, Amount, Conversion, Status, Action are displayed in the Withdrawals Log list.")
-    public void it_is_tested_whether_the_titles_gateway_ınitiated_user_amount_conversion_status_action_are_displayed_in_the_withdrawals_log_list() {
-        Assert.assertTrue(adminPages.gatewayTransaction.isDisplayed());
-        ReusableMethods.wait(1);
-
-    }
-    @Then("Withdrawals Log sayfasında Username,Transaction No ve Start Date, End Date bilgileri ile arama yapilabileceği test edilir.")
-    public void withdrawals_log_sayfasında_username_transaction_no_ve_start_date_end_date_bilgileri_ile_arama_yapilabileceği_test_edilir() {
-        Assert.assertTrue(adminPages.gatewayTransaction.isDisplayed());
-        ReusableMethods.wait(1);
-
-    }
-
-    @Then("it is tested that you can search with Username, Transaction No, Start Date, End Date information on the Withdrawals Log page.")
-    public void it_is_tested_that_you_can_search_with_username_transaction_no_start_date_end_date_information_on_the_withdrawals_log_page() {
-        adminPages.details.click();
-        ReusableMethods.wait(1);
-
-    }
-
-    @Then("it tests whether it can access the details page under the action heading for the details of the payment transactions on the Withdrawals Log page.")
-    public void it_tests_whether_it_can_access_the_details_page_under_the_action_heading_for_the_details_of_the_payment_transactions_on_the_withdrawals_log_page() {
-
-        Assert.assertTrue(adminPages.detailsPage.isDisplayed());
-        ReusableMethods.wait(1);
-
-    }
-
-    @Then("on the Withdrawals Log page, click on details under the action heading to accept or reject the payment transaction.")
-    public void on_the_withdrawals_log_page_click_on_details_under_the_action_heading_to_accept_or_reject_the_payment_transaction() {
-        adminPages.details.click();
-        ReusableMethods.wait(1);
-
-    }
-    @Then("it tests whether it can access the details page under the action heading to accept or reject the payment transaction on the Withdrawals Log page.")
-    public void it_tests_whether_it_can_access_the_details_page_under_the_action_heading_to_accept_or_reject_the_payment_transaction_on_the_withdrawals_log_page() {
-        adminPages.details.click();
-        ReusableMethods.wait(1);
-        Assert.assertTrue(adminPages.detailsPage.isDisplayed());
-        ReusableMethods.wait(1);
-    }
-
-    @Then("it is tested that the Withdrawals Log page contains Approved Withdrawals, Pending Withdrawals, Rejected Withdrawals and redirects to the required page.")
-    public void it_is_tested_that_the_withdrawals_log_page_contains_approved_withdrawals_pending_withdrawals_rejected_withdrawals_and_redirects_to_the_required_page() {
-
-        adminPages.approvedWithdrawals2.click();
-        Assert.assertTrue(adminPages.approvedWithdrawalsPage.isDisplayed());
+    @Then("Userlardan {string} secilir")
+    public void userlardanSecilir(String userEmail) {
+        select = new Select(adminPages.DropDownChooseUserBox);
+        adminPages.selectUserBox.sendKeys(userEmail);
         ReusableMethods.wait(2);
-        adminPages.rejectedWithdrawals2.click();
-        Assert.assertTrue(adminPages.rejectedWithdrawalsPage.isDisplayed());
-        ReusableMethods.wait(2);
-        adminPages.pendingWithdrawals2.click();
-        Assert.assertTrue(adminPages.pendingWithdrawalsPage.isDisplayed());
+        adminPages.selectedUserConfirm.click();
         ReusableMethods.wait(2);
     }
+    @When("basarili bir sekilde mesajini gonderdigini dogrular ve kutuyu kapatir")
+    public void basariliBirSekildeMesajiniGonderdiginiDogrularVeKutuyuKapatir() {
+        Assert.assertTrue(adminPages.succesfullyDoneText.isDisplayed());
+        adminPages.succesfullyDoneCloseButton.click();
+    }
+
+    @And("baslik kisminda doldurulmasi gereken bosluklar doldurulmadiginda uyari yazisi cikarr")
+    public void baslikKismindaDoldurulmasiGerekenBosluklarDoldurulmadigindaUyariYazisiCikarr() {
+        Assert.assertTrue(adminPages.warningText.isDisplayed());
+    }
+
+    // ********** US_051  **********
 
 
+    // ********** US_052  **********
 
+    @Then("admin Deposits linkine tiklar")
+    public void adminDepositsLinkineTiklar() {
+        adminPages.depositsLink.click();
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @When("Approved Deposits linkine tiklar")
+    public void approvedDepositsLinkineTiklar() {
+        adminPages.approvedDepositsLink.click();
+        adminPages.approvedDepositsLink.click();
 
     }
+
+    @And("admin mevcut sayfa uzantisinin {string} oldugunu dogrular")
+    public void adminMevcutSayfaUzantisininOldugunuDogrular(String urlUzanti) {
+        String actualData=Driver.getDriver().getCurrentUrl();
+        String expectedData=ConfigReader.getProperty("guestUrl")+urlUzanti;
+        Assert.assertEquals(expectedData,actualData);
+    }
+
+
+    @And("admin Approved Depoits listesinin goruntulenebilir oldugunu dogrular")
+    public void adminApprovedDepoitsListesininGoruntulenebilirOldugunuDogrular() {
+        System.out.println("Deposit table "+adminPages.approvedDepositsTable.getText());
+        Assert.assertTrue(adminPages.approvedDepositsTable.isDisplayed());
+    }
+    @When("admin Approved Deposits listesindeki basliklarin ve altindaki bilgilerin goruntulenebilir oldugunu dogrular")
+    public void admin_approved_deposits_listesindeki_basliklarin_ve_altindaki_bilgilerin_goruntulenebilir_oldugunu_dogrular() {
+        System.out.println("headers "+adminPages.approvedDepositsLinkHeaders.getText());
+        Assert.assertTrue(adminPages.approvedDepositsLinkHeaders.isDisplayed());
+        Assert.assertTrue(adminPages.approvedDepositsTable.isDisplayed());
+    }
+
+
+
+
+    // ********** US_051  **********
+
+
+
+    // ********** US_052  **********
+
+
+
+    // ********** US_053  **********
+
+
+
+    // ********** US_054  **********
+
+
+
+    // ********** US_055  *********
+
+    @And("admin Details butonun gorunur ve aktif oldugunu dogrular")
+    public void adminDetailsButonunGorunurVeAktifOldugunuDogrular() {
+        Assert.assertTrue(adminPages.detailsButton.isDisplayed());
+        Assert.assertTrue(adminPages.detailsButton.isEnabled());
+    }
+
+    @And("admin Details butonuna tiklar")
+    public void adminDetailsButonunaTiklar() {
+        adminPages.detailsButton.click();
+    }
+
+    @Then("Details sayfasindaki bilgilerin goruntulendigi dogrulanir")
+    public void detailsSayfasindakiBilgilerinGoruntulendigiDogrulanir() {
+        ReusableMethods.wait(2);
+        Assert.assertTrue(adminPages.DetailspageAllInfos.isDisplayed());
+    }
+
+
+    // ********** US_053  **********
+    @Then("admin Succesful Deposits linkine tiklar")
+    public void adminSuccesfulDepositsLinkineTiklar() {
+        adminPages.succesfullDepositsLink.click();
+    }
+
+
+    // ********** US_054  **********
+    @Then("admin Rejected Deposits linkine tiklar")
+    public void adminRejectedDepositsLinkineTiklar() {
+        adminPages.RejectedDepositsLink.click();
+    }
+
+
+    // ********** US_055  **********
+    @Given("Initiated Deposits linkine tiklar")
+    public void initiatedDepositsLinkineTiklar() {
+        adminPages.InitiatedDepositsLink.click();
+    }
+}
 
 

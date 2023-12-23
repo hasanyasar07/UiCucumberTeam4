@@ -13,6 +13,11 @@ Feature: The website must be accessible from the browser with the user (Given UR
     Scenario: TC_02 In the login window on the site login page,
         it must be verified that the Username and Password textBoxes and
         the LOGIN button are visible and functional.
+      Given Launch browser
+      Given Navigate to "adminUrl"
+      Given the user logs in to the admin page with the given "hilalciftciUsername" and "adminPassword" information
+      Given  Verify that Admin homepage is visible successfully
+      Given click with find coordinate method.
 
 
 
