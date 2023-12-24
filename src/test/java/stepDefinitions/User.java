@@ -670,6 +670,7 @@ public class User {
     // ***************** take a deposit hilal***************
     @Given("click deposit button.")
     public void click_deposit_button() {
+        ReusableMethods.wait(2);
         userPages.usersDeposit.click();
     }
     @Given("select getawey")
@@ -688,6 +689,6 @@ public class User {
     @Given("Click the pay now button;")
     public void click_the_pay_now_button() {
         userPages.depositPayNowButton.click();
-        ReusableMethods.wait(3);
+        ReusableMethods.wait(5);
     }
 }

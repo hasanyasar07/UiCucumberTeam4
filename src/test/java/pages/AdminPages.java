@@ -396,7 +396,7 @@ public class AdminPages {
     public WebElement LoanPlansMinimumAmount;
     @FindBy(xpath = "//*[@name='maximum_amount']")
     public WebElement LoanPlansMaximumAmount;
-    @FindBy(xpath = "//*[@name='category_id']")
+    @FindBy(xpath = "(//*[@class='form-control'])[5]")
     public WebElement LoanPlansCategory;  // select ile seçilmesi gerekiyor dikkat
     @FindBy(xpath = "//*[@name='per_installment']")
     public WebElement LoanPlansPerInstallment;
@@ -414,12 +414,19 @@ public class AdminPages {
     public WebElement LoanPlansFixedCharge;
     @FindBy(xpath = "//*[@name='percent_charge']")
     public WebElement LoanPlansPercentCharge;
-    @FindBy(xpath = "//*[@class='btn btn--primary w-100 h-45 mt-3']")
+    @FindBy(xpath = "//*[text()='Submit']")
     public WebElement LoanPlansAddNewSubmit; // Yeni plan ekle submit button
     @FindBy(xpath = "//*[@class='iziToast-wrapper iziToast-wrapper-topRight']")
     public WebElement LoanPlanYeniPlanEklendi;   // Güncelleme içinde kullanılabilir
     @FindBy(xpath = "//*[@class='iziToast-wrapper iziToast-wrapper-topRight']")
     public WebElement PlanUpdatedSuccessfully;
+    @FindBy(xpath = "(//*[@class='form-control'])[12]")
+    public WebElement delayApplyCharge;
+    @FindBy(xpath = "(//*[@class='form-control'])[13]")
+    public WebElement delayFixedCharge;
+    @FindBy(xpath = "(//*[@class='form-control'])[14]")
+    public WebElement delayPercentCharge;
+
     // TC03
     @FindBy(xpath = "(//*[@class='btn btn-sm btn-outline--primary'])[2]")
     public WebElement LoanPlansEdit;
@@ -1004,7 +1011,6 @@ public class AdminPages {
     @FindBy(xpath = "//*[@class='bodywrapper__inner']")
     public WebElement WithdrawalsMethodsSearhDetails; // aratılan method bilgileri
 
-    // TC_04
     @FindBy(xpath = "//*[@name='name']")
     public WebElement WithdrawalsMethodsEditNamee; // ysm4
 
@@ -1017,7 +1023,6 @@ public class AdminPages {
     @FindBy(xpath = "//*[@class='iziToast-message slideIn']")
     public WebElement WithdrawalsMethodsEditMessage;
 
-    // TC_05
     @FindBy(xpath = "//*[@class='form-control bg--white']")
     public WebElement WithdrawalsMethodsSearchboxx;
     @FindBy(xpath = "//*[@class='btn btn-sm btn-outline--danger ms-1 confirmationBtn']")

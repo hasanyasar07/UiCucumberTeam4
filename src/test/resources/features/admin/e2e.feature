@@ -1,8 +1,7 @@
-
 @e2e
-Feature:
+Feature: As a user apply  a deposit
 
-  Scenario: Take a deposit.
+  Scenario: Take a deposit
 
     * kullanici verilen "userUrl" gider
     * kullanici verilen "hilalciftciUsername" ve "userPassword" bilgileri ile userpage de login olur

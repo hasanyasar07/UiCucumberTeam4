@@ -1,0 +1,1 @@
+{"uuid":"75e9339c-87ed-4be6-855a-e74e7a589c54","name":"Scenario: Kullanici guestUrl den login sayfasina gecis yaparak gerekli link ve login formunun gorunur ve aktif oldugunu dogruladiktan sonra basarili bir sekilde giris yapar","children":["f4328e9d-ad32-4fd4-8faf-26a836d7d2cf"],"befores":[],"afters":[],"start":1703339043518,"stop":1703339063051}

@@ -1,4 +1,4 @@
-package stepDefinitions;
+package utilities;
 
 import utilities.ReusableMethods;
 

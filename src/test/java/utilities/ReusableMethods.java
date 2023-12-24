@@ -1,6 +1,7 @@
 package utilities;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
@@ -9,12 +10,11 @@ import java.awt.Point;
 import java.awt.event.InputEvent;
 import java.io.File;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Function;
 
 import static utilities.Driver.getDriver;
@@ -427,27 +427,70 @@ public class ReusableMethods {
         wait(1);
     }
 
-    public static String getNewWindowHandle() {
-        return null;
+    public static String getNewWindowHandle(){
+        //Yeni açılan sekmeye geçiş yapılır
+        Set<String> windowHandles = Driver.getDriver().getWindowHandles();
+        String newWindowHandle = null;
+        for (String handle : windowHandles) {
+            newWindowHandle = handle;
+        }
+        return newWindowHandle;
     }
 
-    public static void navigateToTheRequestedUrl(String userUrl) {
-
+    public  static void navigateToTheRequestedUrl(String url){
+        Driver.getDriver().get(ConfigReader.getProperty(url));
     }
 
-    public static CharSequence generateRandomValue(int i, int i1) {
-
-        return null;
+    public static String generateRandomValue(int min,int max){
+        Random random = new Random();
+        int randomNumber = random.nextInt((max - min) + 1) + min;
+        return String.valueOf(randomNumber);
     }
 
-    public static String generateUsername() {
-
-        return null;
+    public static String generateUsername(){
+        String characters = "abcdefghijklmnopqrstuvwxyz";
+        // Rastgele sayı üreteci
+        Random random = new Random();
+        // Kullanıcı adını oluştur
+        StringBuilder usernameBuilder = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            // Rastgele bir karakter seç
+            char randomChar = characters.charAt(random.nextInt(characters.length()));
+            // Kullanıcı adına ekle
+            usernameBuilder.append(randomChar);
+        }
+        return usernameBuilder.toString();
     }
 
     public static String generatePassword() {
-
-        return null;
+        String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
+        String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String DIGITS = "0123456789";
+        String SPECIAL_CHARS = "!@#$%^&*()-_=+[]{}|;:',.<>/?";
+        SecureRandom random = new SecureRandom();
+        StringBuilder password = new StringBuilder();
+        // En az bir tane küçük harf ekle
+        password.append(LOWERCASE_CHARS.charAt(random.nextInt(LOWERCASE_CHARS.length())));
+        // En az bir tane büyük harf ekle
+        password.append(UPPERCASE_CHARS.charAt(random.nextInt(UPPERCASE_CHARS.length())));
+        // En az bir tane rakam ekle
+        password.append(DIGITS.charAt(random.nextInt(DIGITS.length())));
+        // En az bir tane özel karakter ekle
+        password.append(SPECIAL_CHARS.charAt(random.nextInt(SPECIAL_CHARS.length())));
+        // Geri kalan karakterleri ekle
+        for (int i = 4; i < 6; i++) {
+            String allChars = LOWERCASE_CHARS + UPPERCASE_CHARS + DIGITS + SPECIAL_CHARS;
+            password.append(allChars.charAt(random.nextInt(allChars.length())));
+        }
+        // Karakterleri karıştır
+        char[] passwordArray = password.toString().toCharArray();
+        for (int i = passwordArray.length - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            char temp = passwordArray[index];
+            passwordArray[index] = passwordArray[i];
+            passwordArray[i] = temp;
+        }
+        return new String(passwordArray);
     }
 
     public static void scrollToBottom(WebDriver driver) {

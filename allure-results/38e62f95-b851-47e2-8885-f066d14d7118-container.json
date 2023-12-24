@@ -1,0 +1,1 @@
+{"uuid":"38e62f95-b851-47e2-8885-f066d14d7118","name":"Scenario: Kullanici yanlis bilgilerle login olmaya calisir ve basarili giris yapamadigini dogrular","children":["db44f6fb-5de5-4f81-839a-9dfe694d2200"],"befores":[],"afters":[],"start":1703339063280,"stop":1703339093675}
