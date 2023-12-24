@@ -1,3 +1,4 @@
+@us_12
 Feature: I would like to have a page to register as a visitor.
 
   Scenario: I want to reach the register page with the get started button

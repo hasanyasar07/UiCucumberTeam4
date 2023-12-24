@@ -688,5 +688,6 @@ public class User {
     @Given("Click the pay now button;")
     public void click_the_pay_now_button() {
         userPages.depositPayNowButton.click();
+        ReusableMethods.wait(3);
     }
 }
