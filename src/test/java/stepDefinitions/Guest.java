@@ -1,10 +1,13 @@
 package stepDefinitions;
 
+
 import com.github.javafaker.Faker;
 import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.checkerframework.checker.units.qual.C;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -17,10 +20,14 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+
+import java.util.List;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Random;
+
 
 
 public class Guest {
@@ -35,31 +42,325 @@ public class Guest {
     // ********** US_002  **********
 
 
-    // ********** US_003  ********** // Erdal
+    // ********** US_003  **********
 
     @Given("Visitor goes to “guestUrl” homepage")
     public void visitor_goes_to_guest_url_homepage() {
-
+        Driver.getDriver().get(ConfigReader.getProperty("guestUrl"));
     }
+
     @Then("It tests whether a slider consisting of partner company logos is visible on the home page.")
     public void ıt_tests_whether_a_slider_consisting_of_partner_company_logos_is_visible_on_the_home_page() {
-         }
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.getStartedHomePage );
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.companyLogosSlider.isDisplayed());
+}
+
+
     @Then("Closes the page")
     public void closes_the_page() {
-
+        Driver.closeDriver();
     }
-
 
     @Then("It tests whether the logos flowing on the slider consisting of partner company logos on the home page \\(Sun Basket, Peloton, BerkShire Hathaway, Emergent biosolutions*, Solar Edge architects of energy, Covenant Transport services, Exxon Mobile, P&G, CVS Health, EverNote) are visible.")
     public void ıt_tests_whether_the_logos_flowing_on_the_slider_consisting_of_partner_company_logos_on_the_home_page_sun_basket_peloton_berk_shire_hathaway_emergent_biosolutions_solar_edge_architects_of_energy_covenant_transport_services_exxon_mobile_p_g_cvs_health_ever_note_are_visible() {
+        ReusableMethods.wait(2);
+        guestPages.cookieKabul.click();
+        Assert.assertTrue(guestPages.ExxonMobilcompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.PandGcompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.CVShealtcompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.BerkshireHathawaycompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.PelotoncompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.emergentcompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.SolarEdgecompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.SunBasketcompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.CovenantTransportcompanyLogosSlider.isDisplayed());
+        ReusableMethods.wait(2);
 
     }
-    @Then("Closes the pag")
-    public void closes_the_pag() {
 
-    }
+
 
     // ********** US_004.feature  **********
+
+    @Given("Click on Home Page in the menu title on the home page.")
+    public void click_on_home_page_in_the_menu_title_on_the_home_page() {
+     guestPages.homeHeaderButon.click();
+    }
+    @Then("Verifies that the opened page is {string}")
+    public void verifies_that_the_opened_page_is(String string) {
+     String expectedUrl="https://qa.loantechexper.com/";
+     String actualUrl=Driver.getDriver().getCurrentUrl();
+     Assert.assertEquals(expectedUrl,actualUrl);
+     ReusableMethods.wait(2);
+    }
+    @Given("Click About from the body section of the home page.")
+    public void click_about_from_the_body_section_of_the_home_page() {
+    guestPages.aboutHeaderButon.click();
+    ReusableMethods.wait(2);
+    }
+    @Then("Tests whether the about page has been reached")
+    public void tests_whether_the_about_page_has_been_reached() {
+    String expectedReachPage="https://qa.loantechexper.com/about";
+    String actualReachPage=Driver.getDriver().getCurrentUrl();
+    Assert.assertEquals(expectedReachPage,actualReachPage);
+        ReusableMethods.wait(2);
+    }
+    @Given("It tests that the Feature section and {string}, {string}, {string}, {string}, {string} headings are visible in the body section of the home page.")
+    public void ıt_tests_that_the_feature_section_and_headings_are_visible_in_the_body_section_of_the_home_page(String string, String string2, String string3, String string4, String string5) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.featureBodyHomePage);
+        Assert.assertTrue(guestPages.featureBodyHomePage.isDisplayed());
+        Assert.assertTrue(guestPages.quickApprovalProcessesTitle.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.variousLoanTypesTitle.isDisplayed());
+        Assert.assertTrue(guestPages.flexibleRepaymentTermsTitle.isDisplayed());
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.competitiveInterestRatesTitle.isDisplayed());
+        Assert.assertTrue(guestPages.digitalApplicationProcessingTitle.isDisplayed());
+
+    }
+
+    @Given("Tests that {string} and {string} titles and icons are visible in the body section of the home page.")
+    public void tests_that_and_titles_and_icons_are_visible_in_the_body_section_of_the_home_page(String string, String string2) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(1);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.variousLoanTypesTitle);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.supportTitle.isDisplayed());
+   Assert.assertTrue(guestPages.lowCostTitle.isDisplayed());
+   Assert.assertTrue(guestPages.supportIkon.isDisplayed());
+   Assert.assertTrue(guestPages.lowCostIkon.isDisplayed());
+    }
+
+    @Given("It tests that there is a {string} section in the body of the homepage.")
+    public void ıt_tests_that_there_is_a_section_in_the_body_of_the_homepage(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(1);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.digitalApplicationProcessingTitle);
+        ReusableMethods.wait(2);
+        guestPages.featuredPlansTitle.isDisplayed();
+
+    }
+
+    @Given("Tests that the {string} button is visible and active under Featured plans")
+    public void tests_that_the_button_is_visible_and_active_under_featured_plans(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.featuredPlansTitle );
+        Assert.assertTrue(guestPages.basicLoanButtonHomeBody.isDisplayed());
+        ReusableMethods.wait(2);
+        guestPages.basicLoanButtonHomeBody.click();
+        ReusableMethods.wait(2);
+    }
+    @Given("Tests that {string} is visible under Featured plans")
+    public void tests_that_is_visible_under_featured_plans(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.featuredPlansTitle );
+        ReusableMethods.wait(2);
+    Assert.assertTrue(guestPages.TestLoanCardHomePage.isDisplayed());
+
+    }
+
+
+    @Given("Tests that the Apply Now button is present and active under Basic Loan")
+    public void tests_that_the_apply_now_button_is_present_and_active_under_basic_loan() {
+        ReusableMethods.wait(2);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(2);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.lowCostIkon);
+        ReusableMethods.wait(2);
+        guestPages.BasicLoanApplyCardHomePage.click();
+        ReusableMethods.wait(1);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.BasicLoanApplyCardHomePage);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.ApplyNow1ButtonUnderBasicLoan.isDisplayed());
+        ReusableMethods.wait(2);
+        guestPages.ApplyNow1ButtonUnderBasicLoan.click();
+    }
+    @Given("Clicks the Apply Now button under Basic Loan")
+    public void clicks_the_apply_now_button_under_basic_loan() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.BasicLoanApplyCardHomePage);
+        ReusableMethods.wait(2);
+        guestPages.ApplyNow1ButtonUnderBasicLoan.click();
+        ReusableMethods.wait(2);
+    }
+    @Then("It tests that when the Apply Now button is clicked, the {string} message appears in the window that opens and there is a link button that directs you to the login page.")
+    public void ıt_tests_that_when_the_apply_now_button_is_clicked_the_message_appears_in_the_window_that_opens_and_there_is_a_link_button_that_directs_you_to_the_login_page(String string) {
+        ReusableMethods.wait(2);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(2);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.lowCostIkon);
+        ReusableMethods.wait(2);
+        guestPages.BasicLoanApplyCardHomePage.click();
+        ReusableMethods.wait(2);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.BasicLoanApplyCardHomePage);
+        ReusableMethods.wait(2);
+        guestPages.ApplyNow1ButtonUnderBasicLoan.click();
+        ReusableMethods.wait(2);
+        guestPages.YouAreNotLoginText.isDisplayed();
+        ReusableMethods.wait(2);
+     guestPages.LoginButtonOnAlert.isDisplayed();
+     ReusableMethods.wait(2);
+    }
+    @Given("Tests that the {string} button is visible under Featured plans")//TC_10
+    public void tests_that_the_button_is_visible_under_featured_plans(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.supportIkon);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.seeAllButtonHomePage.isDisplayed());
+    }
+    @Given("Clicks the {string} button under Featured plans") //TC_11
+    public void clicks_the_button_under_featured_plans(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.supportIkon);
+        ReusableMethods.wait(2);
+        guestPages.seeAllButtonHomePage.click();
+        ReusableMethods.wait(2);
+    }
+    @Then("Verifies that the opened page is the page where the plans are displayed") //TC_11
+    public void verifies_that_the_opened_page_is_the_page_where_the_plans_are_displayed() {
+    Assert.assertTrue(guestPages.LoanPlans.isDisplayed());
+    }
+    @Given("It tests whether information about the Site \\(Countrywide, Happy Customers, Rewards Won, Total Credits) is visible in the Body Section of the Home Page.")
+    public void ıt_tests_whether_information_about_the_site_countrywide_happy_customers_rewards_won_total_credits_is_visible_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.seeAllButtonHomePage);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.CountryWideHomeBody.isDisplayed());
+        Assert.assertTrue(guestPages.HappyClientHomeBody.isDisplayed());
+        Assert.assertTrue(guestPages.WinningAwardsHomeBody.isDisplayed());
+        Assert.assertTrue(guestPages.TotalLoanHomeBody.isDisplayed());
+    }
+    @Given("It tests that there is a Frequently Asked Questions section in the Body Section of the Home Page.")
+    public void ıt_tests_that_there_is_a_frequently_asked_questions_section_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.CountryWideHomeBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.FAQsectionHomeBody.isDisplayed());
+    }
+    @Given("Tests that frequently asked questions in the Frequently Asked Questions section appear in the Body Section of the Home Page.")
+    public void tests_that_frequently_asked_questions_in_the_frequently_asked_questions_section_appear_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.FAQsectionHomeBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.FrequentlyAskedHomePageBody.isDisplayed());
+
+    }
+    @Given("It tests whether the accordion buttons in the Frequently Asked Questions section in the Body Section of the Home Page are visible and active.")
+    public void ıt_tests_whether_the_accordion_buttons_in_the_frequently_asked_questions_section_in_the_body_section_of_the_home_page_are_visible_and_active() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(2);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.AccordionButton1FqaHomePageBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.AccordionButton1FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton1FqaHomePageBody.click();
+        ReusableMethods.wait(3);
+        Assert.assertTrue(guestPages.AccordionButton2FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton2FqaHomePageBody.click();
+        ReusableMethods.wait(3);
+        Assert.assertTrue(guestPages.AccordionButton3FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton3FqaHomePageBody.click();
+        ReusableMethods.wait(3);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.AccordionButton1FqaHomePageBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.AccordionButton4FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton4FqaHomePageBody.click();
+        ReusableMethods.wait(3);
+        Assert.assertTrue(guestPages.AccordionButton5FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton5FqaHomePageBody.click();
+        ReusableMethods.wait(3);
+        Assert.assertTrue(guestPages.AccordionButton6FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton6FqaHomePageBody.click();
+        ReusableMethods.wait(3);
+        Assert.assertTrue(guestPages.AccordionButton7FqaHomePageBody.isDisplayed());
+        guestPages.AccordionButton7FqaHomePageBody.click();
+        ReusableMethods.wait(3);
+    }
+    @Given("Tests that a slider introducing Company Employees is visible in the Body Section of the Home Page.")
+    public void tests_that_a_slider_introducing_company_employees_is_visible_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.CompanyEmployeesSliderHomeBody);
+        ReusableMethods.wait(3);
+        Assert.assertTrue(guestPages.CompanyEmployeesSliderHomeBody.isDisplayed());
+    }
+
+    @Given("It tests whether the left\\/right buttons on the Slider introducing Company Employees in the Body Section of the home page are active and visible.")
+    public void ıt_tests_whether_the_left_right_buttons_on_the_slider_introducing_company_employees_in_the_body_section_of_the_home_page_are_active_and_visible() {
+        ReusableMethods.wait(1);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(2);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.CompanyEmployeesSliderHomeBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.leftButtonCompanyEmployeesSlider.isDisplayed());
+        Assert.assertTrue(guestPages.rightButtonCompanyEmployeesSlider.isDisplayed());
+        ReusableMethods.wait(1);
+        guestPages.leftButtonCompanyEmployeesSlider.click();
+        ReusableMethods.wait(2);
+        guestPages.rightButtonCompanyEmployeesSlider.click();
+        ReusableMethods.wait(2);
+    }
+
+    @Given("It tests that there is a Blog Post section in the Body Section of the home page.")
+    public void ıt_tests_that_there_is_a_blog_post_section_in_the_body_section_of_the_home_page() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.BlogPostHomePageBody);
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.BlogPostHomePageBody.isDisplayed());
+        ReusableMethods.wait(3);
+
+
+    }
+    @Then("It tests whether the blogs written in the Blog Post section are visible with date and time information.")
+    public void ıt_tests_whether_the_blogs_written_in_the_blog_post_section_are_visible_with_date_and_time_information() {
+        Assert.assertTrue(guestPages.Blog1HomePageBody.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.Blog2HomePageBody.isDisplayed());
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.Blog3HomePageBody.isDisplayed());
+    }
+
+    @Given("Tests that the {string} title is visible in the Body Section of the Home page")
+    public void tests_that_the_title_is_visible_in_the_body_section_of_the_home_page(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(3);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.dateBlog1HomePageBody);
+         Assert.assertTrue(guestPages.LikeToBecomeHeroHomePage.isDisplayed());
+    }
+    @Then("Tests that the {string} button is visible and active in the Body Section of the Home page.")
+    public void tests_that_the_button_is_visible_and_active_in_the_body_section_of_the_home_page(String string) {
+        Assert.assertTrue(guestPages.TakeLoanButtonHomePage.isDisplayed());
+        ReusableMethods.wait(1);
+        guestPages.TakeLoanButtonHomePage.click();
+        ReusableMethods.wait(2);
+    }
+
+
 
 
     // ********** US_005  **********
@@ -86,6 +387,7 @@ public class Guest {
     @Then("gittigi sayfada Fulfilling Financial Dreams basliginin gorunur oldugunu dogrular")
     public void gittigi_sayfada_fulfilling_financial_dreams_basliginin_gorunur_oldugunu_dogrular() {
         Assert.assertTrue(guestPages.aboutBodyFulfillingFinancialBaslik.isDisplayed());
+
     }
 
     @Then("ayni sayfadaki Home | About ikonlarinin gorunur oldugunu dogrular")
@@ -166,6 +468,116 @@ public class Guest {
 
 
     // ********** US_007  **********
+    @Given("Visitor goes to {string} homepage")
+    public void visitor_goes_to_homepage(String string) {
+       Driver.getDriver().get(ConfigReader.getProperty("guestUrl"));
+    }
+
+    @Given("Tests that the Plans button appears from the home page menu header")
+    public void tests_that_the_plans_button_appears_from_the_home_page_menu_header() {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        Assert.assertTrue(guestPages.plansHeaderButon.isDisplayed());
+    }
+
+    @Then("Plans button is clicked")
+    public void plans_button_is_clicked() {
+
+        guestPages.plansHeaderButon.click();
+    }
+    @Then("Verifies that the opened page is the {string} page")
+    public void verifies_that_the_opened_page_is_the_page(String string) {
+    ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.LoanPlansPage.isDisplayed());
+    }
+    @Then("It tests whether the {string} Link is visible and active under the Important Link heading in the Home Page Footer section.")
+    public void ıt_tests_whether_the_link_is_visible_and_active_under_the_ımportant_link_heading_in_the_home_page_footer_section(String string) {
+        ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(2);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.FooterLoanPlansHomePage );
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.FooterLoanPlansHomePage.isDisplayed());
+        guestPages.FooterLoanPlansHomePage.click();
+    }
+    @Then("Clicks Plans from the Home menu header")
+    public void clicks_plans_from_the_home_menu_title() {
+       ReusableMethods.wait(3);
+        guestPages.cookieKabul.click();
+        ReusableMethods.wait(2);
+        guestPages.plansHeaderButon.click();
+    }
+    @Then("Verifies that the Loan Plans Page that opens has the title Basic Loan.")
+    public void verifies_that_the_loan_plans_page_that_opens_has_the_title_basic_loan() {
+     Assert.assertTrue(guestPages.LoanPlansPage.isDisplayed());
+    }
+    @Then("Basic Loan is clicks")
+    public void basic_loan_is_clicks() {
+    guestPages.basicLoanButton.click();
+    ReusableMethods.wait(1);
+    }
+    @Then("Tests that Credit Plan Cards appear under the Basic Credit heading")
+    public void tests_that_credit_plan_cards_appear_under_the_basic_credit_heading() {
+
+    ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.BasicLoanCardSection.isDisplayed());
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.ApplyNow1ButtonUnderBasicLoan );
+    ReusableMethods.wait(2);
+
+    }
+
+
+
+    @Then("It tests whether the Apply Now buttons under the Credit Plan Cards under the Basic Credit heading on the opened Credit Plans Page are visible and active.")
+    public void ıt_tests_whether_the_apply_now_buttons_under_the_credit_plan_cards_under_the_basic_credit_heading_on_the_opened_credit_plans_page_are_visible_and_active() {
+        ReusableMethods.wait(2);
+        ((JavascriptExecutor)Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",guestPages.BasicLoan1Section);
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.ApplyNow1ButtonUnderBasicLoan.isDisplayed());
+        guestPages.ApplyNow1ButtonUnderBasicLoan.click();
+        ReusableMethods.wait(2);
+        guestPages.closeAllertApplyNowButton.click();
+        ReusableMethods.wait(2);
+        Assert.assertTrue(guestPages.ApplyNow2ButtonUnderBasicLoan.isDisplayed());
+        guestPages.ApplyNow2ButtonUnderBasicLoan.click();
+        ReusableMethods.wait(1);
+        guestPages.closeAllertApplyNowButton.click();
+
+    }
+
+
+    @Then("Basic Loan is clicked")
+    public void basic_loan_is_clicked() {
+        ReusableMethods.wait(1);
+        guestPages.basicLoanButton.click();
+        ReusableMethods.wait(1);
+    }
+
+
+    @Then("On the Loan Plans Page that opens, click on the Housing and Loan Plans links and test that you have gone to the relevant pages")
+    public void on_the_loan_plans_page_that_opens_click_on_the_housing_and_loan_plans_links_and_test_that_you_have_gone_to_the_relevant_pages() {
+
+        ReusableMethods.wait(1);
+        guestPages.homeButtonUnderLoanPlans.click();
+        Assert.assertTrue(guestPages.getStartedHomePage.isDisplayed());
+    }
+
+
+
+    @Then("Clicks on the Home link on the Loan Plans Page that opens and tests whether you can go to the relevant pages.")
+    public void clicks_on_the_home_link_on_the_loan_plans_page_that_opens_and_tests_whether_you_can_go_to_the_relevant_pages() {
+        ReusableMethods.wait(2);
+        guestPages.homeButtonUnderLoanPlans.click();
+        ReusableMethods.wait(1);
+        Assert.assertTrue(guestPages.getStartedHomePage.isDisplayed());
+    }
+    @Then("Clicks on the Loan Plans link from the Loan Plans Page that opens and tests whether you can go to the relevant page.")
+    public void clicks_on_the_loan_plans_link_from_the_loan_plans_page_that_opens_and_tests_whether_you_can_go_to_the_relevant_page() {
+        ReusableMethods.wait(2);
+        guestPages.loanPlansButtonUnderLoanPlans.click();
+    }
+
+
 
 
     // ********** US_008  **********

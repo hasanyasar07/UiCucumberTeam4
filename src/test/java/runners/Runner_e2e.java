@@ -2,6 +2,7 @@ package runners;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
+
 @RunWith(Cucumber.class)
 @CucumberOptions(
   
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
         dryRun = false
 
 )
-public class Runner {
+public class Runner_e2e {
     /*
         Runner class'i bos bir class'dir
         bu class'da asil isi

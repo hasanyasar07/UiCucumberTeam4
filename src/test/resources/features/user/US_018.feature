@@ -53,3 +53,4 @@ Scenario:  TC_02 Successful registration on the basic loan 1 page
       * Loan Number, Loan Amount, Plan, Per Installment, Needs to Pay, Delay Charge values ​​are visible, the list titles of the installment plan list (S.N., Installment Date, Given on, Delay) are visible and values ​​are visible in the list
       * For the transition from My Loans to the Take Loan page, the Take Loan button is visible and confirmed to be active
       * Close the page
+
